@@ -1,0 +1,437 @@
+body {
+	background-image: url(https://images.unsplash.com/photo-1496868834840-5f4c98840aaa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=271557c887bb814d49dc3d624fe0bfbe&auto=format&fit=crop&w=1350&q=80);
+	background-size: cover;
+	/*background: orange;*/
+	overflow: hidden;
+	margin: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+/********************************************/
+/* Home screen title page */
+/********************************************/
+/* main title page container */
+#coMain {
+	height: 72vh;
+	width: 100vw;
+	position: absolute;
+	margin-top: -72vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: baseline;
+
+	visibility: visible;
+	transition: visibility 0.4s;
+}
+
+#coMain.select {
+	visibility: hidden;
+}
+
+/* base container for items inside main container */
+.coBaseDiv {
+	/*height: 25vh;*/
+	width: 60vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* base text formatting class */
+.coBaseText {
+	color: navajowhite;
+	font-weight: normal;
+	font-size: 1.5rem;
+	font-family: "imprint mt shadow", "niagara solid", times;
+	margin: 1vh 3vw;
+}
+
+/* container for company title */
+#coDiv {
+	/*position: */
+}
+
+/* text formatting for company title */
+#coTitle {
+	font-size: 8rem;
+	margin-bottom: 0rem;
+	
+}
+
+/* container for company subtitle */
+#coSubDiv {
+
+}
+
+/* text formatting for company subtitle */
+#coSubtitle {
+	font-size: 3rem;
+}
+
+/********************************************/
+/* Sign-up / Log-in menu buttons */
+/********************************************/
+#credsDiv {
+	position: absolute;
+	display: flex;
+	height: 5vw;
+	width: 100vw;
+	margin-top: -2.5rem;
+	justify-content: center;
+
+	transition: margin-top 1s;
+}
+
+#credsDiv.select {
+	margin-top: -75vh;
+}
+
+#credsForm {
+	background: rgba(255,235,125,0);
+	width: 60vw;
+	height: 60vh;
+	display: flex;
+	justify-content: center;
+
+	transition: background 0.2s;
+}
+
+#credsForm.select {
+	/*background: rgba(255,235,125,0.8);*/
+	background: rgba(255,165,0,0.75);
+}
+
+#creds-ul {
+	display: flex;
+	width: 275px;
+	height: 2.7rem;
+	justify-content: center;
+	padding-left: 0px;
+}
+
+.creds {
+	height: 2.5rem;
+	width: 7rem;
+	background-color: darkcyan;
+	border: none;
+	color: darkcyan;
+	text-decoration: none;
+	/*display: inline-block;*/
+	/*font-size: 12px;*/
+
+	/*border-radius: 0px;*/
+}
+
+.credsBtn {
+	height: 2.5rem;
+	width: 7rem;
+	position: absolute;
+	/*margin-top:	calc(100vh / 2);*/
+	z-index: 150;
+/*	display: flex;
+	justify-content: space-around;*/
+	border-color: transparent;
+	font-size: 16px;
+	font-family: "ar julian", "perpetual titling mt", "times new roman";
+}
+
+.credsBtn:hover {
+	
+}
+
+#join {
+	background: salmon;
+	/*background: tomato;*/
+	-webkit-text-fill-color: navajowhite;
+
+	/*transition: background 1s;*/
+}
+
+#join.select {
+	background: darkcyan;
+	/*-webkit-text-fill-color: mediumseagreen;*/
+}
+
+#login {
+	/*background: darksalmon;*/
+	background: tomato;
+	-webkit-text-fill-color: navajowhite;
+}
+
+#login.select {
+	background: darkcyan;
+	/*-webkit-text-fill-color: cadetblue;*/
+}
+
+#loginDiv {
+	height: 60vh;
+	width: 60vw;
+	position: absolute;
+	display: flex;
+	visibility: hidden;
+	flex-wrap: wrap;
+	align-items: center;
+	/* font formatting */
+	font-size: 24px;
+	font-family: "ar julian", "perpetua titling mt", stencil, cambria, arial;
+	justify-content: center;
+}
+
+#loginDiv.select {
+	visibility: visible;
+}
+
+#loginForm {
+	width: 36vw;
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-end;
+	/*color: cadetblue;*/
+	color: lightseagreen;
+}
+
+.loginInput {
+	margin: 3vh 2vw;
+}
+
+#formBtn {
+	height: 2.5rem;
+	width: 7rem;
+	/*background: lightcoral;*/
+	/*background: coral;*/
+	/*background: darksalmon;*/
+	/*background: lightsalmon;*/
+	/*background: chocolate;*/
+	/*background: indianred;*/
+	/*background: palevioletred;*/
+	/*background: rosybrown;*/
+	/*background: sandybrown;*/
+	/*background: tomato;*/
+	/*background: salmon;*/
+	/*background: yellowgreen;*/
+	/*background: peachpuff;*/
+	/*background: palegoldenrod;*/
+	/*background: moccasin;*/
+	/*background: linen;*/
+	/*background: royalblue;*/
+	background: mediumseagreen;
+	/*background: darkseagreen;*/
+	/*background: cornflowerblue;*/
+	/*background: cadetblue;*/
+	/*background: teal;*/
+	/*background: darkcyan;*/
+	color: navajowhite;
+	border-color: transparent;
+	font-size: 16px;
+	font-family: "ar julian", "perpetua titling mt", stencil, cambria, arial;
+}
+
+/********************************************/
+/* menu selector arrows */
+/********************************************/
+.arrows {
+	height: 8rem;
+	width: 100vw;
+	position: absolute;
+	/*margin-top:	calc(100vh - 8rem);*/
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#left-arrow {
+	width: 0;
+	height: 0;
+	/*position: absolute;*/
+	border-top: 3rem solid transparent;
+	border-right: 3rem solid rgba(255,191,0,1);
+	border-bottom: 3rem solid transparent;
+	margin: 1.3rem 0.5rem;
+	/*display: flex;*/
+	justify-content: flex-start;
+	visibility: hidden;
+	/*transition: border-right 1s;*/
+}
+
+#left-arrow.click {
+
+}
+
+/* show left arrow if you can move left in menu */
+#left-arrow.display {
+	visibility: visible;
+}
+
+/* left arrow changes color when clicked */
+#left-arrow:active {
+	border-right-color: rgba(255,73,0,1);
+}
+
+#right-arrow {
+	width: 0;
+	height: 0;
+	border-top: 3rem solid transparent;
+	border-left: 3rem solid rgba(255,191,0,1);
+	border-bottom: 3rem solid transparent;
+	margin: 1.3rem 0.5rem;
+	justify-content: flex-end;
+	visibility: visible;
+	/*transition: border-left 1s;*/
+}
+
+#right-arrow.click {
+	
+}
+
+/* show right arrow if you can move right in menu */
+#right-arrow.display {
+	visibility: hidden;
+}
+
+/* right arrow changes color when clicked */
+#right-arrow:active {
+	border-left-color: rgba(255,73,0,1);
+}
+
+#go {
+	position: absolute;
+	color: rgba(255,224,0,1);
+	font-size: 6rem;
+	/*margin-top: calc(100vh - 250px);*/
+	margin-left: 14vw;
+	margin-top: 90px;
+	display: inline-block;
+	z-index: 130;
+
+	/* animate go changes opacity and left margin */
+	opacity: 0;
+	transition: opacity 1s, margin-left 2s;
+}
+
+/* adds animations from transition/transformation commands */
+#go.animate {
+	opacity: 1;
+	margin-left: 25vw;
+}
+
+/********************************************/
+/* Scrolling menu container and formatting */
+/********************************************/
+#op-container {
+	width: 100vw;
+	/*height: 18rem;*/
+	height: 8.5rem;
+	position: relative;
+	background: rgba(255, 146, 0,1);
+	/*margin-top: calc(100vh - 275px);*/
+	margin-top:	calc(100vh - 8rem);
+	z-index: 100;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.op-div {
+	/*display: inline-block;*/
+	/*margin-top: 50px;*/
+}
+
+.options {
+	color: rgba(255,191,0,1);
+	font-size: 1rem;
+	margin: 1rem;
+	display: inline-block;
+	z-index: 120;
+}
+
+#home {
+	transition: font-size 0.5s;
+}
+
+.homeLoad {
+	font-size: 6rem;
+}
+
+#home.lg {
+	font-size: 6rem;
+}
+
+#home.md {
+	font-size: 2.5rem;
+}
+
+#products {
+	transition: font-size 0.5s;
+}
+
+.productsLoad {
+	font-size: 2.5rem;
+}
+
+#products.lg {
+	font-size: 6rem;
+}
+
+#products.md {
+	font-size: 2.5rem;
+}
+
+#orders {
+	transition: font-size 0.5s;
+}
+
+#orders.lg {
+	font-size: 6rem;
+}
+
+#orders.md	{
+	font-size: 2.5rem;
+}
+
+#account {
+	transition: font-size 0.5s;
+}
+
+#account.lg {
+	font-size: 6rem;
+}
+
+#account.md {
+	font-size: 2.5rem;
+}
+
+#about {
+	transition: font-size 0.5s;
+}
+
+#about.lg {
+	font-size: 6rem;
+}
+
+#about.md {
+	font-size: 2.5rem;
+}
+
+/********************************************/
+/* Container next button */
+/********************************************/
+#next {
+	width: 100vw;
+	height: 0.5rem;
+	position: absolute;
+	background: darkcyan;
+	/*background: rgba(255, 73, 0, 1);*/
+	margin-top: -5px;
+}
+
+#next.animate {
+
+}
