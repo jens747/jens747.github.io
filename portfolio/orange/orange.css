@@ -178,6 +178,67 @@ a {
 	/*-webkit-text-fill-color: cadetblue;*/
 }
 
+#joinDiv {
+	height: 60vh;
+	width: 60vw;
+	position: absolute;
+	display: flex;
+	visibility: hidden;
+	flex-wrap: wrap;
+	align-items: center;
+	/* font formatting */
+	font-size: 24px;
+	font-family: "ar julian", "perpetua titling mt", stencil, cambria, arial;
+	justify-content: center;
+}
+
+#joinDiv.select {
+	visibility: visible;
+}
+
+/**had to add joinForm to get Join contents to work**/
+#joinForm {
+	/*height: 52vh;
+	width: 55vw;
+	background: mintcream;*/
+	position: absolute;
+	display: flex;
+	visibility: hidden;
+	flex-wrap: wrap;
+	align-items: center;
+	align-self: center;
+	justify-content: center;
+	/*color: cadetblue;*/
+	color: lightseagreen;
+}
+
+#joinForm.select {
+	visibility: visible;
+}
+
+.joinInput {
+	height: 38vh;
+	width: 40vw;
+	font-size: 2em;
+	margin: 0px;
+	border: solid 3px lightseagreen;
+	padding: 0px 2vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*background: gainsboro;*/
+	/*background: gold;*/
+	/*background: lemonchiffon;*/
+	background: mintcream;
+	/*background: moccasin;*/
+	/*background: navajowhite;*/
+	/*background: powderblue;*/
+	/*background: salmon;*/
+	/*background: sandybrown;*/
+	/*background: wheat;*/
+	/*margin: 3vh 2vw;*/
+}
+
 #loginDiv {
 	height: 60vh;
 	width: 60vw;

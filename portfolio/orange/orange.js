@@ -57,6 +57,9 @@ function joinClick() {
 	if (!joinBool) {
 		joinBool = true;
 		join.classList.add('select');
+		joinDiv.classList.add('select');
+		//**had to add joinForm to these functions to get Join contents to work**
+		joinForm.classList.add('select');
 		// if login menu already open, switch to join menu
 		if (loginBool) {
 			loginBool = false;
@@ -71,7 +74,9 @@ function joinClick() {
 	} else {
 		joinBool = false;
 		join.classList.remove('select');
-		// loginDiv.classList.remove('select');
+		joinDiv.classList.remove('select');
+		//**had to add joinForm to these functions to get Join contents to work**
+		joinForm.classList.remove('select');
 		credsDiv.classList.remove('select');
 		credsForm.classList.remove('select');
 	}
@@ -88,6 +93,9 @@ function loginClick() {
 		if (joinBool) {
 			joinBool = false;
 			join.classList.remove('select');
+			joinDiv.classList.remove('select');
+			//**had to add joinForm to these functions to get Join contents to work**
+			joinForm.classList.remove('select');
 			return;
 		}
 
