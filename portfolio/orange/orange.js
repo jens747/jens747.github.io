@@ -213,6 +213,11 @@ function switchOptions(page) {
 	}
 }
 
+// const circleType = new CircleType(document.getElementById('coSubtitle'));
+// window.addEventListener('resize', function updateRadius() {
+//   circleType.radius(circleType.element.offsetWidth / 2);
+// });
+// updateRadius();
 /********************************************/
 /* menu selector arrows */
 /********************************************/
