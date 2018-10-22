@@ -1,9 +1,12 @@
 body {
 	background-image: url(https://images.unsplash.com/photo-1496868834840-5f4c98840aaa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=271557c887bb814d49dc3d624fe0bfbe&auto=format&fit=crop&w=1350&q=80);
 	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 	/*background: orange;*/
 	overflow: hidden;
 	margin: 0px;
+	margin-top: 100vh; /**/
 }
 
 a {
@@ -18,7 +21,8 @@ a {
 	height: 72vh;
 	width: 100vw;
 	position: absolute;
-	margin-top: -72vh;
+	/*margin-top: -72vh;*/ /**/
+	margin-top: -90vh;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -62,7 +66,8 @@ a {
 /* text formatting for company title */
 #coTitle {
 	font-size: 8rem;
-	margin-bottom: 0rem;
+	margin-bottom: -1rem;
+	margin-top: -1rem;
 }
 
 /* container for company subtitle */
@@ -83,7 +88,8 @@ a {
 	display: flex;
 	height: 5vw;
 	width: 100vw;
-	margin-top: -2.5rem;
+	/*margin-top: -2.5rem;*/ /**/
+	margin-top: -7.5rem;
 	justify-content: center;
 
 	-webkit-transition: margin-top 1s;
@@ -94,7 +100,8 @@ a {
 }
 
 #credsDiv.select {
-	margin-top: -75vh;
+	/*margin-top: -75vh;*/ /**/
+	margin-top: -90vh;
 }
 
 #credsForm {
@@ -118,16 +125,18 @@ a {
 
 #creds-ul {
 	display: flex;
-	width: 275px;
+	/*width: 275px;*/ /*20rem*/
 	height: 2.7rem;
 	justify-content: center;
+	margin-top: -3rem;
 	padding-left: 0px;
 }
 
 .creds {
-	height: 2.5rem;
-	width: 7rem;
-	background-color: darkcyan;
+	/*height: 2.5rem;*/ /**/
+	height: 4rem;
+	/*width: 7rem;*/ /**/
+	width: 10rem;
 	border: none;
 	color: darkcyan;
 	text-decoration: none;
@@ -138,15 +147,18 @@ a {
 }
 
 .credsBtn {
-	height: 2.5rem;
-	width: 7rem;
+	/*height: 2.5rem;*/ /**/
+	height: 4rem;
+	/*width: 7rem;*/ /**/
+	width: 10rem;
 	position: absolute;
 	/*margin-top:	calc(100vh / 2);*/
 	z-index: 150;
 /*	display: flex;
 	justify-content: space-around;*/
 	border-color: transparent;
-	font-size: 16px;
+	/*font-size: 16px;*/
+	font-size: 2.25rem;
 	font-family: "ar julian", "perpetual titling mt", "times new roman";
 }
 
@@ -273,8 +285,10 @@ a {
 }
 
 #formBtn {
-	height: 2.5rem;
-	width: 7rem;
+	/*height: 2.5rem;*/ /**/
+	height: 4rem;
+	/*width: 7rem;*/ /**/
+	width: 10rem;
 	/*background: lightcoral;*/
 	/*background: coral;*/
 	/*background: darksalmon;*/
@@ -300,7 +314,8 @@ a {
 	/*background: darkcyan;*/
 	color: navajowhite;
 	border-color: transparent;
-	font-size: 16px;
+	/*font-size: 16px;*/
+	font-size: 2.25rem;
 	font-family: "ar julian", "perpetua titling mt", stencil, cambria, arial;
 }
 
@@ -311,8 +326,8 @@ a {
 	height: 8rem;
 	width: 100vw;
 	position: absolute;
-	/*margin-top:	calc(100vh - 8rem);*/
-
+	/*margin-top:	calc(100vh - 8rem);*/ /**/
+	margin-top: -8rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -402,14 +417,25 @@ a {
 /********************************************/
 #op-container {
 	width: 100vw;
-	/*height: 18rem;*/
 	height: 8.5rem;
-	position: relative;
+	overflow: hidden;
+	position: absolute;
 	background: rgba(255, 146, 0,1);
-	/*margin-top: calc(100vh - 275px);*/
-	margin-top:	calc(100vh - 8rem);
+	/*margin-top: calc(100vh - 8rem);*/ /**/
+	margin-top: -8.5rem;
 	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+#op-overflow {
+	width: 80vw;
+	overflow-x: scroll;
+	margin-bottom: 50px;
+	padding-top: 50px;
+	padding-bottom: 25px;
+	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;

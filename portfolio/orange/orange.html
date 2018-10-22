@@ -62,24 +62,35 @@
 	
 	<!-- menu options container -->
 	<div id="op-container"> <!-- onmouseover="showGo()" onmouseout="hideGo()"> -->
-		<div class="op-div">
-			<a href="../index.html"><h1 class="options homeLoad" id="home" onmouseover="switchOptions(home)">Home</h1></a>
-		</div>
-		<div class="op-div">
-			<a href="#"><h1 class="options productsLoad" id="products" onmouseover="switchOptions(products)">Products</h1></a>
-		</div>
-		<div class="op-div">
-			<a href="#"><h1 class="options" id="orders" onmouseover="switchOptions(orders)">Orders</h1></a>
-		</div>
-		<div class="op-div">
-			<a href="#"><h1 class="options" id="account" onmouseover="switchOptions(account)">Account</h1></a>
-		</div>
-		<div class="op-div">
-			<a href="#"><h1 class="options" id="about" onmouseover="switchOptions(about)">About</h1></a>
+		<div id="op-overflow">	
+			<div class="op-div">
+				<a href="../index.html"><h1 class="options homeLoad" id="home" onmouseover="switchOptions(home)">Home</h1></a>
+			</div>
+			<div class="op-div">
+				<a href="#"><h1 class="options productsLoad" id="products" onmouseover="switchOptions(products)">Products</h1></a>
+			</div>
+			<div class="op-div">
+				<a href="#"><h1 class="options" id="orders" onmouseover="switchOptions(orders)">Orders</h1></a>
+			</div>
+			<div class="op-div">
+				<a href="#"><h1 class="options" id="account" onmouseover="switchOptions(account)">Account</h1></a>
+			</div>
+			<div class="op-div">
+				<a href="#"><h1 class="options" id="about" onmouseover="switchOptions(about)">About</h1></a>
+			</div>
 		</div>
 	</div>
 
 	<!-- script files -->
 	<script type="text/javascript" src="orange.js"></script>
+  <!-- source: https://circletype.labwire.ca/ -->
+  <!-- Sources not used -->
+  <!-- source: https://css-tricks.com/snippets/svg/curved-text-along-path/ -->
+  <!-- source: https://1stwebdesigner.com/set-text-on-a-circle-with-css/ -->
+	<script type="text/javascript" src="https://circletype.labwire.ca/dist/circletype.min.js"></script>
+	<script type="text/javascript">
+  		new CircleType(document.getElementById('coSubtitle'))
+  			.radius(500);
+	</script>
 </body>
 </html>
