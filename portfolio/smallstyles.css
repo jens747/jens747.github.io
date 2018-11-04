@@ -1,6 +1,10 @@
 /** {	overflow: hidden; }*/
 
-.sm-rects {	display: none; }
+.crop,
+.slide-rects, 
+.grid-squares,
+.sm-rects, 
+#fading-square {	display: none; }
 
 body {
 	margin: 0;
@@ -14,8 +18,8 @@ body {
 }
 
 #dport {
-	/*height: 20vh;*/
-	height: 26vh;
+	height: 20vh;
+	/*height: 26vh;*/
 	/*height: 150px;*/
 	width: 100vw;
 	background: papayawhip;
@@ -36,9 +40,13 @@ body {
 	width: 80vw;
 	/*width: 350px;*/
 	background: whitesmoke;
-	font: 3rem "vladimir script";
+	font: 8rem 
+		"vladimir script", 
+		"freestyle script", 
+		"french script mt", 
+		"monotype corsiva";
 	color: dimgray;
-	/*text-shadow: 4px 5px 8px lavender;*/
+	text-shadow: 4px 5px 8px lavender;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -46,13 +54,17 @@ body {
 	border: solid 8px cadetblue;
 	border-radius: 4px;
 	box-shadow: -2px 2px 10px dimgray;
+	-webkit-transform: rotate(3deg) skewY(-1deg) skewX(1deg);
+	-ms-transform: rotate(3deg) skewY(-1deg) skewX(1deg);
+	-moz-transform: rotate(3deg) skewY(-1deg) skewX(1deg);
+	-o-transform: rotate(3deg) skewY(-1deg) skewX(1deg);
 	transform: rotate(3deg) skewY(-1deg) skewX(1deg);
 	z-index: 250;
 }
 
 #sm-tdiv {
-	/*height: 10vh;*/
-	height: 16vh;
+	height: 10vh;
+	/*height: 16vh;*/
 	width: 100vw;
 	position: absolute;
 	top: 15vh;
@@ -64,8 +76,8 @@ body {
 }
 
 .sm-tabs {
-	/*height: 10vh;*/
-	height: 16vh;
+	height: 10vh;
+	/*height: 16vh;*/
 	width: 20vw;
 	background: gray;
 	border-radius: 5px 5px 15px 15px;
@@ -79,18 +91,34 @@ body {
 
 #smt1 { 
 	background: tomato; 
+	-webkit-transition: margin-top 1s;
+  -ms-transition: margin-top 1s;
+  -moz-transition: margin-top 1s;
+  -o-transition: margin-top 1s;
 	transition: margin-top 1s;
 }
 #smt2 { 
 	background: deepskyblue; 
+	-webkit-transition: margin-top 1s;
+  -ms-transition: margin-top 1s;
+  -moz-transition: margin-top 1s;
+  -o-transition: margin-top 1s;
 	transition: margin-top 1s;
 }
 #smt3 { 
 	background: orange; 
+	-webkit-transition: margin-top 1s;
+  -ms-transition: margin-top 1s;
+  -moz-transition: margin-top 1s;
+  -o-transition: margin-top 1s;
 	transition: margin-top 1s;
 }
 #smt4 { 
 	background: darkturquoise; 
+	-webkit-transition: margin-top 1s;
+  -ms-transition: margin-top 1s;
+  -moz-transition: margin-top 1s;
+  -o-transition: margin-top 1s;
 	transition: margin-top 1s;
 }
 
@@ -105,17 +133,25 @@ body {
 #smt2.show,
 #smt3.show,
 #smt4.show { 
-	margin-top: 120vh; 
+	margin-top: 110vh; 
+	/*margin-top: 120vh;*/
 	/*z-index: 170;*/
 }
 
 .rdc {
 	height:	0vh; 
 	width: 96vw;
-	/*top: 20vh;*/
-	top: 26vh;
+	top: 20vh;
+	/*top: 26vh;*/
 	left: 2vw;
 	background: whitesmoke;
+	/* background-image source: https://leaverou.github.io/css3patterns/#lined-paper */
+	/* by Sarah Backhouse */
+	background-image:
+		linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 82px, transparent 81px),
+		linear-gradient(#eee .1em, transparent .1em);
+	background-size: 100% 1.8em;
+	/**/
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -123,13 +159,20 @@ body {
 	box-shadow: -2px 2px 10px dimgray;
 	overflow: hidden;
 	z-index: 160;
+	-webkit-transition: height 1s;
+  -ms-transition: height 1s;
+  -moz-transition: height 1s;
+  -o-transition: height 1s;
 	transition: height 1s;
 }
 
 #rd1.show,
 #rd2.show,
 #rd3.show,
-#rd4.show { height: 60vh; }
+#rd4.show { 
+	height: 55vh;
+	/*height: 60vh;*/
+}
 
 .lg-rects {
 	position: absolute;
@@ -155,33 +198,48 @@ body {
 #lg-rect1.show {
 	background: tomato;
 	visibility: visible;
+	-webkit-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-ms-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-moz-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-o-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
 	transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
 }
 
 #lg-rect2.show {
 	background: deepskyblue;
 	visibility: visible;
+	-webkit-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-ms-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-moz-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-o-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
 	transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
 }
 
 #lg-rect3.show {
 	background: orange;
 	visibility: visible;
+	-webkit-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-ms-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-moz-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-o-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
 	transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
 }
 
 #lg-rect4.show {
 	background: darkturquoise;
 	visibility: visible;
+	-webkit-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-ms-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-moz-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+	-o-transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
 	transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
 }
 
 .rl {
-	/*height: 20vh;*/
 	height: 26vh;
 	width: 76vw;
 	background: whitesmoke;
-	font-size: 2rem;
+	font-size: 7rem;
   color: cadetblue;
 	text-shadow: 4px 5px 8px lavender;
 	display: flex;
@@ -199,6 +257,7 @@ body {
 	top: 34vh;
 	height: 18vh;
 	width: 70vw;
+	font-size: 4rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -206,6 +265,10 @@ body {
 	border-radius: 5px;
 	box-shadow: -2px 2px 10px dimgray;
 	overflow: hidden;
+	-webkit-transform: scale(0.1, 0.1);
+	-ms-transform: scale(0.1, 0.1);
+	-moz-transform: scale(0.1, 0.1);
+	-o-transform: scale(0.1, 0.1);
 	transform: scale(0.1, 0.1);
 	-webkit-transition: visibility 1s ease 1.6s, transform 0.2s ease-in-out 1.6s;
   -ms-transition: visibility 1s ease 1.6s, transform 0.2s ease-in-out 1.6s;
@@ -227,31 +290,47 @@ body {
 .coBaseText {
   color: navajowhite;
   font-weight: normal;
-  /*font-size: 1.5rem;*/
+  font-size: 10rem;
   font-family: "imprint mt shadow", "niagara solid", times;
 }
 
 #ri1.show {
 	background: tomato;
 	visibility: visible;
+	-webkit-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-ms-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-moz-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-o-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
 	transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
 }
 
 #ri2.show {
 	background: deepskyblue;
 	visibility: visible;
+	-webkit-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-ms-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-moz-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-o-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
 	transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
 }
 
 #ri3.show {
 	background: orange;
 	visibility: visible;
+	-webkit-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-ms-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-moz-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-o-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
 	transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
 }
 
 #ri4.show {
 	background: darkturquoise;
 	visibility: visible;
+	-webkit-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-ms-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-moz-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+	-o-transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
 	transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
 }
 
@@ -261,7 +340,8 @@ body {
 	width: 66vw;
 	margin: 0;
 	background: whitesmoke;
-	font-size: 1.4rem;
+	/*font-size: 1.4rem;*/
+	font-synthesis: 3rem;
   color: cadetblue;
 	text-shadow: 4px 5px 8px lavender;
 	display: flex;
@@ -276,8 +356,8 @@ body {
 #rp4 { box-shadow: -2px 2px 10px darkcyan; }
 
 #rp3 {
-	padding: 8px;
+	padding: 1rem;
 	height: 12vh;
 	width: 62vw;
-	font-size: 1rem;
+	font-size: 2.2rem;
 }
