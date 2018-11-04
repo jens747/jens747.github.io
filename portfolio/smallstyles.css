@@ -1,0 +1,283 @@
+/** {	overflow: hidden; }*/
+
+.sm-rects {	display: none; }
+
+body {
+	margin: 0;
+	background: wheat;
+}
+
+.rda {
+	/*height: 60vh;*/
+	display: flex;
+	justify-content: center;
+}
+
+#dport {
+	/*height: 20vh;*/
+	height: 26vh;
+	/*height: 150px;*/
+	width: 100vw;
+	background: papayawhip;
+	/*background: antiquewhite;*/
+	/*background: wheat;*/
+	top: 0;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	box-shadow: -2px 2px 10px dimgray;
+	z-index: 200;
+}
+
+#portfolio {
+	height: 10vh;
+	/*height: 75px;*/
+	width: 80vw;
+	/*width: 350px;*/
+	background: whitesmoke;
+	font: 3rem "vladimir script";
+	color: dimgray;
+	/*text-shadow: 4px 5px 8px lavender;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*border: solid 5px gainsboro;*/
+	border: solid 8px cadetblue;
+	border-radius: 4px;
+	box-shadow: -2px 2px 10px dimgray;
+	transform: rotate(3deg) skewY(-1deg) skewX(1deg);
+	z-index: 250;
+}
+
+#sm-tdiv {
+	/*height: 10vh;*/
+	height: 16vh;
+	width: 100vw;
+	position: absolute;
+	top: 15vh;
+	display: flex;
+	/*justify-content: space-evenly;*/
+	justify-content: center;
+	align-items: center;
+	/*z-index: auto;*/
+}
+
+.sm-tabs {
+	/*height: 10vh;*/
+	height: 16vh;
+	width: 20vw;
+	background: gray;
+	border-radius: 5px 5px 15px 15px;
+	box-shadow: -2px 2px 10px dimgray;
+	-webkit-transition: transform 0.4s;
+  -ms-transition: transform 0.4s;
+  -moz-transition: transform 0.4s;
+  -o-transition: transform 0.4s;
+  transition: transform 0.4s;
+}
+
+#smt1 { 
+	background: tomato; 
+	transition: margin-top 1s;
+}
+#smt2 { 
+	background: deepskyblue; 
+	transition: margin-top 1s;
+}
+#smt3 { 
+	background: orange; 
+	transition: margin-top 1s;
+}
+#smt4 { 
+	background: darkturquoise; 
+	transition: margin-top 1s;
+}
+
+.sm-tabs:hover { transform: scale(1.1, 1.1); }
+
+#smt1:active,
+#smt2:active,
+#smt3:active,
+#smt4:active { background: gold; }
+
+#smt1.show,
+#smt2.show,
+#smt3.show,
+#smt4.show { 
+	margin-top: 120vh; 
+	/*z-index: 170;*/
+}
+
+.rdc {
+	height:	0vh; 
+	width: 96vw;
+	/*top: 20vh;*/
+	top: 26vh;
+	left: 2vw;
+	background: whitesmoke;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	border-radius: 1px 1px 5px 5px;
+	box-shadow: -2px 2px 10px dimgray;
+	overflow: hidden;
+	z-index: 160;
+	transition: height 1s;
+}
+
+#rd1.show,
+#rd2.show,
+#rd3.show,
+#rd4.show { height: 60vh; }
+
+.lg-rects {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 30vh;
+	width: 80vw;
+	top: 3vh;
+	visibility: hidden;
+	border-radius: 5px;
+	box-shadow: -2px 2px 10px dimgray;
+	overflow: hidden;
+	transform: scale(0.1, 0.1);
+	z-index: 160;
+	-webkit-transition: visibility 1s ease 1.4s, transform 0.2s ease-in-out 1.4s;
+  -ms-transition: visibility 1s ease 1.4s, transform 0.2s ease-in-out 1.4s;
+  -moz-transition: visibility 1s ease 1.4s, transform 0.2s ease-in-out 1.4s;
+  -o-transition: visibility 1s ease 1.4s, transform 0.2s ease-in-out 1.4s;
+  transition: visibility 1s ease 1.4s, transform 0.2s ease-in-out 1.4s;
+}
+
+#lg-rect1.show {
+	background: tomato;
+	visibility: visible;
+	transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+}
+
+#lg-rect2.show {
+	background: deepskyblue;
+	visibility: visible;
+	transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+}
+
+#lg-rect3.show {
+	background: orange;
+	visibility: visible;
+	transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+}
+
+#lg-rect4.show {
+	background: darkturquoise;
+	visibility: visible;
+	transform: scale(1, 1) rotate(-3deg) skewY(-1deg) skewX(1deg);
+}
+
+.rl {
+	/*height: 20vh;*/
+	height: 26vh;
+	width: 76vw;
+	background: whitesmoke;
+	font-size: 2rem;
+  color: cadetblue;
+	text-shadow: 4px 5px 8px lavender;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#index1 { box-shadow: -2px 2px 10px indianred; }
+#index2 { box-shadow: -2px 2px 10px teal; }
+#coMain { box-shadow: -2px 2px 10px chocolate; }
+#index4 { box-shadow: -2px 2px 10px darkcyan; }
+
+.ri {
+	position: absolute;
+	top: 34vh;
+	height: 18vh;
+	width: 70vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	border-radius: 5px;
+	box-shadow: -2px 2px 10px dimgray;
+	overflow: hidden;
+	transform: scale(0.1, 0.1);
+	-webkit-transition: visibility 1s ease 1.6s, transform 0.2s ease-in-out 1.6s;
+  -ms-transition: visibility 1s ease 1.6s, transform 0.2s ease-in-out 1.6s;
+  -moz-transition: visibility 1s ease 1.6s, transform 0.2s ease-in-out 1.6s;
+  -o-transition: visibility 1s ease 1.6s, transform 0.2s ease-in-out 1.6s;
+  transition: visibility 1s ease 1.6s, transform 0.2s ease-in-out 1.6s;
+	z-index: 160;
+}
+
+#coMain {
+  background-image: url(https://images.unsplash.com/photo-1496868834840-5f4c98840aaa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=271557c887bb814d49dc3d624fe0bfbe&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  text-shadow: 4px 5px 8px darkslategray;
+}
+
+.coBaseText {
+  color: navajowhite;
+  font-weight: normal;
+  /*font-size: 1.5rem;*/
+  font-family: "imprint mt shadow", "niagara solid", times;
+}
+
+#ri1.show {
+	background: tomato;
+	visibility: visible;
+	transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+}
+
+#ri2.show {
+	background: deepskyblue;
+	visibility: visible;
+	transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+}
+
+#ri3.show {
+	background: orange;
+	visibility: visible;
+	transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+}
+
+#ri4.show {
+	background: darkturquoise;
+	visibility: visible;
+	transform: scale(1, 1) rotate(5deg) skewY(1deg) skewX(-1deg);
+}
+
+.rp {
+	position: absolute;
+	height: 14vh;
+	width: 66vw;
+	margin: 0;
+	background: whitesmoke;
+	font-size: 1.4rem;
+  color: cadetblue;
+	text-shadow: 4px 5px 8px lavender;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 160;
+}
+
+#rp1 { box-shadow: -2px 2px 10px indianred; }
+#rp2 { box-shadow: -2px 2px 10px teal; }
+#rp3 { box-shadow: -2px 2px 10px chocolate; }
+#rp4 { box-shadow: -2px 2px 10px darkcyan; }
+
+#rp3 {
+	padding: 8px;
+	height: 12vh;
+	width: 62vw;
+	font-size: 1rem;
+}

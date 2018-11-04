@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Jens Port</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" media="screen and (min-width: 600px" href="styles.css">
+  <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px" href="smallstyles.css">
 </head>
 <body>
 	<!-- hidden signup rectangle -->
@@ -15,23 +16,70 @@
 	<div class="slide-rects" id="slide-rect4"></div>
 	<div class="slide-rects" id="slide-rect5"></div>
 
-	<!-- small counting rectangles -->
-	<div class="sm-rects" id="sm-rect1"></div>
-	<div class="sm-rects" id="sm-rect2"></div>
-	<a href="orange/orange.html"><div class="sm-rects" id="sm-rect3"></div></a>
-	<div class="sm-rects" id="sm-rect4"></div>
-	<!-- <div class="sm-rects" id="sm-rect5"></div> -->
-	<!-- <div class="sm-rects" id="sm-rect6"></div> -->
-	<!-- <div class="sm-rects" id="sm-rect7"></div> -->
+  <div id="sm-tdiv">
+    <div class="sm-tabs" id="smt1" onclick="rToggle(smt1, rd1, lgRect1, idx1, ri1, rp1)"></div>
+    <div class="sm-tabs" id="smt2" onclick="rToggle(smt2, rd2, lgRect2, idx2, ri2, rp2)"></div>
+    <div class="sm-tabs" id="smt3" onclick="rToggle(smt3, rd3, lgRect3, coMain, ri3, rp3)"></div>
+    <div class="sm-tabs" id="smt4" onclick="rToggle(smt4, rd4, lgRect4, idx4, ri4, rp4)"></div>
+  </div>
 
-	<!-- large counting rectangles -->
-	<div class="lg-rects" id="lg-rect1"></div>
-	<div class="lg-rects" id="lg-rect2"></div>
-	<a href="orange/orange.html"><div class="lg-rects" id="lg-rect3"></div></a>
-	<div class="lg-rects" id="lg-rect4"></div>
-	<!-- <div class="lg-rects" id="lg-rect5"></div> -->
-	<!-- <div class="lg-rects" id="lg-rect6"></div> -->
-	<!-- <div class="lg-rects" id="lg-rect7"></div> -->
+	<!-- small-large counting rectangles -->
+  <div class="rdc" id="rd1">
+    <a class="rda" id="ra1" href="#">
+      <div class="rc1 sm-rects" id="sm-rect1"></div>
+      <div class="rc1 lg-rects" id="lg-rect1">
+        <div class="rl rc1" id="index1">Prototype A</div>
+      </div>
+      <div class="ri" id="ri1">
+        <p class="rp" id="rp1">Prototype A</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="rdc" id="rd2">
+    <a class="rda" id="ra2" href="#">
+      <div class="rc2 sm-rects" id="sm-rect2"></div>
+      <div class="rc2 lg-rects" id="lg-rect2">
+        <div class="rl rc2" id="index2">Prototype B</div>
+      </div>
+      <div class="ri" id="ri2">
+        <p class="rp" id="rp2">Prototype B</p>
+      </div>
+    </a>
+  </div>
+	<div class="rdc" id="rd3">
+    <!-- <a id="ra3" href="orange/orange.html" onmouseenter="setIframe()"> -->
+    <a class="rda" id="ra3" href="orange/orange.html">
+      <div class="rc3 sm-rects" id="sm-rect3"></div>
+      <div class="lg-rects" id="cl-rect3"></div>
+      <div class="rc3 lg-rects" id="lg-rect3">
+        <!-- Company Title and Subtitle container -->
+        <div class="rl rc3" id="coMain">
+          <div class="coBaseDiv" id="coSubDiv">
+            <h2 class="coBaseText" id="coSubtitle">extracts & spices</h2>
+          </div>
+          <div class="coBaseDiv" id="coDiv">
+            <h1  class="coBaseText" id="coTitle">blue box</h1>
+          </div>
+        </div>
+      </div>
+      <div class="ri" id="ri3">
+        <p class="rp" id="rp3">A prototype of an e-commerce site. All navigation occurs on the main screen without the need to load subsequent pages.</p>
+      </div>
+    </a>
+  </div>
+  <div class="rdc" id="rd4">
+    <a class="rda" id="ra4" href="#">
+      <div class="rc4 sm-rects" id="sm-rect4"></div>
+      <div class="lg-rects" id="cl-rect4"></div>
+      <div class="rc4 lg-rects" id="lg-rect4">
+        <div class="rl rc4" id="index4">Prototype D</div>
+      </div>
+      <div class="ri" id="ri4">
+        <p class="rp" id="rp4">Prototype D</p>
+      </div>
+    </a>
+  </div>
 
 	<!-- grid squares -->
 	<div class="grid-squares grid-col1 animate-grid" id="grid-square1"></div>
@@ -44,6 +92,10 @@
 	<div class="grid-squares grid-col3 animate-grid" id="grid-square8"></div>
 	<div class="grid-squares grid-col4 animate-grid" id="grid-square9"></div>
 
+	<div id="dport">
+		<h1 id="portfolio">Portfolio</h1>
+	</div>
+
 	<!-- diagonal square -->
 	<!-- <div id="diag-square"></div> -->
 
@@ -55,5 +107,12 @@
 		<div id="bkgrd-circ"></div>
 		<div id="bkgrd-rect"></div>
 	</div>
+  <script type="text/javascript" src="styles.js"></script>
+  <!-- source: https://1stwebdesigner.com/set-text-on-a-circle-with-css/ -->
+  <script type="text/javascript" src="https://circletype.labwire.ca/dist/circletype.min.js"></script>
+  <script type="text/javascript">
+      new CircleType(document.getElementById('coSubtitle'))
+        .radius(300);
+  </script>
 </body>
 </html>

@@ -52,7 +52,7 @@ body {
 #slide-rect1 {
 	/*height: 25vh;*/
 	margin-left: 58vw;
-	animation: slideRectA 2.25s ease-in-out 1s infinite alternate;
+	animation: slideRectA 2.25s ease-in-out 12s infinite alternate;
 }
 
 @keyframes slideRectB {
@@ -63,7 +63,7 @@ body {
 #slide-rect2 {
 	/*height: 35vh;*/
 	margin-left: 59.5vw;
-	animation: slideRectB 2.25s ease-in-out 1.5s infinite alternate;
+	animation: slideRectB 2.25s ease-in-out 12.5s infinite alternate;
 }
 
 @keyframes slideRectC {
@@ -74,7 +74,7 @@ body {
 #slide-rect3 {
 	/*height: 5vh;*/
 	margin-left: 61vw;
-	animation: slideRectC 2.25s ease-in-out 2s infinite alternate;
+	animation: slideRectC 2.25s ease-in-out 13s infinite alternate;
 }
 
 @keyframes slideRectD {
@@ -87,7 +87,7 @@ body {
 	margin-left: 62.5vw;
 	/*background: lightgreen;*/
 	background: rgba(16, 147, 153, 1);
-	animation: slideRectD 2.25s ease-in-out 2.5s infinite alternate;
+	animation: slideRectD 2.25s ease-in-out 13.5s infinite alternate;
 }
 
 @keyframes slideRectE {
@@ -98,11 +98,11 @@ body {
 #slide-rect5 {
 	/*height: 15vh;*/
 	margin-left: 64vw;
-	animation: slideRectE 2.25s ease-in-out 3s infinite alternate;
+	animation: slideRectE 2.25s ease-in-out 15s infinite alternate;
 }
 
 /*****************************************/
-/* small blinking rectangles */
+/* sm-lg blinking rectangles */
 /*****************************************/
 .sm-rects {
 	width: 1.25vw;
@@ -111,9 +111,25 @@ body {
 	background: rgba(208, 208, 208, 1);
 	position: absolute;
 	margin-left: 67vw;
-	visibility: hidden;
-	/*opacity: 0.0;*/
+	/*visibility: hidden;*/
 	z-index: 150;
+}
+
+.lg-rects {
+  width: 5vw;
+  height: 24vh;
+  /*background: gray;*/
+  background: rgba(208, 208, 208, 1);
+  position: absolute;
+  margin-left: 95vw;
+  left: 0vw;
+  /*visibility: hidden;*/
+  z-index: 150;
+  transition: width 0.6s, 
+      left 0.6s, 
+      top 3s,
+      margin-left 3s, 
+      transform 0.4s;
 }
 
 /* blinking animation for blink rectangles lg & sm */
@@ -142,102 +158,429 @@ body {
 	to {visibility: visible;}
 }*/
 
+@keyframes blinkRA {
+  from {background: rgba(208, 208, 208, 1);}
+  to {background: tomato;}
+}
+
+@keyframes blinkRB {
+  from {background: rgba(208, 208, 208, 1);}
+  to {background: deepskyblue;}
+}
+
+@keyframes blinkRC {
+  from {background: rgba(208, 208, 208, 1);}
+  to {background: orange;}
+}
+
+@keyframes blinkRD {
+  from {background: rgba(208, 208, 208, 1);}
+  to {background: darkturquoise;}
+}
+
+/*****************************************/
+/* sm-lg rectangle descriptor cards */
+/*****************************************/
+.ri {
+  height: 116px;
+  width: 280px;
+  box-shadow: -2px -2px 10px darkgray;
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 160;
+  transition: opacity 1s ease-in-out 0.4s, margin-left 1s ease-in-out 0.4s;
+}
+
+.rp {
+  height: 72px;
+  width: 236px;
+  background: whitesmoke;
+  font-size: 1rem;
+  color: cadetblue;
+  text-shadow: 3px 3px 6px lavender;
+  padding: 0.75rem;
+}
+
+#ri1 { background: tomato; }
+#ri2 { background: deepskyblue; }
+#ri3 { background: orange; }
+#ri4 { background: darkturquoise; }
+
+#rp1 { box-shadow: -2px -2px 10px indianred; }
+#rp2 { box-shadow: -2px -2px 10px teal; }
+#rp3 { box-shadow: -2px -2px 10px chocolate; }
+#rp4 { box-shadow: -2px -2px 10px darkcyan; }
+
+.rc1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(208, 208, 208, 1);
+  animation: blinkRA 0.7s ease-out 1s 2 alternate;
+}
+
+.rc2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(208, 208, 208, 1);
+  animation: blinkRB 0.7s ease-out 1s 2 alternate;
+}
+
+.rc3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(208, 208, 208, 1);
+  animation: blinkRC 0.7s ease-out 1s 2 alternate;
+}
+
+.rc4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(208, 208, 208, 1);
+  animation: blinkRD 0.7s ease-out 1s 2 alternate;
+}
+
+/*****************************************/
+/* rectangle initial styles */
+/*****************************************/
 #sm-rect1 {
 	margin-top: 7vh;
 /*	-webkit-animation: blinkRectA 2s ease-in-out 1s 2 alternate;
 	-moz-animation: blinkRectA 2s ease-in-out 1s 2 alternate;
 	-o-animation: blinkRectA 2s ease-in-out 1s 2 alternate;*/
-	/*animation: blinkRectA 12s ease-in-out 1s infinite alternate;*/
-	animation: blinkRectA 12s ease-in-out 11s infinite alternate;
+	/*animation: blinkRectA 12s ease-in-out 11s infinite alternate;*/
 }
 
-#sm-rect2 {
-	margin-top: 12vh;
-	/*animation: blinkRectA 12s ease-in-out 2s infinite alternate;*/
-	animation: blinkRectA 12s ease-in-out 12s infinite alternate;
-}
+#sm-rect2 { margin-top: 12vh; }
 
 #sm-rect3 {
 	margin-top: 17vh;
-	background: orange;
-	/*animation: blinkRectA 12s ease-in-out 3s infinite alternate;*/
-	animation: blinkRectA 12s ease-in-out 13s infinite alternate;
+	/*background: orange;*/
+	/*animation: blinkRectA 12s ease-in-out 13s infinite alternate;*/
+	/*transition: height 2s, transform 0.4s;*/
 }
 
-#sm-rect4 {
-	margin-top: 22vh;
-	/*animation: blinkRectA 12s ease-in-out 4s infinite alternate;*/
-	animation: blinkRectA 12s ease-in-out 14s infinite alternate;
-}
-
-/*#sm-rect5 {
-	margin-top: 27vh;
-	animation: blinkRectA 4.75s ease-in-out 5s infinite alternate;
-}*/
-/*
-#sm-rect6 {
-	margin-top: 32vh;
-	animation: blinkRectA 4.75s ease-in-out 3.5s infinite alternate;
-}
-
-#sm-rect7 {
-	margin-top: 37vh;
-	animation: blinkRectA 4.75s ease-in-out 4s infinite alternate;
-}*/
-
-/*****************************************/
-/* large blinking rectangles */
-/*****************************************/
-.lg-rects {
-	width: 10vw;
-	height: 24vh;
-	/*background: gray;*/
-	background: rgba(208, 208, 208, 1);
-	position: absolute;
-	margin-left: 90vw;
-	visibility: hidden;
-	z-index: 150;
-}
+#sm-rect4 { margin-top: 22vh; }
 
 #lg-rect1 {
-	margin-top: -10vh;
-	/*animation: blinkRectA 12s ease-in-out 1s infinite alternate;*/
-	animation: blinkRectA 12s ease-in-out 11s infinite alternate;
+  margin-top: -10vh;
+  /*animation: blinkRectA 12s ease-in-out 11s infinite alternate;*/
 }
 
 #lg-rect2 {
-	margin-top: 20vh;
-	/*animation: blinkRectA 12s ease-in-out 2s infinite alternate;*/
-	animation: blinkRectA 12s ease-in-out 12s infinite alternate;
+  margin-top: 20vh;
+  /*animation: blinkRectA 12s ease-in-out 12s infinite alternate;*/
+}
+
+#cl-rect3 {
+  margin-top: 50vh;
+  background: transparent;
+  z-index: 155;
 }
 
 #lg-rect3 {
-	margin-top: 50vh;
-	background: orange;
-	/*animation: blinkRectA 12s ease-in-out 3s infinite alternate;*/
-	animation: blinkRectA 12s ease-in-out 13s infinite alternate;
+  margin-top: 50vh;
+  /*background: orange;*/
+  /*animation: blinkRectA 12s ease-in-out 13s infinite alternate;*/
+  /*transition: width 0.6s, left 0.6s, margin-left 3s, transform 0.4s;*/
+}
+
+#cl-rect4 {
+  margin-top: 80vh;
+  background: transparent;
+  z-index: 155;
 }
 
 #lg-rect4 {
-	margin-top: 80vh;
-	/*animation: blinkRectA 12s ease-in-out 4s infinite alternate;*/
-	animation: blinkRectA 12s ease-in-out 14s infinite alternate;
-}
-/*
-#lg-rect5 {
-	margin-top: 110vh;
-	animation: blinkRectA 4.75s ease-in-out 5s infinite alternate;
+  margin-top: 80vh;
+  /*animation: blinkRectA 12s ease-in-out 14s infinite alternate;*/
 }
 
-#lg-rect6 {
-	margin-top: 140vh;
-	animation: blinkRectA 4.75s ease-in-out 6s infinite alternate;
-}
-
-#lg-rect7 {
-	margin-top: 170vh;
-	animation: blinkRectA 4.75s ease-in-out 7s infinite alternate;
+/* animate the rectangles */
+/*@keyframes moveRectA {
+  0%    {left: 0vw;}
+  3%    {left: -1vw;}
+  15%   {left: 6vw; top: 0px; background: rgba(200, 200, 200, 1);}
+  40%   {width: 36vw;}
+  50%   {left: -32vw; width: 36vw;}
+  100%  {left: -32vw; width: 36vw; background: orange;}
 }*/
+
+/*****************************************/
+/* small rectangle events */
+/*****************************************/
+#sm-rect1:hover ~ #ri1, #lg-rect1:hover ~ #ri1 {
+  opacity: 1;
+  margin-left: 40px;
+}
+
+#sm-rect2:hover ~ #ri2, #lg-rect2:hover ~ #ri2 {
+  opacity: 1;
+  margin-left: 40px;
+}
+
+#sm-rect3:hover ~ #ri3, #lg-rect3:hover ~ #ri3 {
+  opacity: 1;
+  margin-left: 40px;
+}
+
+#sm-rect4:hover ~ #ri4, #lg-rect4:hover ~ #ri4 {
+  opacity: 1;
+  margin-left: 40px;
+}
+
+#sm-rect1:hover { background: tomato;}
+#sm-rect2:hover { background: deepskyblue; }
+#sm-rect3:hover { background: orange; }
+#sm-rect4:hover { background: darkturquoise; }
+
+#sm-rect1:hover ~ #lg-rect1 {
+  width: 26vw;
+  height: 24vh;
+  top: 13vh;
+  left: -23.8vw;
+  background: tomato;
+  box-shadow: -2px 2px 10px dimgray;
+  z-index: 160;
+  transform: scale(1.2, 1.2);
+}
+
+#sm-rect2:hover ~ #lg-rect2 {
+  width: 26vw;
+  height: 24vh;
+  left: -23.8vw;
+  background: deepskyblue;
+  box-shadow: -2px 2px 10px dimgray;
+  z-index: 160;
+  transform: scale(1.2, 1.2);
+}
+
+#sm-rect3:hover ~ #lg-rect3 {
+  width: 26vw;
+  height: 24vh;
+  left: -23.8vw;
+  background: orange;
+  box-shadow: -2px 2px 10px dimgray;
+  z-index: 160;
+  transform: scale(1.2, 1.2);
+}
+
+#sm-rect4:hover ~ #lg-rect4 {
+  width: 26vw;
+  height: 24vh;
+  top: -7vh;
+  left: -23.8vw;
+  background: darkturquoise;
+  box-shadow: -2px 2px 10px dimgray;
+  z-index: 160;
+  transform: scale(1.2, 1.2);
+}
+
+#sm-rect1:hover ~ #lg-rect1 #index1 {
+  /*width: 30vw;*/
+  width: 20vw;
+  box-shadow: -2px 2px 10px dimgray;
+  visibility: visible;
+  left: 3vw;
+}
+
+#sm-rect2:hover ~ #lg-rect2 #index2 {
+  /*width: 30vw;*/
+  width: 20vw;
+  box-shadow: -2px 2px 10px dimgray;
+  visibility: visible;
+  left: 3vw;
+}
+
+#sm-rect3:hover ~ #lg-rect3 #coMain {
+  /*width: 30vw;*/
+  width: 20vw;
+  box-shadow: -2px 2px 10px dimgray;
+  visibility: visible;
+  left: 3vw;
+}
+
+#sm-rect4:hover ~ #lg-rect4 #index4 {
+  /*width: 30vw;*/
+  width: 20vw;
+  box-shadow: -2px 2px 10px dimgray;
+  visibility: visible;
+  left: 3vw;
+}
+/*****************************************/
+/* large rectangle events */
+/*****************************************/
+#lg-rect1:hover,
+#lg-rect2:hover,
+#lg-rect3:hover,
+#lg-rect4:hover {
+  width: 36vw;
+  height: 24vh;
+  left: -39.6vw;
+  box-shadow: -2px 2px 10px dimgray;
+  z-index: 160;
+  transform: scale(1.5, 1.5) translateY(0vw);
+}
+
+#lg-rect1:hover { top: 16.6vh; background: tomato; }
+#lg-rect2:hover { background: deepskyblue; }
+#lg-rect3:hover { background: orange; }
+#lg-rect4:hover { top: -10.6vh; background: darkturquoise; }
+
+#cl-rect3:hover + #lg-rect3 { z-index: 160; }
+#cl-rect4:hover + #lg-rect4 { z-index: 160; }
+
+#lg-rect1:hover > #index1,
+#lg-rect2:hover > #index2,
+#lg-rect3:hover > #coMain,
+#lg-rect4:hover > #index4 {
+  width: 30vw;
+  box-shadow: -2px 2px 10px dimgray;
+  visibility: visible;
+  left: 3vw;
+}
+
+#lg-rect3.show {
+  animation: moveRectA 3s, ease-in-out 0s 1 alternate;
+  animation-fill-mode: forwards;
+  /*width: 36vw;
+  left: -32vw;
+  transition: width 2s 3s, left 2s 3s;*/
+}
+
+/********************************************/
+/* prototype A title page */
+/********************************************/
+#index1 {
+  background: whitesmoke;
+  color: cadetblue;
+  margin: 0px;
+  height: 22vh;
+  position: absolute;
+  left: 36vw;
+  /*margin-top: -90vh;*/ 
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center*/
+  text-shadow: 4px 5px 8px lavender;
+  
+  visibility: hidden;
+  -webkit-transition: visibility 0.4s, left 1s ease 0.5s;
+  -ms-transition: visibility 0.4s, left 1s ease 0.5s;
+  -moz-transition: visibility 0.4s, left 1s ease 0.5s;
+  -o-transition: visibility 0.4s, left 1s ease 0.5s;
+  transition: visibility 0.4s, left 1s ease 0.5s;
+}
+
+/********************************************/
+/* prototype B title page */
+/********************************************/
+#index2 {
+  background: whitesmoke;
+  color: cadetblue;
+  margin: 0px;
+  height: 22vh;
+  position: absolute;
+  left: 36vw;
+  text-shadow: 4px 5px 8px lavender;
+  
+  visibility: hidden;
+  -webkit-transition: visibility 0.4s left 1s ease 0.5s;
+  -ms-transition: visibility 0.4s left 1s ease 0.5s;
+  -moz-transition: visibility 0.4s left 1s ease 0.5s;
+  -o-transition: visibility 0.4s left 1s ease 0.5s;
+  transition: visibility 0.4s, left 1s ease 0.5s;
+}
+
+/********************************************/
+/* blue box title page */
+/********************************************/
+/* main title page container */
+#coMain {
+  background-image: url(https://images.unsplash.com/photo-1496868834840-5f4c98840aaa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=271557c887bb814d49dc3d624fe0bfbe&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin: 0px;
+  height: 22vh;
+  position: absolute;
+  left: 36vw;
+  /*margin-top: -90vh;*/ 
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center*/
+  text-shadow: 4px 5px 8px darkslategray;
+  
+  visibility: hidden;
+  -webkit-transition: visibility 0.4s left 1s ease 0.5s;
+  -ms-transition: visibility 0.4s left 1s ease 0.5s;
+  -moz-transition: visibility 0.4s left 1s ease 0.5s;
+  -o-transition: visibility 0.4s left 1s ease 0.5s;
+  transition: visibility 0.4s, left 1s ease 0.5s;
+}
+
+#coDiv {
+  /*height: 24vh;*/
+}
+
+/* base container for items inside main container */
+.coBaseDiv {
+  /*height: 25vh;*/
+  /*width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;*/
+}
+
+/* base text formatting class */
+.coBaseText {
+  color: navajowhite;
+  font-weight: normal;
+  font-size: 1.5rem;
+  font-family: "imprint mt shadow", "niagara solid", times;
+  /*margin: 1vh 3vw;*/
+}
+
+/* text formatting for company title */
+#coTitle {
+  font-size: 3rem;
+  /*margin-bottom: -1rem;*/
+  /*margin-top: -1rem;*/
+}
+
+/* text formatting for company subtitle */
+#coSubtitle {
+  font-size: 1.5rem;
+}
+
+/********************************************/
+/* prototype D title page */
+/********************************************/
+#index4 {
+  background: whitesmoke;
+  color: cadetblue;
+  margin: 0px;
+  height: 22vh;
+  position: absolute;
+  left: 36vw;
+  text-shadow: 4px 5px 8px lavender;
+  
+  visibility: hidden;
+  -webkit-transition: visibility 0.4s left 1s ease 0.5s;
+  -ms-transition: visibility 0.4s left 1s ease 0.5s;
+  -moz-transition: visibility 0.4s left 1s ease 0.5s;
+  -o-transition: visibility 0.4s left 1s ease 0.5s;
+  transition: visibility 0.4s, left 1s ease 0.5s;
+}
 
 /*****************************************/
 /* grid shapes */
@@ -247,10 +590,8 @@ body {
 	width: 40px;
 	/*height: 2vh;*/
 	height: 40px;
-
 	position: absolute;
-	background: rgba(235, 235, 235, 1);
-
+	background: rgba(235, 235, 235, 0);
 	z-index: 150;
 }
 
@@ -285,7 +626,7 @@ body {
 
 /* animate all squares in grid */
 .animate-grid {
-	animation: sway 7s ease 2s infinite alternate;
+	animation: sway 7s ease 8s infinite alternate;
 	/*animation-timing-function: cubic-bezier(5, 5, 5, 25);*/
 }
 
@@ -328,8 +669,8 @@ body {
 	margin-top: calc(100vh - 130px);
 	/*background:	purple;*/
 	background: rgba(102, 17, 65, 0);
-	z-index: 150;
-	animation: purpleSway 7s ease 2s infinite alternate;
+	z-index: 155;
+	animation: purpleSway 7s ease 8s infinite alternate;
 }
 
 /* animate the squares */
@@ -384,6 +725,49 @@ body {
 @keyframes fading {
 	from {background: rgba(255,255,255,0);}
 	to {background: rgba(255,255,255,1);}
+}
+
+/*****************************************/
+/* Portfolio */
+/*****************************************/
+#portfolio {
+  width: 31vw;
+	margin-top: calc(100vh - 18rem);
+	/*margin-left: 17vw;*/
+	margin-left: 4vw;
+	/*color: gray;*/
+  color: rgba(128,128,128,0);
+	position: absolute;
+	font-size: 16rem;
+	font-family: "perpetual titling mt", "times new roman";
+	z-index: 150;
+
+	-webkit-animation:  portfolio 7s ease-in-out 2s 1 normal forwards;
+	-moz-animation:  portfolio 7s ease-in-out 2s 1 normal forwards;
+	-o-animation:  portfolio 7s ease-in-out 2s 1 normal forwards;
+	animation: portfolio 7s ease-in-out 2s 1 normal forwards;
+  /* prevents element from reverting to state prior to animation */
+  /*animation-fill-mode: forwards;*/
+}
+
+@-webkit-keyframes portfolio {
+	0% 		{left: 65vw; color: rgba(128,128,128,0); width: 31vw;}
+	100%	{left: 0vw; color: rgba(128,128,128,1); width: 96vw;}
+}
+
+@-moz-keyframes portfolio {
+	0% 		{left: 65vw; color: rgba(128,128,128,0); width: 31vw;}
+	100%	{left: 0vw; color: rgba(128,128,128,1); width: 96vw;}
+}
+
+@-o-keyframes portfolio {
+	0% 		{left: 65vw; color: rgba(128,128,128,0); width: 31vw;}
+	100%	{left: 0vw; color: rgba(128,128,128,1); width: 96vw;}
+}
+
+@keyframes portfolio {
+	0% 		{left: 65vw; color: rgba(128,128,128,0); width: 31vw;}
+	100%	{left: 0vw; color: rgba(128,128,128,1); width: 96vw;}
 }
 
 /*****************************************/
