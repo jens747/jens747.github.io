@@ -49,14 +49,16 @@ const rd1 = document.getElementById("rd1");
 const rd2 = document.getElementById("rd2");
 const rd3 = document.getElementById("rd3");
 const rd4 = document.getElementById("rd4");
+const r5 = document.getElementById("rd5");
+const r6 = document.getElementById("rd6");
 const lgRect1 = document.getElementById("lg-rect1");
 const lgRect2 = document.getElementById("lg-rect2");
 const lgRect3 = document.getElementById("lg-rect3");
 const lgRect4 = document.getElementById("lg-rect4");
-const idx1 = document.getElementById("index1");
-const idx2 = document.getElementById("index2");
-const idx3 = document.getElementById("index3");
-const idx4 = document.getElementById("index4");
+// const idx1 = document.getElementById("index1");
+// const idx2 = document.getElementById("index2");
+// const idx3 = document.getElementById("index3");
+// const idx4 = document.getElementById("index4");
 const ri1 = document.getElementById("ri1");
 const ri2 = document.getElementById("ri2");
 const ri3 = document.getElementById("ri3");
@@ -66,13 +68,15 @@ const rp2 = document.getElementById("rp2");
 const rp3 = document.getElementById("rp3");
 const rp4 = document.getElementById("rp4");
 
-const rToggle = (e, rd, lg, ix, ri, rp) => {
+const rToggle = (e, rd, rd5, rd6, lg, ri, rp) => {
 	e.classList.toggle('show');
 	rd.classList.toggle('show');
+	r5.classList.toggle('show');
+	r6.classList.toggle('show');
 	lg.classList.toggle('show');
-	ix.classList.toggle('show');
+	// ix.classList.toggle('show');
 	ri.classList.toggle('show');
-	rp.classList.toggle('show');
+	// rp.classList.toggle('show');
 }
 
 // smt1.addEventListener("click", rtoggle(smt1));
