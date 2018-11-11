@@ -9,7 +9,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -28,7 +28,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -47,7 +47,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -66,7 +66,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -85,7 +85,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -104,7 +104,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -123,7 +123,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -142,7 +142,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -161,7 +161,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -180,7 +180,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -199,7 +199,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -218,7 +218,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -237,7 +237,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -256,7 +256,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -275,7 +275,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
@@ -294,7 +294,7 @@
 		"pColor": "Color: brown, burnt sienna",
 		"pFlavor": "Flavor: savory, spicy",
 		"pUses": "Uses: pickling, marinades, baking",
-		"weight": "2",	//2 oz default size
+		"weight": "2",
 		"cost": "$4.59",
 		"imgId": "all-img",
 		"subId": "all-sub",
