@@ -1,15 +1,15 @@
-var opContainer = document.getElementById("op-container");
-var goContainer = document.getElementById("go-container");
-var go = document.getElementById("go");
+const opContainer = document.getElementById("op-container");
+const goContainer = document.getElementById("go-container");
+const go = document.getElementById("go");
 
 // taken from:
 // https://www.w3schools.com/js/tryit.asp?filename=tryjs_dom_animate_3
-// function showGo() {
+// const showGo = () => {
 // 	var xPos = 0;
 // 	var yPos = 0;
 // 	var animate = setInterval(state, 4);
 
-// 	function state() {
+// 	const state = () => {
 // 		if (xPos == 100) {
 // 			clearInterval(animate);
 // 		} else {
@@ -23,14 +23,14 @@ var go = document.getElementById("go");
 /********************************************/
 /* displays join and login info when clicked */
 /********************************************/
-var joinBool = false;
-var loginBool = false;
+let joinBool = false;
+let loginBool = false;
 
 // *****BROKEN*****
 // would replace the following two functions,
 // EXCEPT can't get to change booleans above
 
-// function accountAccess(sw1, sw2, bo1, bo2) {
+// const accountAccess = (sw1, sw2, bo1, bo2) => {
 // 	if (!bo1) {
 // 		bo1 = true;
 // 		sw1.classList.add('select');
@@ -52,7 +52,7 @@ var loginBool = false;
 // }
 
 // opens/closes/switches join menu
-function joinClick() {
+const joinClick = () => {
 	// when clicked, open join menu if closed
 	if (!joinBool) {
 		joinBool = true;
@@ -83,7 +83,7 @@ function joinClick() {
 }
 
 // opens/closes/switches login menu
-function loginClick() {
+const loginClick = () => {
 	// when clicked, open login menu if closed
 	if (!loginBool) {
 		loginBool = true;
@@ -114,65 +114,73 @@ function loginClick() {
 /********************************************/
 /* shows "Go" when hovering over menu */
 /********************************************/
-// function showGo() {
+// const showGo = () => {
 // 	go.classList.add('animate');
 // 	goContainer.classList.add('animate');
 // }
 
-// function hideGo() {
+// const hideGo = () => {
 // 	go.classList.remove('animate');
 // 	goContainer.classList.remove('animate');
 // }
 
 /********************************************/
+/* load products */
+/********************************************/
+const loadProducts = fetch("https://jens747.github.io/orange/spices.js")
+	// .then(response => response.json())
+	.then(data => {
+		console.log(data)
+	});
+		
+/********************************************/
+/* menu selector arrows */
+/********************************************/
+const select = (element) => {
+	element.classList.toggle('select');
+}
+
+/********************************************/
 /* clicking menu selector arrows resizes options */
 /********************************************/
-var leftArrow = document.getElementById("left-arrow");
-var rightArrow = document.getElementById("right-arrow");
+const leftArrow = document.getElementById("left-arrow");
+const rightArrow = document.getElementById("right-arrow");
 
-var options = [home, products, orders, account, about];
-var selected = 0;
+const options = [home, products, orders, account, about];
+let selected = 0;
 select(options[selected]);
 
 // hidden at load, cycles menu options to the left
-function cycleLeft() {
+const cycleLeft = () => {
 	// displays right arrow on load
 	rightArrow.classList.remove('display');
 	// run if not at start of menu array, highlights prev menu item
 	if (selected > 0) {
 		selected--;
 	}
-	// hides left arrow if first menu item is highlighted
-	// if (selected < 1) {
-	// 	leftArrow.classList.remove('display');
-	// }
 	return switchOptions(options[selected]);
 	// return select(options[selected]);
 }
 
 // visible at load, cycles menu options to the right
-function cycleRight() {
+const cycleRight = () => {
 	// hides left arrow on load
 	leftArrow.classList.add('display');
 	// run if not at end of menu array, highlights next menu item
 	if (selected < (options.length - 1)) {
 		selected++;
 	}
-	// hides right arrow if last menu item is highlighted
-	// if (selected > (options.length - 2)) {
-	// 	rightArrow.classList.add('display');
-	// }
 	return switchOptions(options[selected]);
 }
 
-function switchOptions(page) {
+const switchOptions = (page) => {
 	// when called clear extra home formatting
 	home.classList.remove('homeLoad');
 	// when called display arrows by default
 	leftArrow.classList.add('display');
 	rightArrow.classList.remove('display');
 	// when called removes formatting that was used when last called
-	for (var i = options.length - 1; i >= 0; i--) {
+	for (let i = options.length - 1; i >= 0; i--) {
 		options[i].classList.remove('lg');
 		options[i].classList.remove('md');
 	}
@@ -181,19 +189,22 @@ function switchOptions(page) {
 		case home:
 			home.classList.add('lg');
 			products.classList.add('md');
-			selected = 0;
 			leftArrow.classList.remove('display');
+			productsPanel.classList.remove('show');
+			selected = 0;
 			break;
 		case products:
 			home.classList.add('md');
 			products.classList.add('lg');
 			orders.classList.add('md');
+			productsPanel.classList.add('show');
 			selected = 1;
 			break;
 		case orders:
 			products.classList.add('md');
 			orders.classList.add('lg');
 			account.classList.add('md');
+			productsPanel.classList.remove('show');
 			selected = 2;
 			break;
 		case account:
@@ -201,26 +212,24 @@ function switchOptions(page) {
 			orders.classList.add('md');
 			account.classList.add('lg');
 			about.classList.add('md');
+			productsPanel.classList.remove('show');
 			selected = 3;
 			break;
 		case about:
 			products.classList.remove('productsLoad');
 			account.classList.add('md');
 			about.classList.add('lg');
-			selected = 4;
 			rightArrow.classList.add('display');
+			productsPanel.classList.remove('show');
+			selected = 4;
 			break;
 	}
 }
+
+const productsPanel = document.getElementById('products-panel');
 
 // const circleType = new CircleType(document.getElementById('coSubtitle'));
 // window.addEventListener('resize', function updateRadius() {
 //   circleType.radius(circleType.element.offsetWidth / 2);
 // });
 // updateRadius();
-/********************************************/
-/* menu selector arrows */
-/********************************************/
-function select(element) {
-	element.classList.toggle('select');
-}
