@@ -1,0 +1,8 @@
+element            classList
+element  textNode  classList
+element            classList  id  src
+elem(2)  textN(3)  classL(2)
+element  textNode  classList  id
+element  textNode  classList  id       type  name  value  disabled
+element
+element            classList  id       type  name  value
