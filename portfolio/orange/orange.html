@@ -23,46 +23,26 @@
 			<ul id="creds-ul">
 				<div class="creds"> <!-- onclick="select(credsDiv), select(credsForm)"> -->
 					<button class="abs-pos credsBtn" id="join" 
-						onclick="openMenus(
-							'select',
-							this, 
-							joinDiv, 
-							login, 
-							loginDiv, 
-							credsDiv, 
-							credsForm
-						)"
+						onclick="openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm) 
+							addCursor(joinEmail)
+						"
 					>
 						Join
 					</button>
 				</div>
 				<div class="creds"> <!-- onclick="select(credsDiv), select(credsForm)"> -->
 					<button class="abs-pos credsBtn" id="login" 
-						onclick="openMenus(
-							'select',
-							this, 
-							loginDiv, 
-							join, 
-							joinDiv, 
-							credsDiv, 
-							credsForm
-						)"
+						onclick="openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm) 
+							addCursor(loginEmail)
+						"
 					>
 						Log in
 					</button>
 				</div>
 				<div class="abs-pos creds" id="loDiv"> <!-- onclick="select(credsDiv), select(credsForm)"> -->
 					<button class="abs-pos credsBtn" id="logout" 
-						onclick="openMenus(
-							'select',
-							login, 
-							loginDiv, 
-							join, 
-							joinDiv, 
-							credsDiv, 
-							credsForm,
-							logoutDiv
-						)"
+						onclick="openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm,logoutDiv)
+						"
 					>
 						Log Out
 					</button>
@@ -74,13 +54,13 @@
 					<!-- <h3 id="joinInput">This feature is not yet available.</h3> -->
 					<h3 class="form-input">
 						Username: 
-						<input class="form-info" type="email" name="username" placeholder="email">
+						<input class="form-info" id="joinEmail" type="email" name="username" placeholder="email">
 					</h3>
 					<h3 class="form-input">
 						Password: 
-						<input class="form-info" type="Password" name="password" placeholder="password">
+						<input class="form-info" id="joinPass" type="Password" name="password" placeholder="password">
 						<input 
-							class="form-info" type="Password"
+							class="form-info" id="joinConfirmPass" type="Password"
 							name="password" 
 							placeholder="confirm password">
 					</h3>
@@ -90,9 +70,15 @@
 							id="joinBtn" 
 							type="button" 
 							value="Join" 
-							name="Join">
+							name="Join"
+							onclick="joinUser()">
 					</div>
 				</form>
+			</div>
+			<div class="abs-pos panel-container join-login" id="failedJoin">
+				<h3 class="form-input">
+					Registration failed. Please check your email or password and try again.
+				</h3>
 			</div>
 			<!-- login form -->
 			<div class="abs-pos panel-container join-login" id="loginDiv">
@@ -110,7 +96,10 @@
 							type="button" 
 							value="Log in" 
 							name="Log in"
-							onclick="loginUser()">
+							onclick="loginUser()
+								">
+								<!-- windowSzScrollText(nameB),
+									windowSzScrollText(addrB) -->
 					</div>
 				</form>
 			</div>
@@ -257,47 +246,39 @@
 
 	<div class="container">
 		<div class="abs-pos panels" id="account-panel">
-			<div class="abs-pos scroll-panel" id="scroll-account">
+			<div 
+					class="abs-pos scroll-panel" 
+					id="scroll-account"
+					onscroll="scrollText(this, addrB, 99)"
+				>
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1" id="xp1"></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="nameA"></div>
 					<div class="abs-pos sm-panel-container">
-						<p class="abs-pos sm-panel-title sm-panel-text" id="spt1">Add your name</p>
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="nameB">
+									Add your name
+								</p>
+							</div>
+						</div>
 						<input 
 								class="abs-pos sm-panel-info" 
-								id="spi1" 
+								id="nameC" 
 								type="text" 
 								name="name"
 								placeholder="change name" 
 							>
-						<div class="abs-pos btn-container" id="editName" 
-								onclick="openMenus(
-									'select',
-									this,
-									spt1, 
-									0,
-									0,
-									spi1,
-									xp1,
-									editName,
-									saveName
-								)"
+						<div class="abs-pos btn-container editClick" id="nameD1" 
+								onclick="editAccounts(this, nameA, nameB, nameC, nameD2) 
+									addCursor(nameC)"
 							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container" id="saveName" 
-								onclick="openMenus(
-									'select',
-									this,
-									spt1,
-									0,
-									0,
-									spi1,
-									xp1,
-									editName,
-									saveName
-								)"
+						<div class="abs-pos btn-container saveClick" id="nameD2" 
+								onclick="editAccounts(this, nameA, nameB, nameC, nameD1) 
+									editInput(uEdit[0])"
 							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
@@ -309,25 +290,35 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1" id=""></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="emailA"></div>
 					<div class="abs-pos sm-panel-container">
-						<p class="abs-pos sm-panel-title sm-panel-text" id="">email@example.com</p>
+						<div class="abs-pos sm-panel-overflow" 
+								onchange="windowSzScrollText(emailB)"
+							>
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="emailB">
+									email@example.com
+								</p>
+							</div>
+						</div>
 						<input 
 								class="abs-pos sm-panel-info" 
-								id="" 
+								id="emailC" 
 								type="email" 
 								name=""
-								placeholder="update email" 
+								placeholder="update email"  
 							>
-						<div class="abs-pos btn-container editClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos btn-container editClick" id="emailD1" 
+								onclick="editAccounts(this, emailA, emailB, emailC, emailD2) 
+									addCursor(emailC)"
 							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos btn-container saveClick" id="emailD2" 
+								onclick="editAccounts(this, emailA, emailB, emailC, emailD1)
+									editEmail()"
 							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
@@ -339,25 +330,33 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1" id=""></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="passA"></div>
 					<div class="abs-pos sm-panel-container">
-						<p class="abs-pos sm-panel-title sm-panel-text" id="">********</p>
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="passB">
+									********
+								</p>
+							</div>
+						</div>
 						<input 
 								class="abs-pos sm-panel-info" 
-								id="" 
+								id="passC" 
 								type="password" 
 								name=""
 								placeholder="reset password" 
 							>
-						<div class="abs-pos btn-container editClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos btn-container editClick" id="passD1" 
+								onclick="editAccounts(this, passA, passB, passC, passD2) 
+									addCursor(passC)"
 							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos btn-container saveClick" id="passD2" 
+								onclick="editAccounts(this, passA, passB, passC, passD1)
+									editPass()"
 							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
@@ -369,25 +368,32 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1" id=""></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="addrA"></div>
 					<div class="abs-pos sm-panel-container">
-						<p class="abs-pos sm-panel-title sm-panel-text" id="">Update your address</p>
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="addrB">
+									Update your address
+								</p>
+							</div>
+						</div>
 						<input 
 								class="abs-pos sm-panel-info" 
-								id="" 
+								id="addrC" 
 								type="text" 
 								name=""
 								placeholder="change address" 
 							>
-						<div class="abs-pos btn-container editClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos btn-container editClick" id="addrD1" 
+								onclick="editAccounts(this, addrA, addrB, addrC, addrD2)
+									addCursor(addrC)"
 							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos btn-container saveClick" id="addrD2" 
+								onclick="editAccounts(this, addrA, addrB, addrC, addrD1)"
 							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
@@ -399,26 +405,60 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1" id=""></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="payA"></div>
 					<div class="abs-pos sm-panel-container">
-						<p class="abs-pos sm-panel-title sm-panel-text" id="">**65 12/22</p>
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="payB">
+									**65 12/22
+								</p>
+							</div>
+						</div>
 						<input 
 								class="abs-pos sm-panel-info" 
-								id="" 
+								id="payC" 
 								type="text" 
 								name=""
 								placeholder="update credit card" 
 							>
-						<div class="abs-pos btn-container editClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos sm-panel-container">
+							<select class="nextPay" id="payE">
+								<option value="0" selected>Month</option>
+								<option value="1">1 - Jan</option>
+								<option value="2">2 - Feb</option>
+								<option value="3">3 - Mar</option>
+								<option value="4">4 - Apr</option>
+								<option value="5">5 - May</option>
+								<option value="6">6 - Jun</option>
+								<option value="7">7 - Jul</option>
+								<option value="8">8 - Aug</option>
+								<option value="9">9 - Sep</option>
+								<option value="10">10 - Oct</option>
+								<option value="11">11 - Nov</option>
+								<option value="12">12 - Dec</option>
+							</select>
+							<select class="nextPay" id="payF">
+								<option value="0" selected>Year</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</23option>
+								<option value="2024">2024</option>
+							</select>
+							<input class="nextPay" id="payG" type="text" name="sec_no">
+						</div>
+						
+						<div class="abs-pos btn-container editClick" id="payD1" 
+								onclick="editAccounts(this, payA, payB, payC, payD2) 
+									addCursor(payC)"
 							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick" id="" 
-								onclick="editAccount(this)"
-							>
+						<div class="abs-pos btn-container saveClick" id="payD2" 
+								onclick="editAccounts(this, payA, payB, payC, payD1)">
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
@@ -429,25 +469,33 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1" id=""></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="phoneA"></div>
 					<div class="abs-pos sm-panel-container">
-						<p class="abs-pos sm-panel-title sm-panel-text" id="">Add a phone number</p>
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="phoneB">
+									Add a phone number
+								</p>
+							</div>
+						</div>
 						<input 
 								class="abs-pos sm-panel-info" 
-								id="" 
+								id="phoneC" 
 								type="phone" 
 								name=""
 								placeholder="update phone number"
 							>
-						<div class="abs-pos btn-container editClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos btn-container editClick" id="phoneD1" 
+								onclick="editAccounts(this, phoneA, phoneB, phoneC, phoneD2) 
+									addCursor(phoneC)"
 							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick" id="" 
-								onclick="editAccount(this)"
+						<div class="abs-pos btn-container saveClick" id="phoneD2" 
+								onclick="editAccounts(this, phoneA, phoneB, phoneC, phoneD1)
+									editInput(uEdit[1])"
 							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
@@ -459,18 +507,30 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1" id=""></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="bidA"></div>
 					<div class="abs-pos sm-panel-container">
-						<p class="abs-pos sm-panel-title sm-panel-text" id="">BB-1215-0000-0001</p>
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="bidB">
+									BB-1215-0000-0001
+								</p>
+							</div>
+						</div>
 					</div>
 					<img class="sm-panel-img" src="../orange/images/user-info-5-128-iconsdb.png" alt="account id number">
 					<h1 class="abs-pos sm-panel-title">Boxer ID</h1>
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1" id=""></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="boxA"></div>
 					<div class="abs-pos sm-panel-container">
-						<p class="abs-pos sm-panel-title sm-panel-text" id="">Ordered: 12/15/2018</p>
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="boxB">
+									Ordered: 12/15/2018
+								</p>
+							</div>
+						</div>
 					</div>
 					<img class="sm-panel-img" src="../orange/images/user-filled-box-128-iconsdb.png" alt="registration date">
 					<!-- Membership -->

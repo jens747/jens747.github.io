@@ -1,0 +1,442 @@
+* {
+	/* removes scroll bar from all elements */
+	overflow: hidden;
+}
+
+body {
+	/* removes margins from webpage */
+	margin: 0px;
+}
+
+#square {
+	width: 100px;
+	height: 100px;
+	background: red;
+}
+
+/*****************************************/
+/* hidden signup rectangle */
+/*****************************************/
+
+/* formatting for hidden signup rectangle */
+#hidden-rect {
+	width: 5px;
+	height: 25px;
+	background: rgba(170, 57, 57, 1);
+
+	/* allows overlapping of elements */
+	position: absolute;
+}
+
+#hidden-rect:hover {
+	background: rgba(212, 106, 106, 1);
+}
+
+/*****************************************/
+/* sliding rectangles */
+/*****************************************/
+.slide-rects {
+	width: 0.5vw;
+	/*background: lightgray;*/
+	background: rgba(254, 254, 254, 1);
+	position: absolute;
+
+	z-index: 150;
+}
+
+@keyframes slideRectA {
+	from {height: 0vh;}
+	to {height: 25vh;}
+}
+
+#slide-rect1 {
+	/*height: 25vh;*/
+	margin-left: 58vw;
+	animation: slideRectA 2.25s ease-in-out 1s infinite alternate;
+}
+
+@keyframes slideRectB {
+	from {height: 0vh;}
+	to {height: 35vh;}
+}
+
+#slide-rect2 {
+	/*height: 35vh;*/
+	margin-left: 59.5vw;
+	animation: slideRectB 2.25s ease-in-out 1.5s infinite alternate;
+}
+
+@keyframes slideRectC {
+	from {height: 0vh;}
+	to {height: 5vh;}
+}
+
+#slide-rect3 {
+	/*height: 5vh;*/
+	margin-left: 61vw;
+	animation: slideRectC 2.25s ease-in-out 2s infinite alternate;
+}
+
+@keyframes slideRectD {
+	from {height: 0vh;}
+	to {height: 45vh;}
+}
+
+#slide-rect4 {
+	/*height: 45vh;*/
+	margin-left: 62.5vw;
+	/*background: lightgreen;*/
+	background: rgba(16, 147, 153, 1);
+	animation: slideRectD 2.25s ease-in-out 2.5s infinite alternate;
+}
+
+@keyframes slideRectE {
+	from {height: 0vh;}
+	to {height: 15vh;}
+}
+
+#slide-rect5 {
+	/*height: 15vh;*/
+	margin-left: 64vw;
+	animation: slideRectE 2.25s ease-in-out 3s infinite alternate;
+}
+
+/*****************************************/
+/* small blinking rectangles */
+/*****************************************/
+.sm-rects {
+	width: 1.25vw;
+	height: 3vh;
+	/*background: gray;*/
+	background: rgba(208, 208, 208, 1);
+	position: absolute;
+	margin-left: 67vw;
+	visibility: hidden;
+	/*opacity: 0.0;*/
+	z-index: 150;
+}
+
+/* blinking animation for blink rectangles lg & sm */
+@keyframes blinkRectA {
+	from {visibility: hidden;}
+	/* causes blink animation to repeat */
+	/*50% {visibility: hidden;}*/
+	to {visibility: visible;}
+}
+/*
+@-webkit-keyframes blinkRectA {
+	from {visibility: hidden;}
+	50% {visibility: hidden;}
+	to {visibility: visible;}
+}
+
+@-moz-keyframes blinkRectA {
+	from {visibility: hidden;}
+	50% {visibility: hidden;}
+	to {visibility: visible;}
+}
+
+@-o-keyframes blinkRectA {
+	from {visibility: hidden;}
+	50% {visibility: hidden;}
+	to {visibility: visible;}
+}*/
+
+#sm-rect1 {
+	margin-top: 7vh;
+/*	-webkit-animation: blinkRectA 2s ease-in-out 1s 2 alternate;
+	-moz-animation: blinkRectA 2s ease-in-out 1s 2 alternate;
+	-o-animation: blinkRectA 2s ease-in-out 1s 2 alternate;*/
+	/*animation: blinkRectA 12s ease-in-out 1s infinite alternate;*/
+	animation: blinkRectA 12s ease-in-out 11s infinite alternate;
+}
+
+#sm-rect2 {
+	margin-top: 12vh;
+	/*animation: blinkRectA 12s ease-in-out 2s infinite alternate;*/
+	animation: blinkRectA 12s ease-in-out 12s infinite alternate;
+}
+
+#sm-rect3 {
+	margin-top: 17vh;
+	background: orange;
+	/*animation: blinkRectA 12s ease-in-out 3s infinite alternate;*/
+	animation: blinkRectA 12s ease-in-out 13s infinite alternate;
+}
+
+#sm-rect4 {
+	margin-top: 22vh;
+	/*animation: blinkRectA 12s ease-in-out 4s infinite alternate;*/
+	animation: blinkRectA 12s ease-in-out 14s infinite alternate;
+}
+
+/*#sm-rect5 {
+	margin-top: 27vh;
+	animation: blinkRectA 4.75s ease-in-out 5s infinite alternate;
+}*/
+/*
+#sm-rect6 {
+	margin-top: 32vh;
+	animation: blinkRectA 4.75s ease-in-out 3.5s infinite alternate;
+}
+
+#sm-rect7 {
+	margin-top: 37vh;
+	animation: blinkRectA 4.75s ease-in-out 4s infinite alternate;
+}*/
+
+/*****************************************/
+/* large blinking rectangles */
+/*****************************************/
+.lg-rects {
+	width: 10vw;
+	height: 24vh;
+	/*background: gray;*/
+	background: rgba(208, 208, 208, 1);
+	position: absolute;
+	margin-left: 90vw;
+	visibility: hidden;
+	z-index: 150;
+}
+
+#lg-rect1 {
+	margin-top: -10vh;
+	/*animation: blinkRectA 12s ease-in-out 1s infinite alternate;*/
+	animation: blinkRectA 12s ease-in-out 11s infinite alternate;
+}
+
+#lg-rect2 {
+	margin-top: 20vh;
+	/*animation: blinkRectA 12s ease-in-out 2s infinite alternate;*/
+	animation: blinkRectA 12s ease-in-out 12s infinite alternate;
+}
+
+#lg-rect3 {
+	margin-top: 50vh;
+	background: orange;
+	/*animation: blinkRectA 12s ease-in-out 3s infinite alternate;*/
+	animation: blinkRectA 12s ease-in-out 13s infinite alternate;
+}
+
+#lg-rect4 {
+	margin-top: 80vh;
+	/*animation: blinkRectA 12s ease-in-out 4s infinite alternate;*/
+	animation: blinkRectA 12s ease-in-out 14s infinite alternate;
+}
+/*
+#lg-rect5 {
+	margin-top: 110vh;
+	animation: blinkRectA 4.75s ease-in-out 5s infinite alternate;
+}
+
+#lg-rect6 {
+	margin-top: 140vh;
+	animation: blinkRectA 4.75s ease-in-out 6s infinite alternate;
+}
+
+#lg-rect7 {
+	margin-top: 170vh;
+	animation: blinkRectA 4.75s ease-in-out 7s infinite alternate;
+}*/
+
+/*****************************************/
+/* grid shapes */
+/*****************************************/
+.grid-squares {
+	/*width: 2vh;*/
+	width: 40px;
+	/*height: 2vh;*/
+	height: 40px;
+
+	position: absolute;
+	background: rgba(235, 235, 235, 1);
+
+	z-index: 150;
+}
+
+.grid-col1 {
+	margin-left: 80px;
+	/*margin-left: 15vw;*/
+}
+
+.grid-col2 {
+	margin-left: 130px;
+	/*margin-left: 18vw;*/
+}
+
+.grid-col3 {
+	margin-left: 180px;
+	/*margin-left: 21vw;*/
+}
+
+.grid-col4 {
+	margin-left: 230px;
+	/*margin-left: 24vw;*/
+}
+
+/* animate the squares */
+@keyframes sway {
+	0%		{left: 5px;}
+	25%		{right: 10px; top: 5px; background: rgba(200, 200, 200, 1);}
+	50%		{left: 8px; top: 5px;}
+	75%		{right: 6px; top: 10px;}
+	100%	{left: 3px; background: rgba(235, 235, 235, 0.2);}
+}
+
+/* animate all squares in grid */
+.animate-grid {
+	animation: sway 7s ease 2s infinite alternate;
+	/*animation-timing-function: cubic-bezier(5, 5, 5, 25);*/
+}
+
+#grid-square1 {
+	margin-top: calc(100vh - 180px);
+	/* sway square animation */
+/*	animation-name: sway;
+	animation-duration: 7s;
+	animation-timing-function: ease;
+	animation-delay: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;*/
+}
+
+#grid-square2 {
+	margin-top: calc(100vh - 130px);
+}
+
+#grid-square3 {
+	margin-top: calc(100vh - 205px);
+}
+
+#grid-square4 {
+	margin-top: calc(100vh - 155px);
+}
+
+#grid-square5 {
+	margin-top: calc(100vh - 230px);
+}
+
+#grid-square6 {
+	margin-top: calc(100vh - 180px);
+}
+
+#grid-square7 {
+	margin-top: calc(100vh - 130px);
+}
+
+#grid-square8 {
+	margin-top: calc(100vh - 130px);
+	/*background:	purple;*/
+	background: rgba(102, 17, 65, 0);
+	z-index: 150;
+	animation: purpleSway 7s ease 2s infinite alternate;
+}
+
+/* animate the squares */
+@keyframes purpleSway {
+	0%		{left: 5px;}
+	25%		{right: 10px; top: 5px;}
+	50%		{left: 8px; top: 5px; background: rgba(102, 17, 65, 0);}
+	75%		{right: 6px; top: 10px;}
+	100%	{left: 3px; background: rgba(102, 17, 65, 0.8);}
+}
+
+#grid-square9 {
+	margin-top: calc(100vh - 205px);
+}
+
+/* animation: fading 7s linear 2s infinte alternate; */
+
+/*****************************************/
+/* two larger squares */
+/*****************************************/
+#diag-square {
+	width: 130px;
+	height: 130px;
+	margin-left: 310px;
+	margin-top: calc(100vh - 260px);
+	background: blue;
+
+	position: absolute;
+	z-index: 130;
+}
+
+#fading-square {
+	width: 230px;
+	height: 230px;
+	margin-left: 160px;
+	margin-top: calc(100vh - 170px);
+	background: rgba(255,255,255,0);
+	position: absolute;
+	z-index: 140;
+	/* fade out square animation */
+	animation-name: fading;
+	animation-duration: 7s;
+	animation-timing-function: linear;
+	animation-delay: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	/* animation can be abbreviated, use previous commands in order */
+	/* animation: fading 7s linear 2s infinte alternate; */
+}
+
+/* animate the squares */
+@keyframes fading {
+	from {background: rgba(255,255,255,0);}
+	to {background: rgba(255,255,255,1);}
+}
+
+/*****************************************/
+/* background planet */
+/*****************************************/
+
+/* formatting for background planet circle element */
+#bkgrd-circ {
+	width: 150%;
+	height: 110vw;
+	/*background: lightblue;*/
+	background:  rgba(243, 243, 250, 1);
+	
+	-o-border-radius: 49%;
+	border-radius: 49%;
+
+	margin-left: -25%;
+	margin-right: -200px;
+	
+	/* prevents screen from showing full circle element */
+	position: relative;
+	top: calc(100% / 3.5);
+	/*overflow: hidden;*/
+
+	/* animate the planet object */
+	animation: planet 8s ease-in-out 0s infinite alternate;
+}
+
+/* animate the planet object */
+@keyframes planet {
+	/* for a pan animation */
+	from {width: 150%;}
+	to {width: 175%;}
+
+	/* for a breathing animation *//*
+	from {height: 110vw; top: calc(100% / 3.4);}
+	to {height: 100vw; bottom: calc(100% / 3.5);}*/
+}
+
+/* formatting for bottom portion of background planet element */
+#bkgrd-rect {
+	width: 100%;
+	height: calc(100vh / 2);
+	/*background: lightblue;*/
+	background:  rgba(243, 243, 250, 1);
+
+	position: absolute;
+	top: calc(100% / 1.60);
+}
+
+/* formatting for top portion of background planet element */
+.crop {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(248, 248, 255, 1);
+}

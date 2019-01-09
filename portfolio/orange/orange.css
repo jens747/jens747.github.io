@@ -95,8 +95,8 @@ a {
 .panels {
 	/*top: 172vh;*/
 	margin-top: -8rem;
-	/*height: 0vh;*/
-	height: 71.6vh;
+	height: 0vh;
+	/*height: 71.6vh;*/
 	width: 80vw;
 	/*position: absolute;*/
 	background: lightseagreen;
@@ -142,7 +142,7 @@ a {
 .panels.show {
 	/*top: 100vh;*/
 	margin-top: -89.4vh;
-	/*height: 71.6vh;*/
+	height: 71.6vh;
 	z-index: 40;
 }
 
@@ -273,6 +273,20 @@ a {
 	z-index: 30;
 }
 
+.sm-panel-overflow {
+	height: 38px;
+	width: 284px;
+	margin-top: 84px;
+	overflow: hidden;
+}
+
+.sm-panel-scroll {
+	height: 56px;
+	width: 284px;
+	overflow-x: scroll;
+	scroll-behavior: smooth;
+}
+
 .sm-panel-title { 
 	margin-top: 5px; 
 	margin-left: 6px;
@@ -297,6 +311,31 @@ a {
 	margin-left: 6px;
 	overflow: hidden;
 	transition: opacity 1s;
+}
+
+.sm-data {
+	margin-top: 0px;
+	width: 500px;
+}
+
+.sm-data.scroll {
+	-webkit-animation: autoscroll 10s 2s infinite;
+	-moz-animation: autoscroll 10s 2s infinite;
+	-ms-animation: autoscroll 10s 2s infinite;
+	-o-animation: autoscroll 10s 2s infinite;
+	animation: autoscroll 10s 2s infinite;
+}
+
+@-webkit-keyframes autoscroll { from { margin-left: 6px; } to { margin-left: -220px; } }
+@-ms-keyframes autoscroll { from { margin-left: 6px; } to { margin-left: -220px; } }
+@-moz-keyframes autoscroll { from { margin-left: 6px; } to { margin-left: -220px; } }
+@-o-keyframes autoscroll { from { margin-left: 6px; } to { margin-left: -220px; } }
+@keyframes autoscroll { 
+	0% { margin-left: 6px; } 
+	/*25% { margin-left: 6px; }*/
+	50% { margin-left: -200px; }
+	60% { margin-left: 6px; }
+	/*100% { margin-left: 6px; } */
 }
 
 .sm-panel-img {
@@ -329,10 +368,11 @@ a {
 	z-index: 50;
 }
 
+.sm-panel-info:focus { opacity: 0.6; }
+
 .xs-panels {
 	/*background: burlywood;*/
 	height: 38px;
-	/*width: 294px;*/
 	width: 296px;
 	margin-top: 86px;
 	margin-left: -5px;
@@ -341,14 +381,9 @@ a {
 	z-index: 10;
 }
 
-/*#xp1 { display: block; }*/
-
-/*#spt1.select,*/
-/*#xp1.select,*/
 .sm-panel-text.select,
 .xs-panels.select { opacity: 0; }
 
-/*#spi1.select,*/
 .sm-panel-info.select { display: block; }
 
 .span-p { font-style: italic; }
@@ -415,15 +450,30 @@ a {
 	background: saddlebrown;
 }
 
-/*#saveName,
-#editName {
-	transition: transform	2s;
+.nextPay {
+	height: 38px;
+	width: 92px;
+	margin-top: 82px;
+	padding: 0px;
+	/*background: initial;*/
+	color: darkgray;
+	background: lightblue;
+	background: powderblue;
+	border: none;
+	/*border-bottom: solid 2px darkcyan;*/
+	/*margin-top: 84px;*/
+	/*margin-left: -5px;*/
+	padding: 4px 0px;
+	text-indent: 10px;
+	font-size: 26px;
+	font-size: 16px;
+	font-weight: bold;
+	/*opacity: 0.3;*/
+	opacity: 0.8;
+	/*visibility: hidden;*/
+	/*display: none;*/
+	/*z-index: 50;*/
 }
-
-#saveName.select,
-#editName.select {
-	transform: rotateY(180deg);
-}*/
 
 .btn-container {
 	height: 25px;
@@ -436,31 +486,26 @@ a {
 	z-index: 50;
 }
 
-.editClick,
-#editName { 
+.editClick { 
 	margin-left: 256px;
 	width: 26px; 
 }
-.editClick.select,
-#editName.select { 
+.editClick.select { 
 	margin-left: 282px;
 	width: 0px; 
 }
 
-.saveClick,
-#saveName { 
+.saveClick { 
 	margin-left: 282px;
 	width: 0px; 
 }
-.saveClick.select,
-#saveName.select	{ 
+.saveClick.select	{ 
 	margin-left: 256px;
 	width: 26px; 
 }
 
 .sm-btn {
 	/*position: absolute;*/
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -735,8 +780,10 @@ input[type=password]:focus,*/
 	visibility: hidden;
 }
 
-#failedLogin { color: lightsalmon; }
+#failedJoin,
+#failedLogin { color: tomato; }
 
+#failedJoin.select,
 #failedLogin.select {
 	visibility: visible;
 	animation: badlogin 2.6s 3s 1 forwards;
@@ -744,10 +791,13 @@ input[type=password]:focus,*/
 
 @-webkit-keyframes badlogin { from { opacity: 1; } to { opacity: 0; } }
 /*@-ms-keyframes badlogin { from { opacity: 1; } to { opacity: 0; } }
-@-mos-keyframes badlogin { from { opacity: 1; } to { opacity: 0; } }*/
+@-moz-keyframes badlogin { from { opacity: 1; } to { opacity: 0; } }*/
 @-o-keyframes badlogin { from { opacity: 1; } to { opacity: 0; } }
 @keyframes badlogin { from { opacity: 1; } to { opacity: 0; } }
 
+.jo.select,
+.li.select,
+.lo.select,
 #joinDiv.select,
 #loginDiv.select,
 #loDiv.select,
@@ -850,7 +900,7 @@ input[type=password]:focus,*/
 	/*background: chocolate;*/
 	/*background: orange;*/
 	background: salmon;
-	border-radius: 0px 0px 5px 5px;
+	border-radius: 5px;
 	box-shadow: 2px 3px 10px darkslategray;
 	/*box-shadow: 2px 3px 10px darkcyan;*/
 	/*box-shadow: 2px 3px 10px cadetblue;*/
@@ -896,6 +946,8 @@ input[type=password]:focus,*/
 	top: 0px;
 	right: 15px;
 	background: orange;
+	border-radius: 0px 0px 5px 5px;
+	background: linear-gradient(orange, tomato 74vh);
 	overflow: hidden;
 	z-index: 50;
 	transition: height 0.4s;
@@ -903,15 +955,17 @@ input[type=password]:focus,*/
 
 #shopping-bag.open {
 	height: 560px;
+	border: 1px dotted moccasin;
 }
 
 #scroll-shopping {
-	height: 412px;
+	height: 520px;
 	width: 346px;
 	margin-left: 3px;
 	padding-right: 10px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	
 }
 
 /********************************************/
@@ -995,7 +1049,7 @@ input[type=password]:focus,*/
 }
 
 .in-trash {
-
+	margin: 110px 0px 0px 256px;
 } 
 
 .trash-img {
