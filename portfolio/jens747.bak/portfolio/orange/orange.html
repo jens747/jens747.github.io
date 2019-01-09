@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>orange</title>
+	<link rel="stylesheet" type="text/css" href="orange.css">
+</head>
+<body>
+	<!-- Company Title and Subtitle container -->
+	<div id="coMain">
+		<div class="coBaseDiv" id="coSubDiv">
+			<h2 class="coBaseText" id="coSubtitle">extracts & spices</h2>
+		</div>
+		<div class="coBaseDiv" id="coDiv">
+			<h1  class="coBaseText" id="coTitle">blue box</h1>
+		</div>
+		<div class="coBaseDiv">
+			<h2 class="coBaseText">a peculiar creation</h2>
+		</div>
+	</div>
+	<!-- Signin / Login container -->
+	<div id="credsDiv">
+		<div id="credsForm">
+			<ul id="creds-ul">
+				<div class="creds"> <!-- onclick="select(credsDiv), select(credsForm)"> -->
+					<button class="credsBtn" id="join" onclick="joinClick()">Join</button>
+				</div>
+				<div class="creds"> <!-- onclick="select(credsDiv), select(credsForm)"> -->
+					<button class="credsBtn" id="login" onclick="loginClick()">Log in</button>
+				</div>
+			</ul>
+			<!-- Join form -->
+			<div id="joinDiv"></div>
+				<form id="joinForm">
+					<h3 class="joinInput">This feature is not yet available.</h3>
+				</form>
+			<!-- login form -->
+			<div id="loginDiv">
+				<form id="loginForm">
+					<h3 class="loginInput"> Username: </h3>
+					<input type="text" name="username" placeholder="username">
+					<h3 class="loginInput">Password: </h3>
+					<input type="Password" name="password" placeholder="password">
+					<div class="loginInput">
+						<input id="formBtn" type="button" value="Log in" name="Log in">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- add anchor box to right of text, clicking switches text on page -->
+	<!-- <div id="next" onclick="next()"></div> -->
+
+	<!-- hovering over Home fades in from left smaller font 'Go' -->
+	<!-- <div id="go-container"><a href="../index.html"><h3 id="go" onmouseover="showGo()" onmouseout="hideGo()">Go</h3></a></div> -->
+	
+	<!-- arrows -->
+	<div class="arrows">
+		<div class="options" id="left-arrow" onclick="cycleLeft()"></div>
+		<div class="options" id="right-arrow" onclick="cycleRight()"></div>
+	</div>
+	
+	<!-- menu options container -->
+	<div id="op-container"> <!-- onmouseover="showGo()" onmouseout="hideGo()"> -->
+		<div class="op-div">
+			<a href="../index.html"><h1 class="options homeLoad" id="home" onmouseover="switchOptions(home)">Home</h1></a>
+		</div>
+		<div class="op-div">
+			<a href="#"><h1 class="options productsLoad" id="products" onmouseover="switchOptions(products)">Products</h1></a>
+		</div>
+		<div class="op-div">
+			<a href="#"><h1 class="options" id="orders" onmouseover="switchOptions(orders)">Orders</h1></a>
+		</div>
+		<div class="op-div">
+			<a href="#"><h1 class="options" id="account" onmouseover="switchOptions(account)">Account</h1></a>
+		</div>
+		<div class="op-div">
+			<a href="#"><h1 class="options" id="about" onmouseover="switchOptions(about)">About</h1></a>
+		</div>
+	</div>
+
+	<!-- script files -->
+	<script type="text/javascript" src="orange.js"></script>
+</body>
+</html>

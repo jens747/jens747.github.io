@@ -60,23 +60,67 @@ const createTile = (...elements) => {
 
 	return newElm;
 }
+/********************************************/
+/* register user */
+/********************************************/
+const joinEmail = document.getElementById("joinEmail");
+const joinPass = document.getElementById("joinPass");
+const joinConfirmPass = document.getElementById("joinConfirmPass");
 
+const joinUser = (email = joinEmail.value, pw = joinPass.value, pw2 = joinConfirmPass.value) => {
+	fetch('http://localhost:3000/join', {
+		method: 'post',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({
+			email: email.toLowerCase(),
+			pw: pw,
+			pw2: pw2
+		})
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			openMenus('select', failedJoin, failedJoin);
+			setTimeout(() => openMenus('select', failedJoin, failedJoin), 5000);
+			return;
+		}
+		response.json()
+		.then(data => {
+			useDat.user_id = data;
+			useDat.email = email;
+			// useDat.cc_no = 'add payment info';
+			useDat.joined = new Date();
+			// console.log(`useDat: ${useDat}, data: ${data}`);
+			console.log(useDat);
+			console.log(`id: ${useDat.user_id}, email: ${useDat.email}, date: ${useDat.joined}`);
+			// useDat = data;
+			uEdit = initUser();
+			userIsLoggedIn(join, joinDiv);
+			// console.log(`uDat: ${useDat}, d: ${data}`)
+			// openMenus('select', joinDiv, join, login, loginDiv, credsDiv, credsForm);
+			switchOptions(account); 
+			emailB.innerText = `${useDat.email}`; 
+			bidB.innerText = `BB-1218-${useDat.user_id.toString().padStart(5, '0')}`; 
+			boxB.innerText = `Ordered: ${new Intl.DateTimeFormat('en-US').format(useDat.joined)}`; 
+			// userAccount(data); 
+		})
+	})
+	.catch(err => console.log("Bad password"));
+}
 /********************************************/
 /* login user */
 /********************************************/
 const loginEmail = document.getElementById("loginEmail");
 const loginPass = document.getElementById("loginPass");
-// const logout = document.getElementById("logout");
-// const logoutDiv = document.getElementById("logoutDiv");
+let useDat = {};
+console.log(useDat);
 
 const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
-	
 	// sending post of input to server
 	fetch('http://localhost:3000/login', {
 		method: 'post',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
-			email: email,
+			email: email.toLowerCase(),
 			pass: pass
 		})
 	})
@@ -86,7 +130,6 @@ const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 			setTimeout(() => openMenus('select', failedLogin, failedLogin), 5000);
 			return;
 		}
-	
 		response.json()
 		// .then(data => console.log(data));
 		.then(data => {
@@ -100,17 +143,25 @@ const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 			// 	console.log('you are logged in');
 			// 	console.log(`E: ${email}, P: ${pass}`);
 			console.log(data);
-				openMenus('select', loDiv, logoutDiv);
-				switchOptions(account);
-				// console.log(data);
-				userAccount(data[0]);
-
-			// 	// loginEmail.value = "";
-			// 	// loginPass.value = "";
-			// }
+			useDat = data;
+			uEdit = initUser();
+			console.log(useDat);
+			userIsLoggedIn(login, loginDiv);
+			switchOptions(account);
+			userAccount(data);
+			setInMotion([nameB, emailB, addrB]);
 		})
 	})
-	.catch(error => { console.log("Request denied"); })
+	.catch(error => { console.log("Request denied"); });
+}
+
+const userIsLoggedIn = (menu, menuDiv) => {
+	openMenus('select', loDiv, logoutDiv);
+	if (loDiv.classList.contains('select') === true) {
+		setTimeout(() => 
+			openMenus('select',menu, menuDiv, 0, 0, credsDiv, credsForm,logoutDiv), 1000
+		);
+	}
 }
 
 // const userAccount = (...data) => {
@@ -120,18 +171,24 @@ const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 // 	});	
 // }
 
+const thisOrThat = (d, str1, str2) => {
+	if ((str1 !== str2 && d !== 0) ? v = str1 : v = str2);
+	return v;
+}
+
 const userAccount = (d) => {
+	const data = [
+			thisOrThat(1, `${d.first_name} ${d.last_name}`, `add your name`), 
+			`${d.email}`, 
+			`********`,
+			thisOrThat(d.ui_statefk, `${d.street} ${d.city}, ${d.state_code} ${d.zip}`, `add your address`), 
+			thisOrThat(d.exp_mo, `**${trimData(2, d.cc_no)} ${d.exp_mo}/${d.exp_yr}  ${d.card_co}`, `add payment info`),
+			thisOrThat(1, `${d.phone}`, `add a phone #`), 
+			`BB-1218-${d.user_id.toString().padStart(5, '0')}`, 
+			`Ordered: ${d.joined.substring(5, 10)}-${d.joined.substring(0, 4)}`, 
+		];
 	const smPanelText = document.getElementsByClassName('sm-panel-text');
-	smPanelText[0].textContent = `${d.first_name} ${d.last_name}`;
-	smPanelText[1].textContent = `${d.email}`;
-	// smPanelText[2].textContent = `${d.pass}`;
-	smPanelText[3].textContent = `${d.street} ${d.city}, ${d.state_code} ${d.zip}`;
-	// smPanelText[4].textContent 
-	// 	= `**${trimData(2, d.card)} ${d.cardco} ${d.expiremn}/${d.expireyr}`;
-	smPanelText[5].textContent = `${d.phone}`;
-	smPanelText[6].textContent = `BB-1218-${d.id}`;
-	smPanelText[7].textContent 
-		= `${d.registered.substring(5, 10)}-${d.registered.substring(0, 4)}`;
+	data.map((num, idx) => { smPanelText[idx].textContent = data[idx];	});
 }
 
 const trimData = (len, data) => {
@@ -139,24 +196,192 @@ const trimData = (len, data) => {
 	return s;
 }
 
-async function editAccount(e) {
-	const a = await e.parentElement.firstElementChild;
-	const b = await e.parentElement.firstElementChild.nextElementSibling;
-	const c = await e.parentElement.previousElementSibling;
-	if ((d = e.nextElementSibling) === null) { d = e.previousElementSibling; }
-	// debugger;
-	await openMenus('select', e, a, 0, 0, b, c, d);
+async function editAccounts(...e) { 
+	await openMenus('select', e[0], e[1], 0, 0, e[2], e[3], e[4]);
 }
 
+const scrollText = (scrollBox, contents, scrollMax) => {
+	(scrollBox.scrollTop > scrollMax && contents.innerText.length > 24)
+		? setTimeout(() => contents.classList.add('scroll'), 0)
+		: contents.classList.remove('scroll')
+}
+
+const windowSzScrollText = (elem) => {
+	(elem.getBoundingClientRect().top < 1500)
+		? (elem.innerText.length > 24) 
+			? setTimeout(() => elem.classList.add('scroll'), 2000)
+			: elem.classList.remove('scroll')
+		// : (window.innerWidth > 830) 
+		// 	? setTimeout(() => elem.classList.add('scroll'), 2000)
+		// 	: elem.classList.remove('scroll')
+		: elem.classList.remove('scroll')
+}
+
+const setInMotion = (data) => {
+	if (account.classList.contains('lg')) {
+		data.map((num, idx) => windowSzScrollText(data[idx]));
+	}
+}
+
+const addCursor = (elm = passC) => 	elm.select();
+/********************************************/
+/* edit user */
+/********************************************/
+//RegEx source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+// const joinEmail = document.getElementById("joinEmail");
+const editEmail = (email = emailC.value.toLowerCase(), id = useDat.user_id, scroll = emailB) => {
+	if (email === "") { return; }
+	const valid = new RegExp(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+  if (!valid.test(email)) {
+  	alert('Please use a proper email address.');
+  	emailC.value = "";
+  	return;
+  }
+	fetch('http://localhost:3000/email', {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ id, email })
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			alert("There is a conflict with your information. Please try again.");
+			return;
+		}
+		response.json()
+		.then(data => {
+			emailC.value = "";
+			emailB.innerText = useDat.email = data;
+			// userAccount(useDat);
+			windowSzScrollText(scroll);
+		})
+	})
+	.catch(err => console.log("Bad email"));
+}
+// RegEx source: https://www.w3resource.com/javascript/form/password-validation.php
+const editPass = (pass = passC.value, id = useDat.user_id) => {
+	if (pass === "") { return; }
+	const valid = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/);
+  if (!valid.test(pass)) {
+  	alert('Password must contain 8-30 symbols, numbers, and letters (upper and lowercase).');
+  	passC.value = "";
+  	return;
+  }
+	fetch('http://localhost:3000/pass', {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ id, pass })
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			alert("There is a conflict with your information. Please try again.");
+			return;
+		}
+		response.json()
+		.then(data => {
+			passC.value = "";
+		})
+	})
+	.catch(err => console.log("Bad Password"));
+}
+// RegEx source: https://www.regextester.com/96605
+const initUser = () => {
+	const iUser = [{
+		errMsg: "Bad name",
+		id: useDat.user_id,
+		input: nameC,
+		invalid: "Please enter your full name.",
+		rgExp: new RegExp(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s/),
+		scroll: nameB,
+		update: 'name',
+		urlSrv: "http://localhost:3000/name"
+	},
+	{
+		errMsg: "Bad phone number",
+		id: useDat.user_id,
+		input: phoneC,
+		invalid: "Please enter a 10-digit phone number ie: 123-456-7890.",
+		rgExp: new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/),
+		scroll: phoneB,
+		update: 'phone',
+		urlSrv: "http://localhost:3000/iphone"
+	},
+	{
+		errMsg: "Bad card information",
+		id: useDat.user_id,
+		input: payC,
+		invalid: "Please enter a valid card number.",
+		rgExp: new RegExp(/<(|\/|[^\/>][^>]+|\/[^>][^>]+)>/),
+		scroll: payB,
+		update: 'pay',
+		urlSrv: "http://localhost:3000/payment"
+	}
+];
+	return(iUser);
+}
+
+const editInput = (user) => {
+	console.log(`id: ${user.id}\ninput: ${user.input.value}\ninvalid: ${user.invalid}\nregExp: ${user.rgExp}\nscroll: ${user.scroll.id}\nupdate: ${user.update}\nurlSrv: ${user.urlSrv}`);
+
+	if (user.input.value === "") { return; }
+	const valid = new RegExp(user.rgExp);
+	if (!valid.test(user.input.value)) {
+		alert(user.invalid);
+		user.input.value = "";
+		return;
+	}
+	fetch(user.urlSrv, {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ id: user.id, input: user.input.value })
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			input.value = "";
+			alert("There is a conflict with your information. Please try again.");
+			return;
+		}
+		response.json()
+		.then(data => {
+			// console.log(data);	// console.log(user.scroll.innerText);
+			user.scroll.innerText = data;
+			user.input.value = ""; 
+			// userAccount(useDat);
+		})
+	})
+	.catch(err => console.log(user.errMsg));
+}
+//RegExp source: https://stackoverflow.com/questions/16699007/regular-expression-to-match-standard-10-digit-phone-number
+const editPhone = (phone = phoneC.value, id = useDat.user_id, scroll = phoneB) => {
+	if (phone === "") { return; }
+	const valid = new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
+  if (!valid.test(phone)) {
+  	alert('Please enter a 10-digit phone number ie: 123-456-7890.');
+  	phoneC.value = "";
+  	return;
+  }
+
+	fetch('http://localhost:3000/phone', {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ id, phone })
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			alert("There is a conflict with your information. Please try again.");
+			return;
+		}
+		response.json()
+		.then(data => {
+			phoneC.value = "";
+			useDat.phone = data;
+			userAccount(useDat);
+		})
+	})
+	.catch(err => console.log("Bad phone number"));
+}
 /********************************************/
 /* load products */
 /********************************************/
-const getProducts = fetch("http://jens747.github.io/portfolio/orange/spices.json")
-	.then(response => response.json())
-	.then(resolve => {
-		console.log(resolve);
-});
-
 const getProds = () => {
 	fetch("http://localhost:3000/spicy")
 	.then(response => response.json())
@@ -303,6 +528,11 @@ const printProds = (prodArObj) => {
 
 const scrollToTop = (element) => {
 	element.scrollTo(0,0);
+}
+
+const scrollToLeft = (element) => {
+	for(i = 0; i < 500; i++)
+		setTimeout(() => element.scrollTo(i, 0), 1000);
 }
 
 /********************************************/
