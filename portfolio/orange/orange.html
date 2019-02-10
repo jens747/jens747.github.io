@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>orange</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="auto-complete.css">
 	<link rel="stylesheet" type="text/css" href="orange.css">
 </head>
 <body class="image-container">
@@ -25,25 +21,37 @@
 	<div id="credsDiv">
 		<div id="credsForm">
 			<ul id="creds-ul">
-				<div class="creds">
-					<button class="abs-pos credsBtn" id="join">
+				<div class="creds"> <!-- onclick="select(credsDiv), select(credsForm)"> -->
+					<button class="abs-pos credsBtn" id="join" 
+						onclick="openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm) 
+							addCursor(joinEmail)
+						"
+					>
 						Join
 					</button>
 				</div>
-				<div class="creds">
-					<button class="abs-pos credsBtn" id="login">
+				<div class="creds"> <!-- onclick="select(credsDiv), select(credsForm)"> -->
+					<button class="abs-pos credsBtn" id="login" 
+						onclick="openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm) 
+							addCursor(loginEmail)
+						"
+					>
 						Log in
 					</button>
 				</div>
-				<div class="abs-pos creds" id="loDiv">
-					<button class="abs-pos credsBtn" id="logout">
+				<div class="abs-pos creds" id="loDiv"> <!-- onclick="select(credsDiv), select(credsForm)"> -->
+					<button class="abs-pos credsBtn" id="logout" 
+						onclick="openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm,logoutDiv)
+						"
+					>
 						Log Out
 					</button>
 				</div>
 			</ul>
 			<!-- Join form -->
 			<div class="abs-pos panel-container join-login" id="joinDiv">
-				<form class="abs-pos form-div" id="joinForm"> 
+				<form class="abs-pos form-div" id="joinForm">
+					<!-- <h3 id="joinInput">This feature is not yet available.</h3> -->
 					<h3 class="form-input">
 						Username: 
 						<input class="form-info" id="joinEmail" type="email" name="username" placeholder="email">
@@ -58,12 +66,12 @@
 					</h3>
 					<div class="form-input">
 						<input 
-								class="formBtn" 
-								id="joinBtn" 
-								type="button" 
-								value="Join" 
-								name="Join"
-							>
+							class="formBtn" 
+							id="joinBtn" 
+							type="button" 
+							value="Join" 
+							name="Join"
+							onclick="joinUser()">
 					</div>
 				</form>
 			</div>
@@ -83,12 +91,13 @@
 					</h3>
 					<div class="form-input">
 						<input 
-								class="formBtn" 
-								id="loginBtn" 
-								type="button" 
-								value="Log in" 
-								name="Log in"
-							>
+							class="formBtn" 
+							id="loginBtn" 
+							type="button" 
+							value="Log in" 
+							name="Log in"
+							onclick="loginUser()
+								">
 								<!-- windowSzScrollText(nameB),
 									windowSzScrollText(addrB) -->
 					</div>
@@ -104,12 +113,12 @@
 					<h3 class="form-input">You are logged in!</h3>
 					<div class="form-input">
 						<input 
-								class="formBtn" 
-								id="logoutBtn" 
-								type="button" 
-								value="Log out" 
-								name="Log out"
-							>
+							class="formBtn" 
+							id="logoutBtn" 
+							type="button" 
+							value="Log out" 
+							name="Log out"
+							onclick="loginUser()">
 					</div>
 				</form>
 			</div>
@@ -119,39 +128,57 @@
 	<div class="container">
 		<div class="abs-pos" id="shopping-bag">
 			<div class="abs-pos scroll-panel" id="scroll-shopping">
-
-			</div>
-			<div class="abs-pos" id="review">
-				<p class="shopping-txt in-stock" id="review-txt">*Review and complete your order.</p>
-				<div class="shopping-txt" id="review-calc">
-					<p class="review-p" id="review-sub">subtotal: $<span class="review-span" id="sub-span">13.58</span></p>
-					<p class="review-p">ship: <span class="review-span" id="ship-span">5.99</span></p>
-					<p class="review-p">tax: <span class="review-span" id="tax-span">1.15</span></p>
-					<h3 class="review-p" id="review-h">$<span class="review-span" id="tot-span">20.72</span></h3>
+				<div class="panel-container sm-panel">
+					<div class="shopping1">
+						<img class="abs-pos shopping-img" src="https://images.pexels.com/photos/47046/cinnamon-stick-cinnamon-powder-spice-flavoring-47046.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+						<p class="abs-pos shopping-wgt">2 oz.</p>
+					</div>
+					<div class="shopping2">
+						<h1 class="shopping-txt item-price">$14.98</h1>
+						<p class="shopping-txt in-bag">
+							<input 
+								class="shopping-num in-bag" 
+								type="number" 
+								name="cin-amt" 
+								value="2" 
+								disabled="disabled"
+							>
+							 in bag
+						</p>					
+						<p class="shopping-txt in-stock">
+							<input 
+								class="shopping-num in-stock" 
+								type="number" 
+								name="cin-amt" 
+								value="498" 
+								disabled="disabled"
+							>
+							 in stock
+						</p>
+					</div>
+					<div class="shopping3">
+						<h1 class="panel-title shopping-head">Cinnamon</h1>
+					</div>
+					<button class="abs-pos sm-btn in-trash">
+						<img class="sm-btn-img trash-img" src="../orange/images/trash-moc-32-iconsdb.png" alt="remove item">
+					</button>
 				</div>
-				<div class="abs-pos review-btn-cls" id="review-checkout">
-					<!-- https://fontawesome.com/icons/shopping-cart?style=solid -->
-					<i class="fas fa-shopping-cart review-color" id="review-order"></i>
-					<p class="abs-pos review-color" id="review-buy">Buy</p>
-				</div>
-				<div class="abs-pos review-btn-cls review-join-login" id="review-join">
-					Join
-				</div>
-				<div class="abs-pos review-btn-cls review-join-login" id="review-login">
-					Log in
-				</div>
+				<div class="panel-container sm-panel"></div>
+				<div class="panel-container sm-panel"></div>
+				<div class="panel-container sm-panel"></div>
+				<div class="panel-container sm-panel"></div>
 			</div>
 		</div>
 	</div>
-	<div class="abs-pos" id="cart">
-		<img src="../orange/images/cart-moc12-128-iconsdb.png" alt="shopping bag" height="72px" width="72px">
-		<input class="abs-pos review-color" id="cart-amt" type="number" name="cart-amt" value="0" disabled="disabled">
+	<div class="abs-pos" id="cart" onclick="openMenus('open', this, shoppingBag)">
+		<img src="../orange/images/cart-moc-12-iconsdb.png" alt="shopping bag" height="72px" width="72px">
+		<input class="abs-pos" id="cart-amt" type="number" name="cart-amt" value="0" disabled="disabled">
 	</div>
 
 	<div class="container">
-		<div class="abs-pos panels max-con" id="products-panel">
+		<div class="abs-pos panels" id="products-panel">
 			<!-- scroll-products id not used, or similar id's -->
-			<div class="abs-pos scroll-panel max-con" id="scroll-products">
+			<div class="abs-pos scroll-panel" id="scroll-products">
 				<!-- <div class="panel-container">
 					<div class="abs-pos panel-header">
 						<p class="panel-p weight-p">2 oz.</p>
@@ -208,53 +235,51 @@
 	</div>
 
 	<div class="container">
-		<div class="abs-pos panels max-con" id="orders-panel">
-			<div class="abs-pos scroll-panel max-con" id="scroll-orders">
-				<div class="abs-pos panel-container" id="orders-msg">
-					<h3 class="form-input">Please log in to view your orders.</h3>
-				</div>
-				<div class="panel-container" id="load-orders-panel">
-					<div id="divo-orders">
-						<h3 id="o-orders1">/</h3>
-						<h3 id="o-orders2">/</h3>
-						<h3 id="o-orders3">/</h3>
-						<h3 id="o-orders4">/</h3>
-					</div>
-					<div class="abs-pos" id="divh-orders">
-						<h2 id="h-orders">Loading</h2>
-					</div>
-					
+		<div class="abs-pos panels" id="orders-panel">
+			<div class="abs-pos scroll-panel" id="scroll-orders">
+				<div class="panel-container">
+
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="container">
-		<div class="abs-pos panels max-con" id="account-panel">
-			<div class="abs-pos scroll-panel max-con" id="scroll-account">
+		<div class="abs-pos panels" id="account-panel">
+			<div 
+					class="abs-pos scroll-panel" 
+					id="scroll-account"
+					onscroll="scrollText(this, addrB, 99)"
+				>
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1 nameX nameZ" id="nameA"></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="nameA"></div>
 					<div class="abs-pos sm-panel-container">
 						<div class="abs-pos sm-panel-overflow">
 							<div class="sm-panel-scroll">
-								<p class="sm-panel-title sm-panel-text sm-data nameX nameZ" id="nameB">
+								<p class="sm-panel-title sm-panel-text sm-data" id="nameB">
 									Add your name
 								</p>
 							</div>
 						</div>
 						<input 
-								class="abs-pos sm-panel-info nameX nameZ" 
+								class="abs-pos sm-panel-info" 
 								id="nameC" 
 								type="text" 
 								name="name"
 								placeholder="change name" 
 							>
-						<div class="abs-pos btn-container editClick nameZ" id="nameD1">
+						<div class="abs-pos btn-container editClick" id="nameD1" 
+								onclick="editAccounts(this, nameA, nameB, nameC, nameD2) 
+									addCursor(nameC)"
+							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick nameX" id="nameD2">
+						<div class="abs-pos btn-container saveClick" id="nameD2" 
+								onclick="editAccounts(this, nameA, nameB, nameC, nameD1) 
+									editInput(uEdit[0])"
+							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
@@ -265,30 +290,36 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1 emailX emailZ" id="emailA"></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="emailA"></div>
 					<div class="abs-pos sm-panel-container">
-						<div class="abs-pos sm-panel-overflow">
+						<div class="abs-pos sm-panel-overflow" 
+								onchange="windowSzScrollText(emailB)"
+							>
 							<div class="sm-panel-scroll">
-								<p class="sm-panel-title sm-panel-text sm-data emailX emailZ" 
-										id="emailB"
-									>
+								<p class="sm-panel-title sm-panel-text sm-data" id="emailB">
 									email@example.com
 								</p>
 							</div>
 						</div>
 						<input 
-								class="abs-pos sm-panel-info emailX emailZ" 
+								class="abs-pos sm-panel-info" 
 								id="emailC" 
 								type="email" 
 								name=""
 								placeholder="update email"  
 							>
-						<div class="abs-pos btn-container editClick emailZ" id="emailD1">
+						<div class="abs-pos btn-container editClick" id="emailD1" 
+								onclick="editAccounts(this, emailA, emailB, emailC, emailD2) 
+									addCursor(emailC)"
+							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick emailX" id="emailD2">
+						<div class="abs-pos btn-container saveClick" id="emailD2" 
+								onclick="editAccounts(this, emailA, emailB, emailC, emailD1)
+									editEmail()"
+							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
@@ -299,28 +330,34 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1 passX passZ" id="passA"></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="passA"></div>
 					<div class="abs-pos sm-panel-container">
 						<div class="abs-pos sm-panel-overflow">
 							<div class="sm-panel-scroll">
-								<p class="sm-panel-title sm-panel-text sm-data passX passZ" id="passB">
+								<p class="sm-panel-title sm-panel-text sm-data" id="passB">
 									********
 								</p>
 							</div>
 						</div>
 						<input 
-								class="abs-pos sm-panel-info passX passZ" 
+								class="abs-pos sm-panel-info" 
 								id="passC" 
 								type="password" 
 								name=""
 								placeholder="reset password" 
 							>
-						<div class="abs-pos btn-container editClick passZ" id="passD1">
+						<div class="abs-pos btn-container editClick" id="passD1" 
+								onclick="editAccounts(this, passA, passB, passC, passD2) 
+									addCursor(passC)"
+							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick passX" id="passD2">
+						<div class="abs-pos btn-container saveClick" id="passD2" 
+								onclick="editAccounts(this, passA, passB, passC, passD1)
+									editPass()"
+							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
@@ -331,41 +368,33 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1 addrX addrZ" id="addrA"></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="addrA"></div>
 					<div class="abs-pos sm-panel-container">
 						<div class="abs-pos sm-panel-overflow">
 							<div class="sm-panel-scroll">
-								<p class="sm-panel-title sm-panel-text sm-data addrX addrZ" id="addrB">
+								<p class="sm-panel-title sm-panel-text sm-data" id="addrB">
 									Update your address
 								</p>
 							</div>
 						</div>
 						<input 
-								class="abs-pos sm-panel-info addrX addrY" 
+								class="abs-pos sm-panel-info" 
 								id="addrC" 
 								type="text" 
 								name=""
-								placeholder="enter City or Zip code" 
+								placeholder="change address" 
 							>
-						<input 
-								class="abs-pos sm-panel-info addrY addrZ" 
-								id="addrE" 
-								type="text" 
-								name=""
-								placeholder="enter street address" 
+						<div class="abs-pos btn-container editClick" id="addrD1" 
+								onclick="editAccounts(this, addrA, addrB, addrC, addrD2)
+									addCursor(addrC)"
 							>
-						<div class="abs-pos btn-container editClick addrZ" id="addrD1">
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container fwdClick addrX" id="addrD3">
-							<button class="abs-pos sm-btn fwder">
-								<!-- https://fontawesome.com/icons/angle-right?style=solid -->
-								<i class="fas fa-angle-right"></i>
-							</button>
-						</div>
-						<div class="abs-pos btn-container saveClick addrY" id="addrD2">
+						<div class="abs-pos btn-container saveClick" id="addrD2" 
+								onclick="editAccounts(this, addrA, addrB, addrC, addrD1)"
+							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
@@ -376,24 +405,24 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1 payX payZ" id="payA"></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="payA"></div>
 					<div class="abs-pos sm-panel-container">
 						<div class="abs-pos sm-panel-overflow">
 							<div class="sm-panel-scroll">
-								<p class="sm-panel-title sm-panel-text sm-data payX payZ" id="payB">
+								<p class="sm-panel-title sm-panel-text sm-data" id="payB">
 									**65 12/22
 								</p>
 							</div>
 						</div>
 						<input 
-								class="abs-pos sm-panel-info payY payZ" 
+								class="abs-pos sm-panel-info" 
 								id="payC" 
 								type="text" 
-								name="cc_no"
+								name=""
 								placeholder="update credit card" 
 							>
-						<div class="abs-pos">
-							<select class="nextPay payX payY" id="payE" name="exp_mo">
+						<div class="abs-pos sm-panel-container">
+							<select class="nextPay" id="payE">
 								<option value="0" selected>Month</option>
 								<option value="1">1 - Jan</option>
 								<option value="2">2 - Feb</option>
@@ -408,34 +437,28 @@
 								<option value="11">11 - Nov</option>
 								<option value="12">12 - Dec</option>
 							</select>
-							<select class="nextPay payX payY" id="payF" name="exp_yr">
+							<select class="nextPay" id="payF">
 								<option value="0" selected>Year</option>
-								<option value="19">2019</option>
-								<option value="20">2020</option>
-								<option value="21">2021</option>
-								<option value="22">2022</option>
-								<option value="23">2023</option>
-								<option value="24">2024</option>
-								<option value="25">2025</option>
-								<option value="26">2026</option>
-								<option value="27">2027</option>
-								<option value="28">2028</option>
-								<option value="29">2029</option>
-								<option value="30">2030</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</23option>
+								<option value="2024">2024</option>
 							</select>
-							<input class="nextPay payX payY" id="payG" type="text" name="sec_no" placeholder="CVV" maxlength="3">
+							<input class="nextPay" id="payG" type="text" name="sec_no">
 						</div>
-						<div class="abs-pos btn-container editClick payZ" id="payD1">
+						
+						<div class="abs-pos btn-container editClick" id="payD1" 
+								onclick="editAccounts(this, payA, payB, payC, payD2) 
+									addCursor(payC)"
+							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container fwdClick payX" id="payD3">
-							<button class="abs-pos sm-btn fwder">
-								<i class="fas fa-angle-right"></i>
-							</button>
-						</div>
-						<div class="abs-pos btn-container saveClick payY" id="payD2">
+						<div class="abs-pos btn-container saveClick" id="payD2" 
+								onclick="editAccounts(this, payA, payB, payC, payD1)">
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
@@ -446,30 +469,34 @@
 				</div>
 
 				<div class="panel-container sm-panel">
-					<div class="abs-pos xs-panels xs-panel-1 phoneX phoneZ" id="phoneA"></div>
+					<div class="abs-pos xs-panels xs-panel-1" id="phoneA"></div>
 					<div class="abs-pos sm-panel-container">
 						<div class="abs-pos sm-panel-overflow">
 							<div class="sm-panel-scroll">
-								<p class="sm-panel-title sm-panel-text sm-data phoneX phoneZ" 
-										id="phoneB"
-									>
+								<p class="sm-panel-title sm-panel-text sm-data" id="phoneB">
 									Add a phone number
 								</p>
 							</div>
 						</div>
 						<input 
-								class="abs-pos sm-panel-info phoneX phoneZ" 
+								class="abs-pos sm-panel-info" 
 								id="phoneC" 
 								type="phone" 
 								name=""
 								placeholder="update phone number"
 							>
-						<div class="abs-pos btn-container editClick phoneZ" id="phoneD1">
+						<div class="abs-pos btn-container editClick" id="phoneD1" 
+								onclick="editAccounts(this, phoneA, phoneB, phoneC, phoneD2) 
+									addCursor(phoneC)"
+							>
 							<button class="abs-pos sm-btn editor">
 								<img class="sm-btn-img" src="../orange/images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
-						<div class="abs-pos btn-container saveClick phoneX" id="phoneD2">
+						<div class="abs-pos btn-container saveClick" id="phoneD2" 
+								onclick="editAccounts(this, phoneA, phoneB, phoneC, phoneD1)
+									editInput(uEdit[1])"
+							>
 							<button class="abs-pos sm-btn saver">
 								<img class="sm-btn-img" src="../orange/images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
@@ -527,8 +554,8 @@
 	</div>
 
 	<div class="container">
-		<div class="abs-pos panels max-con" id="about-panel">
-			<div class="abs-pos scroll-panel max-con" id="scroll-about">
+		<div class="abs-pos panels" id="about-panel">
+			<div class="abs-pos scroll-panel" id="scroll-about">
 				<div class="panel-container">
 
 				</div>
@@ -537,11 +564,9 @@
 	</div>
 
 	<!-- arrows -->
-	<div class="abs-pos container" id="arrow-container">
-		<div class="abs-pos arrow-div max-con">
-			<div class="options arrows" id="left-arrow"></div>
-			<div class="options arrows" id="right-arrow"></div>
-		</div>
+	<div class="abs-pos arrow-div">
+		<div class="options arrows" id="left-arrow" onclick="cycleLeft()"></div>
+		<div class="options arrows" id="right-arrow" onclick="cycleRight()"></div>
 	</div>
 	
 	<!-- menu options container -->
@@ -549,35 +574,45 @@
 		<div class="abs-pos" id="op-overflow">	
 			<div class="op-div">
 				<a href="../index.html">
-					<h1 class="options op-events homeLoad" id="home">
+					<h1 class="options homeLoad" 
+							id="home" 
+							onmouseover="switchOptions(home)">
 						Home
 					</h1>
 				</a>
 			</div>
 			<div class="op-div">
 				<a href="#">
-					<h1 class="options op-events productsLoad" id="products">
+					<h1 class="options productsLoad" 
+							id="products" 
+							onmouseover="switchOptions(products)">
 						Products
 					</h1>
 				</a>
 			</div>
 			<div class="op-div">
 				<a href="#">
-					<h1 class="options op-events" id="orders">
+					<h1 class="options" 
+							id="orders" 
+							onmouseover="switchOptions(orders)">
 						Orders
 					</h1>
 				</a>
 			</div>
 			<div class="op-div">
 				<a href="#">
-					<h1 class="options op-events" id="account">
+					<h1 class="options" 
+							id="account" 
+							onmouseover="switchOptions(account)">
 						Account
 					</h1>
 				</a>
 			</div>
 			<div class="op-div">
 				<a href="#">
-					<h1 class="options op-events" id="about">
+					<h1 class="options" 
+							id="about" 
+							onmouseover="switchOptions(about)">
 						About
 					</h1>
 				</a>
@@ -595,37 +630,6 @@
 	<script type="text/javascript">
 			new CircleType(document.getElementById('coSubtitle'))
 				.radius(500);
-	</script>
-	<!-- JavaScript autoComplete v1.0.4 -->
-	<!-- https://github.com/Pixabay/JavaScript-autoComplete -->
-	<script type="text/javascript" src="auto-complete.min.js"></script>
-	<script type="text/javascript">
-		const loadUSAFile = () => {
-			fetch('http://localhost:3000/usaddr')
-			.then(response => {
-				if (response.status !== 200) 
-					return alert("Could not get data.");
-				response.json()
-				.then(cities => {
-						const checkAddr = new autoComplete({
-						selector: '#addrC',
-						minChars: 2,
-						source: function(term, suggest){
-					    	term = term.toLowerCase();
-					    	const choices = cities;
-					    	let matches = [];
-					    	for (i = 0; i < choices.length; i++)
-					      	if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-					    	suggest(matches);
-					    }
-					});
-				})
-			})
-			.catch(err => console.log("Try again."));
-		}
-
-		loadUSAFile();
-		// checkAddr.destroy();
 	</script>
 </body>
 </html>

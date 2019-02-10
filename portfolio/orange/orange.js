@@ -1,12 +1,12 @@
 /********************************************/
 /* displays join, login, bag menu when clicked */
 /********************************************/
-// 0.Class added, 1-2(required obj),>=5. adds class 3-4. removes class
+// 0.Class added, 1-2,>=5. adds class 3-4. removes class
 const openMenus = (...elements) => {
 	const list = elements.length;
 	const item = elements[0];
 	const elm1 = elements[1].classList;
-	const filtered = elements.filter(num => typeof num === 'object'); 
+	const filtered = elements.filter(num => typeof num === 'object');
 
 	if (list > 3 && elements[3] !== 0) 
 		filtered.splice(2, 2).map(num => num.classList.remove(item));
@@ -14,18 +14,6 @@ const openMenus = (...elements) => {
 	if (elm1.contains(item) === true
 		? filtered.map(num => num.classList.remove(item))
 		: filtered.map(num => num.classList.add(item)));
-}
-
-const addClasses = (cls, ...elm) => elm.map(list => list.classList.add(cls));
-const rmClasses = (cls, ...elm) => elm.map(list => list.classList.remove(cls));
-
-/********************************************/
-/* autoclick element if it has class and other does not */
-/********************************************/
-const classCheck = (e1, cls1, e2, cls2) => { 
-	if (e1.classList.contains(cls1) === true && e2.classList.contains(cls2) !== true) { 
-		e1.click();
-	}
 }
 
 /********************************************/
@@ -51,8 +39,6 @@ const createTile = (...elements) => {
 					break;
 				case 'eSrc':
 					newElm.src = elements[ix + 1];
-				case 'eAlt':
-					newElm.alt = elements[ix + 1];
 				case 'eType':
 					newElm.type = elements[ix + 1];
 					break;
@@ -73,13 +59,6 @@ const createTile = (...elements) => {
 	elmParent.appendChild(newElm);
 
 	return newElm;
-}
-
-const createEmptyTile = (referenceDiv, parentNode, classes, nodeType = "div") => { 
-	const newDiv = document.createElement(nodeType);
-	newDiv.classList = classes;
-	const insertDiv = parentNode.insertBefore(newDiv, referenceDiv);
-	setTimeout(() => parentNode.removeChild(newDiv), 512);
 }
 /********************************************/
 /* register user */
@@ -106,24 +85,23 @@ const joinUser = (email = joinEmail.value, pw = joinPass.value, pw2 = joinConfir
 		}
 		response.json()
 		.then(data => {
-			userData.user_id = data;
-			cartUserCheck();
-			userData.email = email;
-			// userData.cc_no = 'add payment info';
-			userData.joined = new Date();
-			// console.log(`userData: ${userData}, data: ${data}`);
-			console.log(userData);
-			console.log(`id: ${userData.user_id}, email: ${userData.email}, date: ${userData.joined}`);
-			// userData = data;
+			useDat.user_id = data;
+			useDat.email = email;
+			// useDat.cc_no = 'add payment info';
+			useDat.joined = new Date();
+			// console.log(`useDat: ${useDat}, data: ${data}`);
+			console.log(useDat);
+			console.log(`id: ${useDat.user_id}, email: ${useDat.email}, date: ${useDat.joined}`);
+			// useDat = data;
+			uEdit = initUser();
 			userIsLoggedIn(join, joinDiv);
-			// console.log(`uDat: ${userData}, d: ${data}`)
+			// console.log(`uDat: ${useDat}, d: ${data}`)
 			// openMenus('select', joinDiv, join, login, loginDiv, credsDiv, credsForm);
 			switchOptions(account); 
-			emailB.innerText = `${userData.email}`; 
-			bidB.innerText = `BB-1218-${userData.user_id.toString().padStart(5, '0')}`; 
-			boxB.innerText = `Ordered: ${new Intl.DateTimeFormat('en-US').format(userData.joined)}`; 
+			emailB.innerText = `${useDat.email}`; 
+			bidB.innerText = `BB-1218-${useDat.user_id.toString().padStart(5, '0')}`; 
+			boxB.innerText = `Ordered: ${new Intl.DateTimeFormat('en-US').format(useDat.joined)}`; 
 			// userAccount(data); 
-			setInMotion([nameB, emailB, addrB]);
 		})
 	})
 	.catch(err => console.log("Bad password"));
@@ -133,8 +111,8 @@ const joinUser = (email = joinEmail.value, pw = joinPass.value, pw2 = joinConfir
 /********************************************/
 const loginEmail = document.getElementById("loginEmail");
 const loginPass = document.getElementById("loginPass");
-let userData = {};
-console.log(userData);
+let useDat = {};
+console.log(useDat);
 
 const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 	// sending post of input to server
@@ -165,9 +143,9 @@ const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 			// 	console.log('you are logged in');
 			// 	console.log(`E: ${email}, P: ${pass}`);
 			console.log(data);
-			userData = data; 
-			cartUserCheck();
-			console.log(userData);
+			useDat = data;
+			uEdit = initUser();
+			console.log(useDat);
 			userIsLoggedIn(login, loginDiv);
 			switchOptions(account);
 			userAccount(data);
@@ -181,10 +159,17 @@ const userIsLoggedIn = (menu, menuDiv) => {
 	openMenus('select', loDiv, logoutDiv);
 	if (loDiv.classList.contains('select') === true) {
 		setTimeout(() => 
-			openMenus('select', menu, menuDiv, 0, 0, credsDiv, credsForm, logoutDiv), 1000
+			openMenus('select',menu, menuDiv, 0, 0, credsDiv, credsForm,logoutDiv), 1000
 		);
 	}
-} 
+}
+
+// const userAccount = (...data) => {
+// 	const accountPanel = document.getElementById("account-panel");
+// 	data.map((user, idx) => {
+// 		createTile(accountPanel, 'p', 'eText', `${user.fname} ${user.lname}`, 'eClass', 'panel-title');
+// 	});	
+// }
 
 const thisOrThat = (d, str1, str2) => {
 	if ((str1 !== str2 && d !== 0) ? v = str1 : v = str2);
@@ -211,8 +196,8 @@ const trimData = (len, data) => {
 	return s;
 }
 
-async function editAccounts(...element) { 
-	await element.map(num => openMenus('select', num));
+async function editAccounts(...e) { 
+	await openMenus('select', e[0], e[1], 0, 0, e[2], e[3], e[4]);
 }
 
 const scrollText = (scrollBox, contents, scrollMax) => {
@@ -242,207 +227,157 @@ const addCursor = (elm = passC) => 	elm.select();
 /********************************************/
 /* edit user */
 /********************************************/
-const validateCC = (num) => {
-	const type1 = parseInt(num, 10);
-	// const type2 = Number(num);
-	(type1 >= 5.1e15 && type1 < 5.6e15)
-		? card_co = 'MSCD'
-		: ((type1 >= 3.4e14 && type1 < 3.5e14) || (type1 >= 3.7e14 && type1 < 3.8e14))
-		? card_co = 'AMEX'
-		: ((type1 >= 4e12 && type1 < 5e12) || (type1 >= 4e15 && type1 < 5e15))
-		? card_co = 'VISA'
-		: ((type1 >= 5e14 && type1 < 6e14) || (type1 >= 6.011e15 && type1 < 7e15))
-		? card_co = 'DISC'
-		: ((type1 >= 3e13 && type1 < 3.06e13) 
-				|| (type1 >= 3.6e13 && type1 < 3.7e13) 
-				|| (type1 >= 3.8e13 && type1 < 3.9e13))
-		? card_co = 'CLUB'
-		: ((type1 >= 1.8e14 && type1 < 1.801e14) 
-				|| (type1 >= 2.131e14 && type1 < 2.132e14) 
-				|| (type1 >= 3.5e15 && type1 < 3.6e15))
-		? card_co = 'JCB'
-		:card_co = 'INVALID'; 
-	if (validateAlg(num) > 0) { card_co = 'INVALID' };
-	return card_co;
-}
-// check card or account validity with Luhn algorithm
-const validateAlg = (card) => {
-		tot = sum = 0;
-		even = false;
-		// for (i = card.length - 1; i >= 0; i--) {
-		while (card != 0) {
-			tot = card % 10;
-			card = Number(parseInt(card / 10));
-			if (even) {
-				tot *= 2;
-				if (tot > 9) {
-					// tot = (tot % 10) + 1;
-					tot -= 9;
-				}	
-			} 
-			sum += tot;
-			even = !even;
+//RegEx source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+// const joinEmail = document.getElementById("joinEmail");
+const editEmail = (email = emailC.value.toLowerCase(), id = useDat.user_id, scroll = emailB) => {
+	if (email === "") { return; }
+	const valid = new RegExp(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+  if (!valid.test(email)) {
+  	alert('Please use a proper email address.');
+  	emailC.value = "";
+  	return;
+  }
+	fetch('http://localhost:3000/email', {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ id, email })
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			alert("There is a conflict with your information. Please try again.");
+			return;
 		}
-		return sum % 10;
+		response.json()
+		.then(data => {
+			emailC.value = "";
+			emailB.innerText = useDat.email = data;
+			// userAccount(useDat);
+			windowSzScrollText(scroll);
+		})
+	})
+	.catch(err => console.log("Bad email"));
 }
-
-class Account {
-	constructor(errMsg, invalid, rgExp, scroll, urlSrv, alpha, beta, chi, delta, epsilon, phi) {
-		this.errMsg = errMsg; 
-		this.invalid = invalid; 
-		this.rgExp = rgExp; 
-		this.scroll = scroll; 
-		this.urlSrv = urlSrv; 
-		this.alpha = alpha; 
-		this.beta = beta; 
-		this.chi = chi; 
-		this.delta = delta; 
-		this.epsilon = epsilon; 
-		this.phi = phi; 
-	}
-	add() { return this.scroll.innerText = this.alpha.value; }
-	check() { return (this.alpha.value === ""); }
-	clear() { return this.alpha.value = ""; }
-	supply() { return JSON.stringify({ id: userData.user_id, input: this.alpha.value }); }
-	validate() { return this.rgExp.test(this.alpha.value); }
-}
-
-class Pass extends Account {
-	constructor(errMsg, invalid, rgExp, scroll, urlSrv, alpha, beta, chi, delta, epsilon, phi) {
-		super(errMsg, invalid, rgExp, scroll, urlSrv, alpha, beta, chi, delta, epsilon, phi);
-	}
-	add() { return this.scroll.innerText = '********'; }
-}
-
-class Address extends Account {
-	constructor(errMsg, invalid, rgExp, scroll, urlSrv, alpha, beta, chi, delta, epsilon, phi) {
-		super(errMsg, invalid, rgExp, scroll, urlSrv, alpha, beta, chi, delta, epsilon, phi);
-	}
-	add() { return this.scroll.innerText = `${this.beta.value}, ${this.alpha.value}`; }
-	check() { return (this.alpha.value === "" || this.beta.value === ""); }
-	clear() { return this.alpha.value = this.beta.value = ""; }
-	supply() {
-		return JSON.stringify({ id: userData.user_id, cities: this.alpha.value, street: this.beta.value })
-	}
-	validate() { return this.rgExp.test(this.beta.value); }
-}
-
-class Pay extends Account {
-	constructor(errMsg, invalid, rgExp, scroll, urlSrv, alpha, beta, chi, delta, epsilon, phi) {
-		super(errMsg, invalid, rgExp, scroll, urlSrv, alpha, beta, chi, delta, epsilon, phi);
-	}
-	add() { 
-		return this.scroll.innerText 
-		=`**${trimData(2, this.alpha.value)} ${this.beta.value}/${this.chi.value} ${card_co}`; 
-	}
-	clear() { 
-		this.alpha.value = this.delta.value = ""; 
-		this.beta.value = this.chi.value = 0;
-		return;
-	}
-	supply() { 
-		console.log('supply');
-		return JSON.stringify({ 
-			id: userData.user_id, 
-			cc_no: this.alpha.value, 
-			exp_mo: this.beta.value, 
-			exp_yr: this.chi.value, 
-			sec_no: this.delta.value, 
-			card_co: validateCC(this.alpha.value) 
-		}); }
-	validate() { 
-		let valid = false;
-		(validateCC(this.alpha.value) === 'INVALID' || this.delta.value.length !== 3)
-			? valid = false
-			: valid = true; 
-		return valid;
-	}
+// RegEx source: https://www.w3resource.com/javascript/form/password-validation.php
+const editPass = (pass = passC.value, id = useDat.user_id) => {
+	if (pass === "") { return; }
+	const valid = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/);
+  if (!valid.test(pass)) {
+  	alert('Password must contain 8-30 symbols, numbers, and letters (upper and lowercase).');
+  	passC.value = "";
+  	return;
+  }
+	fetch('http://localhost:3000/pass', {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ id, pass })
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			alert("There is a conflict with your information. Please try again.");
+			return;
+		}
+		response.json()
+		.then(data => {
+			passC.value = "";
+		})
+	})
+	.catch(err => console.log("Bad Password"));
 }
 // RegEx source: https://www.regextester.com/96605
-const nameUser = new Account(
-		"Bad name", 
-		"Please enter your full name.", 
-		new RegExp(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s/), 
-		nameB, 
-		"http://localhost:3000/name", 
-		nameC, 
-	);
-//RegEx source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-const emailUser = new Account(
-		'Bad email', 
-		'Please use a proper email address.', 
-		new RegExp(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/), 
-		emailB, 
-		'http://localhost:3000/email', 
-		emailC, 
-	);
-// RegEx source: https://www.w3resource.com/javascript/form/password-validation.php
-const passUser = new Pass(
-		'Bad password', 
-		'Password must use 8-30 symbols, numbers, and letters (upper and lowercase).', 
-		new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/), 
-		passB, 
-		'http://localhost:3000/pass', 
-		passC, 
-	);
-// RegEx source: https://www.regextester.com/93592
-const addrUser = new Address(
-		'Bad address', 
-		'Please enter a proper street address.',
-		// new RegExp(/^\d+\s[A-z]+\s[A-z]+/),
-		new RegExp(/^\d+\s[A-z]+\s[A-z]|\d+\s[A-z]+|\s[A-z]+/),
-		addrB,
-		'http://localhost:3000/address',
-		addrC,	//alpha	- cities
-		addrE,	//beta - street
-	);
-const payUser = new Pay (
-		"Bad card information", 
-		"Please enter a valid card number.", 
-		new RegExp(/<(|\/|[^\/>][^>]+|\/[^>][^>]+)>/), 
-		payB, //score - card
-		"http://localhost:3000/pay", 
-		payC, //alpha - num
-		payE, //beta - mo
-		payF, //chi - yr
-		payG, //delta - sec
-	);
-//RegExp source: https://stackoverflow.com/questions/16699007/regular-expression-to-match-standard-10-digit-phone-number
-const phoneUser = new Account(
-		"Bad phone number", 
-		"Please enter a 10-digit phone number ie: 123-456-7890.", 
-		new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/), 
-		phoneB, 
-		"http://localhost:3000/phone", 
-		phoneC, 
-	);
+const initUser = () => {
+	const iUser = [{
+		errMsg: "Bad name",
+		id: useDat.user_id,
+		input: nameC,
+		invalid: "Please enter your full name.",
+		rgExp: new RegExp(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s/),
+		scroll: nameB,
+		update: 'name',
+		urlSrv: "http://localhost:3000/name"
+	},
+	{
+		errMsg: "Bad phone number",
+		id: useDat.user_id,
+		input: phoneC,
+		invalid: "Please enter a 10-digit phone number ie: 123-456-7890.",
+		rgExp: new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/),
+		scroll: phoneB,
+		update: 'phone',
+		urlSrv: "http://localhost:3000/iphone"
+	},
+	{
+		errMsg: "Bad card information",
+		id: useDat.user_id,
+		input: payC,
+		invalid: "Please enter a valid card number.",
+		rgExp: new RegExp(/<(|\/|[^\/>][^>]+|\/[^>][^>]+)>/),
+		scroll: payB,
+		update: 'pay',
+		urlSrv: "http://localhost:3000/payment"
+	}
+];
+	return(iUser);
+}
 
-const editInput = (user = userAddr) => {
-	if (user.check()) { return alert("Please enter some information."); }
-	if (!user.validate()) {
-		user.clear();
-		return alert(user.invalid);
+const editInput = (user) => {
+	console.log(`id: ${user.id}\ninput: ${user.input.value}\ninvalid: ${user.invalid}\nregExp: ${user.rgExp}\nscroll: ${user.scroll.id}\nupdate: ${user.update}\nurlSrv: ${user.urlSrv}`);
+
+	if (user.input.value === "") { return; }
+	const valid = new RegExp(user.rgExp);
+	if (!valid.test(user.input.value)) {
+		alert(user.invalid);
+		user.input.value = "";
+		return;
 	}
 	fetch(user.urlSrv, {
 		method: 'put',
 		headers: {'Content-Type': 'application/json'},
-		body: user.supply()
+		body: JSON.stringify({ id: user.id, input: user.input.value })
 	})
 	.then(response => {
 		if (response.status !== 200) {
-			user.clear();
-			return alert("There is a conflict with your information. Please try again.");
+			input.value = "";
+			alert("There is a conflict with your information. Please try again.");
+			return;
 		}
 		response.json()
-		.then(data => { 
-			user.add();
-			user.clear(); 
-			if (user.scroll.innerText.length > 24) 
-				setTimeout(() => user.scroll.classList.add('scroll'), 2000); 
-			return;
+		.then(data => {
+			// console.log(data);	// console.log(user.scroll.innerText);
+			user.scroll.innerText = data;
+			user.input.value = ""; 
+			// userAccount(useDat);
 		})
 	})
 	.catch(err => console.log(user.errMsg));
+}
+//RegExp source: https://stackoverflow.com/questions/16699007/regular-expression-to-match-standard-10-digit-phone-number
+const editPhone = (phone = phoneC.value, id = useDat.user_id, scroll = phoneB) => {
+	if (phone === "") { return; }
+	const valid = new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
+  if (!valid.test(phone)) {
+  	alert('Please enter a 10-digit phone number ie: 123-456-7890.');
+  	phoneC.value = "";
+  	return;
+  }
+
+	fetch('http://localhost:3000/phone', {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ id, phone })
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			alert("There is a conflict with your information. Please try again.");
+			return;
+		}
+		response.json()
+		.then(data => {
+			phoneC.value = "";
+			useDat.phone = data;
+			userAccount(useDat);
+		})
+	})
+	.catch(err => console.log("Bad phone number"));
 }
 /********************************************/
 /* load products */
@@ -461,6 +396,18 @@ const getProds = () => {
 	});
 }
 
+// const loadProducts = new Promise((resolve, reject) => {
+// 	if (true) {
+// 		resolve(getProducts);
+// 	} else {
+// 		reject("Error");
+// 	}
+// });
+
+// loadProducts
+// 	.then(result => console.log(result))
+// 	.catch(console.log);
+
 const scrollProducts = document.querySelector("#scroll-products");
 let boolProds = false;
 
@@ -475,12 +422,7 @@ const printProds = (prodArObj) => {
 			newDiv1, 'h1', 'eText', spice.name, 'eClass', 'abs-pos panel-title');
 		
 		const newImg = createTile(
-				newDiv1, 'img', 
-				'eClass', 'panel-img', 
-				'eId', spice.imgId, 
-				'eSrc', spice.img, 
-				'eAlt', spice.name
-			);
+			newDiv1, 'img', 'eClass', 'panel-img', 'eId', spice.imgId, 'eSrc', spice.img);
 
 		const newDiv2 = createTile(newDiv1, 'div', 'eClass', 'abs-pos panel-header');
 
@@ -540,8 +482,7 @@ const printProds = (prodArObj) => {
 
 		const newInput1 = createTile(
 				newDiv4, 'input',
-				// 'eText', spice.amtId,
-				'eText', spice.id,
+				'eText', spice.amtId,
 				// 'eClass', 'form-btn',
 				// 'eClass', 'input-amt',
 				'eClass', 'form-btn input-amt',
@@ -597,21 +538,11 @@ const scrollToLeft = (element) => {
 /********************************************/
 /* update products in cart */
 /********************************************/
-let shoppingList = [];
 const subBtn = document.getElementsByClassName("sub-btn");
 const addBtn = document.getElementsByClassName("add-btn");
 const cart = document.getElementById("cart");
-const smPanel = document.querySelectorAll(".sm-panel");
-const scrollShopping = document.getElementById('scroll-shopping');
 const shoppingBag = document.getElementById("shopping-bag");
 const itemsInCart = document.getElementById("cart-amt");
-
-const review = document.querySelector("#review"); 
-const reviewSpan = document.querySelectorAll(".review-span"); 
-const totSpan = document.querySelector("#tot-span");
-const reviewCheckout = document.getElementById("review-checkout"); 
-const reviewJoin = document.getElementById("review-join"); 
-const reviewLogin = document.getElementById("review-login"); 
 
 const subProduct = (event) => {
 	let amount = event.target.nextElementSibling;
@@ -631,215 +562,13 @@ const saveProduct = (event) => {
 	// button changes to remove or saved?
 }
 
-let alertMsg = true;
-
-const cartUserCheck = () => {
-	if (Object.entries(userData).length === 0 && userData.constructor === Object) {
-		if (alertMsg) {
-			alertMsg = false;
-			alert("Please register or login to complete your order."); 
-		}
-		if (reviewJoin.classList.contains('show') === false) {
-			openMenus('show', reviewJoin, reviewLogin, reviewCheckout); 
-		} 
-	} else {
-		if (reviewCheckout.classList.contains('show') === false) {
-			openMenus('show', reviewCheckout, reviewCheckout, reviewJoin, reviewLogin); 
-		}
-	}
-}
-
-const printCart = (cartArObj, items, image) => {
-	console.log('items: ', items);
-		const newDiv1 = createTile(
-				scrollShopping, 'div', 
-				'eClass', 'panel-container sm-panel buy-items',
-				'eId', cartArObj.product
-			);
-		const newDiv2 = createTile(newDiv1, 'div', 'eClass', 'shopping1');
-		const newImg1 = createTile(
-				newDiv2, 'img', 'eClass', 'shopping-img', 'eSrc', image);
-		const newP1 = createTile(
-				newDiv2, 'p', 'eText', '2 oz.', 'eClass', 'abs-pos shopping-wgt');
-
-		const newDiv3 = createTile(newDiv1, 'div', 'eClass', 'shopping2');
-		const newH1 = createTile(
-				newDiv3, 'h1', 'eClass', 'shopping-txt item-price', 'eText', '$');
-		const newH2 = createTile(
-				newDiv3, 'h1', 
-				'eClass', 'shopping-txt item-price item-sum', 
-				'eText', (cartArObj.price * items).toFixed(2)
-			);
-		// const newP2 = createTile(
-		// 	newDiv3, 'p', 'eClass', 'shopping-txt in-bag', 'eText', ' in bag');
-		const newSpan1 = createTile(
-				newDiv3, 'span', 'eClass', 'shopping-span shopping-txt in-bag');
-		const input1 = createTile(
-				newSpan1, 'input', 
-				'eClass', 'shopping-num in-bag item-count', 
-				'eType', 'number', 
-				'eName', cartArObj.product, 
-				'eValue', items,
-				'eDisabled', 'disabled'
-			);
-		const newP2 = createTile(
-				newSpan1, 'p', 'eClass', 'shopping-txt in-bag', 'eText', ' in bag');
-
-		const newSpan2 = createTile(
-				newDiv3, 'span', 'eClass', 'shopping-span shopping-txt in-stock');
-		const input2 = createTile(
-				newSpan2, 'input', 
-				'eClass', 'shopping-num in-stock stock-count', 
-				'eType', 'number', 
-				'eName', cartArObj.product, 
-				'eValue', cartArObj.inventory,
-				'eDisabled', 'disabled'
-			);
-		const newP3 = createTile(
-				newSpan2, 'p', 'eClass', 'shopping-txt in-stock', 'eText', ' in stock');
-
-		const newDiv4 = createTile(newDiv1, 'div', 'eClass', 'shopping3');
-		const newH3 = createTile(
-			newDiv4, 'h1', 'eClass', 'panel-title shopping-head', 'eText', cartArObj.product);
-
-		const newBtn1 = createTile(newDiv1, 'button', 'eClass', 'abs-pos sm-btn in-trash');
-		const newImg2 = createTile(
-				newBtn1, 'img', 
-				'eClass', 'sm-btn-img trash-img',
-				'eSrc', '../orange/images/trash-moc-32-iconsdb.png',
-				'eAlt', 'remove item',
-				'eValue', cartArObj.prod_id
-			);
-
-		newBtn1.addEventListener("click", deleteFromCart);
-}
-
-const ticker = (current, target, term) => {
-	let cVal = Math.round(Number(current.innerText)*100);
-	let tVal = Math.round(Number(target*100));
-	// console.log(cVal);
-	if (cVal < tVal) {
-		for (i = cVal; i < tVal; i++) {
-			if (cVal < tVal) {
-				let uptick = (tick) => {
-					setTimeout(() => {
-						cVal++;
-						current.innerText = (cVal / 100).toFixed(2);
-					}, tick * term);
-				}
-				uptick(i);
-				// console.log(current.innerText);
-			}
-		}
-	} else {
-		for (i = cVal; i > tVal; i--) {
-			if (cVal > tVal) {
-				let downtick = (tick) => {
-					setTimeout(() => {
-						cVal--;
-						current.innerText = (cVal / 100).toFixed(2);
-					}, tick * term);
-				}
-				downtick(i);
-			}
-		}
-	}
-} 
-
-const cartSum = (sum, elm) => {
-	const iSum = Object.values(sum).reduce((acc, val) => {
-		return acc + Number(val.innerText);
-	}, 0).toFixed(2);	
-
-	if (Number(iSum) <= 0
-		? addClasses('empty', cart, shoppingBag, review)
-		: rmClasses('empty', cart, shoppingBag, review));
-
-	const iTax = Number(iSum * 0.065).toFixed(2);
-	if (iSum < 50) {
-		elm[1].innerText = ship = 6.99;
-	} else {
-		elm[1].innerText = "Free";
-		ship = 0;
-	}
-
-	const subT = Number(iSum) + Number(iTax);
-	if (subT <= 0) {
-		elm[1].innerText = ship = "0.00";
-	}
-	const iTot = (subT + Number(ship)).toFixed(2);
-
-	ticker(elm[0], Number(iSum), 0.2); 
-	ticker(elm[2], Number(iTax), 3.6); 
-	ticker(elm[3], Number(iTot), 0.2); 
-}
-
-const chkInventory = (id, itemAmount, imgSrc) => {
-	const items = itemAmount.value;/******/ 
-	itemIdx = 0;
-	const itemCount = document.querySelectorAll(".item-count");
-	const stockCount = document.querySelectorAll(".stock-count");
-	const itemSum = document.getElementsByClassName("item-sum"); 
-
-	fetch('http://localhost:3000/addcart', {
-		method: 'put',
-		headers: {'Content-Type': 'application/json'},
-		body: JSON.stringify({ id, itemAmount: itemAmount.value })
-	})
-	.then(response => {
-		if (response.status !== 200) {
-			openMenus('select', failedJoin, failedJoin);
-			setTimeout(() => openMenus('select', failedJoin, failedJoin), 5000);
-			return;
-		}
-		response.json()
-		.then(data => { 
-			const cartBool = shoppingList.some((num, idx) => {
-				itemIdx = idx;
-				return num.prod_id === Number(id);
-			});
-
-			if (!cartBool) {
-				data.amt = Number(items);/******/
-				shoppingList.push(data);
-				// console.log(shoppingList);
-				printCart(data, items, imgSrc);
-			} else { 
-				// console.log('itemcount: ', itemCount[itemIdx].value);
-				data.amt = Number(items) + shoppingList[itemIdx].amt;
-				itemCount[itemIdx].value = shoppingList[itemIdx].amt = data.amt;/******/ 
-				stockCount[itemIdx].value = data.inventory;
-				itemSum[itemIdx].innerText = (data.price * data.amt).toFixed(2);
-			}
-			cartSum(itemSum, reviewSpan);
-		})
-	})
-	.catch(err => console.log("Out of Stock"));
-} 
-
 const addToCart = (event) => {
-	const itemAmount = event.target.parentElement.previousSibling.previousSibling; 
-	const itemAdded = itemAmount.textContent; 
-	const panelImg = document.querySelectorAll(".panel-img"); 
-
-	shoppingList.map(list => {
-		// console.log(Number(itemAdded), list.prod_id); 
-		if (Number(itemAdded) === list.prod_id) { 
-			check = list.amt + Number(itemAmount.value); 
-			if (check >= 10) { 
-				itemAmount.value = 10 - list.amt; /******/
-				// list.amt += Number(itemAmount.value); /******/ 
-				alert("You may only add 10 of each item per order."); 
-			}
-		}
-	});
+	const addItem = event.target.parentElement.previousSibling.previousSibling;
 	
-	if (itemAmount.value > 0 && itemsInCart.value < 99) {
-		const cartTot = Number(itemsInCart.value) + Number(itemAmount.value); 
+	if (addItem.value > 0 && itemsInCart.value < 99) {
+		const cartTot = Number(itemsInCart.value) + Number(addItem.value);
 
-		chkInventory(itemAdded, itemAmount, panelImg[itemAdded - 1].src); 
-
-		for (items = 0; items < itemAmount.value; items++) {
+		for (let items = 0; items < addItem.value; items++) {
 			if (itemsInCart.value < cartTot) {
 				let bagItems = (placeItem) => {
 					setTimeout(() => {
@@ -850,167 +579,8 @@ const addToCart = (event) => {
 			}
 		}
 		cart.classList.add('show');
-		itemAmount.value = 0;
+		addItem.value = 0;
 	}
-	console.log(shoppingList);
-}
-
-const deleteFromCart = (event, list) => {
-	const itemSum = document.getElementsByClassName("item-sum"); 
-
-	const listItem = [
-		{
-			cost: event.target.parentElement.previousSibling.previousSibling.children[1].innerText,
-			amt: event.target.parentElement.previousSibling.previousSibling.children[2].firstChild.value,
-			inventory: event.target.parentElement.previousSibling.previousSibling.children[3].firstChild.value,
-			prod_id: event.target.value,
-			product: event.target.parentNode.parentNode,
-			element: event.target.parentNode.parentNode.parentNode,
-		},
-	];
-	console.log(listItem);
-
-	if (!list) { list = listItem; } 
-	list.map(item => { 
-		// console.log(item); 
-		fetch('http://localhost:3000/deletecart', {
-			method: 'put',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({ id: item.prod_id, amt: item.amt })
-		})
-		.then(response => {
-			if (response.status !== 200) {
-				// openMenus('select', failedJoin, failedJoin);
-				// setTimeout(() => openMenus('select', failedJoin, failedJoin), 5000);
-				return;
-			}
-			response.json()
-			.then(data => { 
-				const emptyNode = createEmptyTile(item.product, scrollShopping, "panel-container sm-panel panel-shrink");
-				const deleted = item.element.removeChild(item.product);
-				shoppingList.map((item, idx) => {
-					if (item.prod_id === data.prod_id) { 
-						shoppingList.splice(idx, 1);
-					}
-					return;
-				});
-
-				for (items = item.amt; items > 0; items--) { 
-						let unbagItems = (placeItem) => {
-							setTimeout(() => {
-								itemsInCart.value = Number(itemsInCart.value) - 1;
-							}, placeItem*200);
-						};
-						unbagItems(items); 
-				}
-				cartSum(itemSum, reviewSpan); 
-			})
-		})
-		.catch(err => console.log("Removal error.")); 
-	});
-}
-
-const placeOrder = () =>  {
-	if (totSpan.innerText === "0.00") {
-		alert("You must place an item in your cart before you can check out.")
-	} else {
-		alert("Your order is complete! We will send you an email with your order details shortly.");
-		const orderTotals = {
-			subtotal: Number(reviewSpan[0].innerText),
-			getShipping: function() {
-				const value = Number(reviewSpan[1].innerText);
-				let ship = 0;
-				if (!isNaN(value)) { ship = value; }
-				return ship;
-			},
-			tax: Number(reviewSpan[2].innerText),
-			total: Number(reviewSpan[3].innerText),
-		} 
-		orderTotals.shipping = orderTotals.getShipping();
-
-		fetch('http://localhost:3000/placeorder', {
-			method: 'post', 
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({ 
-					id: userData.user_id, 
-					ship: orderTotals.shipping,
-					tax: orderTotals.tax,
-					tot: orderTotals.total
-				})
-		})
-		.then(response => {
-			if (response.status !== 200) {
-				// openMenus('select', failedJoin, failedJoin);
-				// setTimeout(() => openMenus('select', failedJoin, failedJoin), 5000);
-				return;
-			}
-			response.json()
-			.then(order => {
-				storeOrder(order);
-				userData.order_id = order;
-			})
-			.catch(err => console.log("Order failed. Check order details."))
-		});
-	}
-}
-
-const storeOrder = (order_id) => {
-	const buyItems = document.querySelectorAll(".buy-items");
-	const reviewSpan = document.querySelectorAll(".review-span");
-
-	fetch('http://localhost:3000/storeorder', {
-		method: 'post',
-		headers: {'Content-Type': 'application/json'},
-		body: JSON.stringify({
-				order: order_id,
-				list: shoppingList
-			})
-	})
-	.then(response => {
-		if (response.status !== 200) {
-			// openMenus('select', failedJoin, failedJoin);
-	 		// setTimeout(() => openMenus('select', failedJoin, failedJoin), 5000);
-			return;
-		}
-		response.json()
-		.then(order => {
-			console.log('Order BB-0205-' + order + ' complete!');
-			Object.values(buyItems).map(list => scrollShopping.removeChild(list));
-			// ******Needs work******
-			const zero = 0
-			for (i = 0; i < reviewSpan.length; i++) {
-				reviewSpan[i].innerText = zero.toFixed(2);
-			}
-			itemsInCart.value = zero;
-
-			shoppingList.length = 0;
-			cart.click();
-			console.log(userData);
-			console.log(shoppingList);
-		})
-		.catch(err => console.log("Failed to store order details."))
-	});
-}
-
-let showOrdersPanel = false;
-
-const loadOrders = () => { 
-	const ordersMsg = document.querySelector("#orders-msg");
-	const loadOrdersPanel = document.querySelector("#load-orders-panel");
-	if (Object.entries(userData).length === 0 && userData.constructor === Object) { 
-// if (userData.user_id === 0) {
-			showOrdersPanel = false; 
-			return addClasses('show', ordersMsg);
-	} 
-
-	if (showOrdersPanel === false) {
-		showOrdersPanel = true; 
-		rmClasses('show', ordersMsg);
-		addClasses('show', loadOrdersPanel);
-		setTimeout(() => rmClasses('show', loadOrdersPanel), 9000);
-	}
-
-	console.log(userData);
 }
 
 /********************************************/
@@ -1065,7 +635,7 @@ const switchOptions = (page) => {
 		options[i].classList.remove('lg');
 		options[i].classList.remove('md');
 	}
-	
+
 	if (page != products) { scrollToTop(scrollProducts); }
 
 	// display specific formatting based on case
@@ -1092,7 +662,6 @@ const switchOptions = (page) => {
 			account.classList.add('md');
 			Object.values(panels).map(num => num.classList.remove('show'));
 			panels[1].classList.add('show');
-			loadOrders();
 			selected = 2;
 			break;
 		case account:
@@ -1116,149 +685,11 @@ const switchOptions = (page) => {
 	}
 }
 
-// eventToVar
-const stringToVar = (word, cut = 0, str = "") => {
-	word = word.substring(0, word.length - cut) + str;
-	return Function('"user strict";return (' + word + ')')();
-}
-
 const productsPanel = document.getElementById('products-panel');
 const ordersPanel = document.getElementById('orders-panel');
-const opEvents = document.getElementsByClassName('op-events');
-const scrollAccount = document.getElementById('scroll-account');
 
-const nameX = document.getElementsByClassName('nameX');
-const emailX = document.getElementsByClassName('emailX');
-const passX = document.getElementsByClassName('passX');
-const addrX = document.getElementsByClassName('addrX');
-const payX = document.getElementsByClassName('payX');
-const phoneX = document.getElementsByClassName('phoneX');
-
-const addrY = document.getElementsByClassName('addrY');
-const payY = document.getElementsByClassName('payY');
-
-const nameZ = document.getElementsByClassName('nameZ');
-const emailZ = document.getElementsByClassName('emailZ');
-const passZ = document.getElementsByClassName('passZ');
-const addrZ = document.getElementsByClassName('addrZ');
-const payZ = document.getElementsByClassName('payZ');
-const phoneZ = document.getElementsByClassName('phoneZ');
-
-// nameD1.addEventListener("click", function() {
-// 	editAccounts(this, ...nameX);
-// 	addCursor(nameC);
-// })
-// emailD1.addEventListener("click", function() {
-// 	editAccounts(this, ...emailX);
-// 	addCursor(emailC);
-// })
-// passD1.addEventListener("click", function() {
-// 	editAccounts(this, ...passX);
-// 	addCursor(passC);
-// })
-// addrD1.addEventListener("click", function() {
-// 	editAccounts(this, ...addrX);
-// 	addCursor(addrC);
-// })
-// payD1.addEventListener("click", function() {
-// 	editAccounts(this, ...payX); 
-// })
-// phoneD1.addEventListener("click", function() {
-// 	editAccounts(this, ...phoneX);
-// 	addCursor(phoneC);
-// })
-const editClick = document.getElementsByClassName('editClick');
-const fwdClick = document.getElementsByClassName('fwdClick');
-const saveClick = document.getElementsByClassName('saveClick');
-
-join.addEventListener("click", function() { 
-	classCheck(cart, 'open', join, 'select');	
-	openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
-	addCursor(joinEmail);
-
- });
-login.addEventListener("click", function() { 
-	classCheck(cart, 'open', login, 'select');	
-	openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
-	addCursor(loginEmail);
- });
-logout.addEventListener("click", function() { 
-	openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm, logoutDiv);
-	classCheck(cart, 'open', logout, 'select');	
-});
-
-joinBtn.addEventListener("click", function() { joinUser(); });
-loginBtn.addEventListener("click", function() { loginUser(); });
-logoutBtn.addEventListener("click", function() { loginUser(); });
-cart.addEventListener("click", function() { 
-	if (totSpan.innerText === "0.00") { 
-		classCheck(join, 'select', cart, 'empty');	
-		classCheck(login, 'select', cart, 'empty');	
-		classCheck(logout, 'select', cart, 'empty');	
-		if (cart.classList.contains('open')) {
-			rmClasses('open', cart, shoppingBag);
-			rmClasses('empty', cart, shoppingBag, review);
-		} else {
-			addClasses('open', cart, shoppingBag, review);
-			addClasses('empty', cart, shoppingBag, review);
-		}
-	} else { 
-		classCheck(join, 'select', cart, 'open');
-		classCheck(login, 'select', cart, 'open');
-		classCheck(logout, 'select', cart, 'open');
-		openMenus('open', this, shoppingBag, 0, 0, review); 
-		rmClasses('empty', cart, shoppingBag, review);
-	} 
-	cartUserCheck(); 
-});
-scrollAccount.addEventListener("scroll", function() { scrollText(this, addrB, 99); });
-
-reviewJoin.addEventListener("click", function() { 
-	// openMenus('open', cart, shoppingBag, 0, 0, review);
-	cart.click();
-	openMenus('select', join, joinDiv, login, loginDiv, credsDiv, credsForm); 
-	addCursor(joinEmail); 
-});
-reviewLogin.addEventListener("click", function() {
-	// openMenus('open', cart, shoppingBag, 0, 0, review);
-	cart.click();
-	openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm);
-	addCursor(loginEmail);
-});
-reviewCheckout.addEventListener("click", function() {
-	placeOrder();
-	// storeOrder();
-	// emptyCart();
-});
-
-Object.values(editClick).map((dat, idx) => {
-	dat.addEventListener("click", function() { 
-		editAccounts(this, ...stringToVar(this.id.toString(), 2, 'X'));
-		addCursor(stringToVar(this.id.toString(), 2, 'C'));
-	});
-});
-
-Object.values(fwdClick).map((dat, idx) => {
-	dat.addEventListener("click", function() {
-		eventC = stringToVar(this.id.toString(), 2, 'C');
-		editAccounts(this, ...stringToVar(this.id.toString(), 2, 'Y'));
-		if (idx < 1 ? addCursor(stringToVar(this.id.toString(), 2, 'E')) : addCursor(eventC));
-	});
-});
-
-Object.values(saveClick).map((dat, idx) => {
-	dat.addEventListener("click", function() {
-		editAccounts(this, ...stringToVar(this.id.toString(), 2, 'Z'));
-		// addCursor(stringToVar(this.id.toString(), 2, 'C'));
-		editInput(stringToVar(this.id.toString(), 2, 'User'));
-	});
-});
-
-leftArrow.addEventListener("click", cycleLeft);
-rightArrow.addEventListener("click", cycleRight);
-
-Object.values(opEvents).map((num, idx) => { 
-	num.addEventListener("mouseover", () => {
-			switchOptions(opEvents[idx]);
-		});
-}); 
+// const circleType = new CircleType(document.getElementById('coSubtitle'));
+// window.addEventListener('resize', function updateRadius() {
+//   circleType.radius(circleType.element.offsetWidth / 2);
+// });
+// updateRadius();
