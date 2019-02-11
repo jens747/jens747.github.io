@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>orange</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../src/auto-complete.css">
+	<link rel="stylesheet" type="text/css" href="../src/orange.css">
+</head>
+<body class="image-container">
+	<!-- Company Title and Subtitle container -->
+	<div class="abs-pos" id="coMain">
+		<div class="coBaseDiv" id="coSubDiv">
+			<h2 class="coBaseText" id="coSubtitle">herbs & spices</h2>
+		</div>
+		<div class="coBaseDiv" id="coDiv">
+			<h1  class="coBaseText" id="coTitle">blue box</h1>
+		</div>
+		<div class="coBaseDiv">
+			<h2 class="coBaseText">a peculiar creation</h2>
+		</div>
+	</div>
+	<!-- Signin / Login container -->
+	<div id="credsDiv">
+		<div id="credsForm">
+			<ul id="creds-ul">
+				<div class="creds">
+					<button class="abs-pos credsBtn" id="join">
+						Join
+					</button>
+				</div>
+				<div class="creds">
+					<button class="abs-pos credsBtn" id="login">
+						Log in
+					</button>
+				</div>
+				<div class="abs-pos creds" id="loDiv">
+					<button class="abs-pos credsBtn" id="logout">
+						Log Out
+					</button>
+				</div>
+			</ul>
+			<!-- Join form -->
+			<div class="abs-pos panel-container join-login" id="joinDiv">
+				<form class="abs-pos form-div" id="joinForm"> 
+					<h3 class="form-input">
+						Username: 
+						<input class="form-info" id="joinEmail" type="email" name="username" placeholder="email">
+					</h3>
+					<h3 class="form-input">
+						Password: 
+						<input class="form-info" id="joinPass" type="Password" name="password" placeholder="password">
+						<input 
+							class="form-info" id="joinConfirmPass" type="Password"
+							name="password" 
+							placeholder="confirm password">
+					</h3>
+					<div class="form-input">
+						<input 
+								class="formBtn" 
+								id="joinBtn" 
+								type="button" 
+								value="Join" 
+								name="Join"
+							>
+					</div>
+				</form>
+			</div>
+			<div class="abs-pos panel-container join-login" id="failedJoin">
+				<h3 class="form-input">
+					Registration failed. Please check your email or password and try again.
+				</h3>
+			</div>
+			<!-- login form -->
+			<div class="abs-pos panel-container join-login" id="loginDiv">
+				<form class="form-div" id="loginForm">
+					<h3 class="form-input"> Username: 
+						<input class="form-info" id="loginEmail" type="email" name="username" value="" placeholder="email">
+					</h3>
+					<h3 class="form-input">Password: 
+						<input class="form-info" id="loginPass" type="Password" name="password" value="" placeholder="password">
+					</h3>
+					<div class="form-input">
+						<input 
+								class="formBtn" 
+								id="loginBtn" 
+								type="button" 
+								value="Log in" 
+								name="Log in"
+							>
+								<!-- windowSzScrollText(nameB),
+									windowSzScrollText(addrB) -->
+					</div>
+				</form>
+			</div>
+			<div class="abs-pos panel-container join-login" id="failedLogin">
+					<h3 class="form-input">
+						Your email or password is incorrect. Please try again.
+					</h3>
+			</div>
+			<div class="abs-pos panel-container join-login" id="logoutDiv">
+				<form class="form-div" id="logoutForm">
+					<h3 class="form-input">You are logged in!</h3>
+					<div class="form-input">
+						<input 
+								class="formBtn" 
+								id="logoutBtn" 
+								type="button" 
+								value="Log out" 
+								name="Log out"
+							>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="abs-pos" id="shopping-bag">
+			<div class="abs-pos scroll-panel" id="scroll-shopping">
+
+			</div>
+			<div class="abs-pos" id="review">
+				<p class="shopping-txt in-stock" id="review-txt">*Review and complete your order.</p>
+				<div class="shopping-txt" id="review-calc">
+					<p class="review-p" id="review-sub">subtotal: $<span class="review-span" id="sub-span">13.58</span></p>
+					<p class="review-p">ship: <span class="review-span" id="ship-span">5.99</span></p>
+					<p class="review-p">tax: <span class="review-span" id="tax-span">1.15</span></p>
+					<h3 class="review-p" id="review-h">$<span class="review-span" id="tot-span">20.72</span></h3>
+				</div>
+				<div class="abs-pos review-btn-cls" id="review-checkout">
+					<!-- https://fontawesome.com/icons/shopping-cart?style=solid -->
+					<i class="fas fa-shopping-cart review-color" id="review-order"></i>
+					<p class="abs-pos review-color" id="review-buy">Buy</p>
+				</div>
+				<div class="abs-pos review-btn-cls review-join-login" id="review-join">
+					Join
+				</div>
+				<div class="abs-pos review-btn-cls review-join-login" id="review-login">
+					Log in
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="abs-pos" id="cart">
+		<img src="../images/cart-moc12-128-iconsdb.png" alt="shopping bag" height="72px" width="72px">
+		<input class="abs-pos review-color" id="cart-amt" type="number" name="cart-amt" value="0" disabled="disabled">
+	</div>
+
+	<div class="container">
+		<div class="abs-pos panels max-con" id="products-panel">
+			<!-- scroll-products id not used, or similar id's -->
+			<div class="abs-pos scroll-panel max-con" id="scroll-products">
+				<!-- <div class="panel-container">
+					<div class="abs-pos panel-header">
+						<p class="panel-p weight-p">2 oz.</p>
+						<p class="panel-p cost-p">$7.99</p>
+					</div>
+					<h1 class="abs-pos panel-title">Cinnamon</h1>
+					<img id="cin-img" src="https://images.pexels.com/photos/47046/cinnamon-stick-cinnamon-powder-spice-flavoring-47046.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+					<div class="panel-info">
+						<p class="panel-p">
+							Source: <span class="span-p">Cinnamomum verum</span> trees in Indonesia.
+						</p>
+						<p class="panel-p">
+							Color: beige, sandy-brown
+						</p>
+						<p class="panel-p">
+							Flavor: semi-sweet, pungent woody flavor 
+						</p>
+						<p class="panel-p">
+							Uses: aromatics, cooking and baking
+						</p>
+					</div>
+					<form class="panel-form">
+						<button class="form-btn add-sub sub-btn" id="cin-sub">-</button>
+						<input 
+								class="form-btn" 
+								id="cin-amt" 
+								type="number" 
+								name="" 
+								value="0" 
+								min="0" 
+								max="99"
+							>
+						<button class="form-btn add-sub add-btn" id="cin-add">+</button>
+						<div>
+							<input 
+								class="form-btn" 
+								id="cin-sav" 
+								type="submit" 
+								value="Save" 
+								name="save"
+								>
+							<input 
+								class="form-btn" 
+								id="cin-buy" 
+								type="submit" 
+								value="Purchase" 
+								name="buy"
+								>
+						</div>    			
+					</form>
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="abs-pos panels max-con" id="orders-panel">
+			<div class="abs-pos scroll-panel max-con" id="scroll-orders">
+				<div class="abs-pos panel-container" id="orders-msg">
+					<h3 class="form-input">Please log in to view your orders.</h3>
+				</div>
+				<div class="panel-container" id="load-orders-panel">
+					<div id="divo-orders">
+						<h3 id="o-orders1">/</h3>
+						<h3 id="o-orders2">/</h3>
+						<h3 id="o-orders3">/</h3>
+						<h3 id="o-orders4">/</h3>
+					</div>
+					<div class="abs-pos" id="divh-orders">
+						<h2 id="h-orders">Loading</h2>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="abs-pos panels max-con" id="account-panel">
+			<div class="abs-pos scroll-panel max-con" id="scroll-account">
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 nameX nameZ" id="nameA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data nameX nameZ" id="nameB">
+									Add your name
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info nameX nameZ" 
+								id="nameC" 
+								type="text" 
+								name="name"
+								placeholder="change name" 
+							>
+						<div class="abs-pos btn-container editClick nameZ" id="nameD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick nameX" id="nameD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-name-128-iconsdb.png" alt="full name">
+					<h1 class="abs-pos sm-panel-title">Name</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 emailX emailZ" id="emailA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data emailX emailZ" 
+										id="emailB"
+									>
+									email@example.com
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info emailX emailZ" 
+								id="emailC" 
+								type="email" 
+								name=""
+								placeholder="update email"  
+							>
+						<div class="abs-pos btn-container editClick emailZ" id="emailD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick emailX" id="emailD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+						<img class="sm-panel-img" src="../images/user-email-2-128-iconsdb.png" alt="email address">
+						<h1 class="abs-pos sm-panel-title">Email</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 passX passZ" id="passA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data passX passZ" id="passB">
+									********
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info passX passZ" 
+								id="passC" 
+								type="password" 
+								name=""
+								placeholder="reset password" 
+							>
+						<div class="abs-pos btn-container editClick passZ" id="passD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick passX" id="passD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-key-128-iconsdb.png" alt="password">
+					<h1 class="abs-pos sm-panel-title">Password</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 addrX addrZ" id="addrA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data addrX addrZ" id="addrB">
+									Update your address
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info addrX addrY" 
+								id="addrC" 
+								type="text" 
+								name=""
+								placeholder="enter City or Zip code" 
+							>
+						<input 
+								class="abs-pos sm-panel-info addrY addrZ" 
+								id="addrE" 
+								type="text" 
+								name=""
+								placeholder="enter street address" 
+							>
+						<div class="abs-pos btn-container editClick addrZ" id="addrD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container fwdClick addrX" id="addrD3">
+							<button class="abs-pos sm-btn fwder">
+								<!-- https://fontawesome.com/icons/angle-right?style=solid -->
+								<i class="fas fa-angle-right"></i>
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick addrY" id="addrD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-house-128-iconsdb.png" alt="home address">
+					<h1 class="abs-pos sm-panel-title">Address</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 payX payZ" id="payA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data payX payZ" id="payB">
+									**65 12/22
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info payY payZ" 
+								id="payC" 
+								type="text" 
+								name="cc_no"
+								placeholder="update credit card" 
+							>
+						<div class="abs-pos">
+							<select class="nextPay payX payY" id="payE" name="exp_mo">
+								<option value="0" selected>Month</option>
+								<option value="1">1 - Jan</option>
+								<option value="2">2 - Feb</option>
+								<option value="3">3 - Mar</option>
+								<option value="4">4 - Apr</option>
+								<option value="5">5 - May</option>
+								<option value="6">6 - Jun</option>
+								<option value="7">7 - Jul</option>
+								<option value="8">8 - Aug</option>
+								<option value="9">9 - Sep</option>
+								<option value="10">10 - Oct</option>
+								<option value="11">11 - Nov</option>
+								<option value="12">12 - Dec</option>
+							</select>
+							<select class="nextPay payX payY" id="payF" name="exp_yr">
+								<option value="0" selected>Year</option>
+								<option value="19">2019</option>
+								<option value="20">2020</option>
+								<option value="21">2021</option>
+								<option value="22">2022</option>
+								<option value="23">2023</option>
+								<option value="24">2024</option>
+								<option value="25">2025</option>
+								<option value="26">2026</option>
+								<option value="27">2027</option>
+								<option value="28">2028</option>
+								<option value="29">2029</option>
+								<option value="30">2030</option>
+							</select>
+							<input class="nextPay payX payY" id="payG" type="text" name="sec_no" placeholder="CVV" maxlength="3">
+						</div>
+						<div class="abs-pos btn-container editClick payZ" id="payD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container fwdClick payX" id="payD3">
+							<button class="abs-pos sm-btn fwder">
+								<i class="fas fa-angle-right"></i>
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick payY" id="payD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-banknotes-128-iconsdb.png" alt="payment info">
+					<h1 class="abs-pos sm-panel-title">Payment</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 phoneX phoneZ" id="phoneA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data phoneX phoneZ" 
+										id="phoneB"
+									>
+									Add a phone number
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info phoneX phoneZ" 
+								id="phoneC" 
+								type="phone" 
+								name=""
+								placeholder="update phone number"
+							>
+						<div class="abs-pos btn-container editClick phoneZ" id="phoneD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick phoneX" id="phoneD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-phone-68-128-iconsdb.png" alt="phone number">
+					<h1 class="abs-pos sm-panel-title">Phone</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1" id="bidA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="bidB">
+									BB-1215-0000-0001
+								</p>
+							</div>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-info-5-128-iconsdb.png" alt="account id number">
+					<h1 class="abs-pos sm-panel-title">Boxer ID</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1" id="boxA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="boxB">
+									Ordered: 12/15/2018
+								</p>
+							</div>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-filled-box-128-iconsdb.png" alt="registration date">
+					<!-- Membership -->
+					<h1 class="abs-pos sm-panel-title">First Box</h1>
+				</div>
+
+				<!-- <div class="panel-container sm-panel">
+					<h1 class="abs-pos sm-panel-title">Membership</h1>
+					<div class="abs-pos sm-panel-container">
+						<button class="abs-pos sm-btn">
+							<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+						</button>
+						<div class="pos-abs xs-panels xs-panel-1"></div>
+						<div class="pos-abs xs-panels xs-panel-2"></div>
+						<div class="pos-abs xs-panels xs-panel-3"></div>
+					</div>
+				</div> -->
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="abs-pos panels max-con" id="about-panel">
+			<div class="abs-pos scroll-panel max-con" id="scroll-about">
+				<div class="panel-container">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- arrows -->
+	<div class="abs-pos container" id="arrow-container">
+		<div class="abs-pos arrow-div max-con">
+			<div class="options arrows" id="left-arrow"></div>
+			<div class="options arrows" id="right-arrow"></div>
+		</div>
+	</div>
+	
+	<!-- menu options container -->
+	<div class="abs-pos" id="op-container"> <!-- onmouseover="showGo()" onmouseout="hideGo()"> -->
+		<div class="abs-pos" id="op-overflow">	
+			<div class="op-div">
+				<a href="../index.html">
+					<h1 class="options op-events homeLoad" id="home">
+						Home
+					</h1>
+				</a>
+			</div>
+			<div class="op-div">
+				<a href="#">
+					<h1 class="options op-events productsLoad" id="products">
+						Products
+					</h1>
+				</a>
+			</div>
+			<div class="op-div">
+				<a href="#">
+					<h1 class="options op-events" id="orders">
+						Orders
+					</h1>
+				</a>
+			</div>
+			<div class="op-div">
+				<a href="#">
+					<h1 class="options op-events" id="account">
+						Account
+					</h1>
+				</a>
+			</div>
+			<div class="op-div">
+				<a href="#">
+					<h1 class="options op-events" id="about">
+						About
+					</h1>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- script files -->
+	<script type="text/javascript" src="../src/orange.js"></script>
+	<!-- source: https://circletype.labwire.ca/ -->
+	<!-- Sources not used -->
+	<!-- source: https://css-tricks.com/snippets/svg/curved-text-along-path/ -->
+	<!-- source: https://1stwebdesigner.com/set-text-on-a-circle-with-css/ -->
+	<script type="text/javascript" src="https://circletype.labwire.ca/dist/circletype.min.js"></script>
+	<script type="text/javascript">
+			new CircleType(document.getElementById('coSubtitle'))
+				.radius(500);
+	</script>
+	<!-- JavaScript autoComplete v1.0.4 -->
+	<!-- https://github.com/Pixabay/JavaScript-autoComplete -->
+	<script type="text/javascript" src="../src/auto-complete.min.js"></script>
+	<script type="text/javascript">
+		const loadUSAFile = () => {
+			fetch('http://localhost:3000/usaddr')
+			.then(response => {
+				if (response.status !== 200) 
+					return alert("Could not get data.");
+				response.json()
+				.then(cities => {
+						const checkAddr = new autoComplete({
+						selector: '#addrC',
+						minChars: 2,
+						source: function(term, suggest){
+					    	term = term.toLowerCase();
+					    	const choices = cities;
+					    	let matches = [];
+					    	for (i = 0; i < choices.length; i++)
+					      	if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+					    	suggest(matches);
+					    }
+					});
+				})
+			})
+			.catch(err => console.log("Try again."));
+		}
+
+		loadUSAFile();
+		// checkAddr.destroy();
+	</script>
+</body>
+</html>
+
+
+<!-- Image Sources: -->
+<!-- Shoppig cart (#FFE4B5) Iconsdb.com, https://www.iconsdb.com/custom-color/cart-icons.html, https://www.iconsdb.com/icons/preview/color/FFBF00/shopping-cart-xxl.png -->
+
+<!-- Trash (#FFE4B5) Iconsdb.com, https://www.iconsdb.com/custom-color/delete-icon.html, https://www.iconsdb.com/custom-color/trash-10-icon.html  -->
+
+<!-- Save (#FFE4B5) Iconsdb.com, https://www.iconsdb.com/icons/preview/color/FFE4B5/save-xxl.png -->
+
+<!-- User Name (#B6D1D1) Iconsdb.com, https://www.iconsdb.com/custom-color/contacts-icon.html -->
+
+<!-- User Email (#B6D1D1) Iconsdb.com, https://www.iconsdb.com/custom-color/email-2-icon.html, https://www.iconsdb.com/custom-color/email-5-icon.html -->
+
+<!-- User Key (#B6D1D1) Iconsdb.com, https://www.iconsdb.com/custom-color/key-icon.html, https://www.iconsdb.com/custom-color/key-2-icon.html, https://www.iconsdb.com/custom-color/key-6-icon.html -->
+
+<!-- User House (#B6D1D1) Iconsdb.com, https://www.iconsdb.com/custom-color/house-icon.html -->
+
+<!-- User Banknotes (#B6D1D1) Iconsdb.com, https://www.iconsdb.com/icons/preview/color/B6D1D1/banknotes-xxl.png -->
+
+<!-- User Phone (#B6D1D1) Iconsdb.com, https://www.iconsdb.com/icons/preview/color/B6D1D1/phone-68-xxl.png, https://www.iconsdb.com/icons/preview/color/B6D1D1/phone-42-xxl.png, https://www.iconsdb.com/icons/preview/color/B6D1D1/phone-46-xxl.png, https://www.iconsdb.com/icons/preview/color/B6D1D1/phone-5-xxl.png -->
+
+<!-- User ID Info (#B6D1D1) Iconsdb.com, https://www.iconsdb.com/icons/preview/color/B6D1D1/info-5-xxl.png, https://www.iconsdb.com/icons/preview/color/B6D1D1/info-3-xxl.png -->
+
+<!-- User First Box (#B6D1D1) Iconsdb.com, https://www.iconsdb.com/icons/preview/color/B6D1D1/filled-box-xxl.png, https://www.iconsdb.com/icons/preview/color/B6D1D1/empty-box-xxl.png, https://www.iconsdb.com/icons/preview/color/B6D1D1/box-5-xxl.png -->
+
+<!-- Background Photo by Maarten Deckers on Unsplash, https://images.unsplash.com/photo-1496868834840-5f4c98840aaa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=271557c887bb814d49dc3d624fe0bfbe&auto=format&fit=crop&w=1350&q=80 -->
+
+<!-- Products panel Photo by Nikhita Singhal on Unsplash, https://images.unsplash.com/photo-1506918937842-64fce78fca6b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72a21fa00518df31573a2ff63abf0498&auto=format&fit=crop&w=1050&q=80 -->
+
+<!-- Orders panel Photo by Agnieszka Kowalczyk on Unsplash, https://images.unsplash.com/photo-1532336414038-cf19250c5757?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9&s=adf4e58b7d4f6ecff29f28cb1cf918dd -->
+
+<!-- Allspice Photo by Enotovyj on Pixabay, https://cdn.pixabay.com/photo/2018/04/22/13/40/cooking-3341063_960_720.jpg -->
+
+<!-- Basil Photo by Arūnas Naujokas on Unsplash,  https://images.unsplash.com/photo-1522259629856-5cd0267d12ac?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=00ba537ab8559b1b08c2f9c3c7703e99&auto=format&fit=crop&w=500&q=60 -->
+
+<!-- Basil Photo by monicore on Pexels, https://images.pexels.com/photos/1087898/pexels-photo-1087898.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 -->
+
+<!-- Cardamom Photo by Ludmila_ph on Pixabay, https://cdn.pixabay.com/photo/2017/04/20/01/24/cardamom-2244253_960_720.jpg -->
+
+<!-- Cardamom Photo by kwol on Pixabay, https://cdn.pixabay.com/photo/2015/03/15/14/48/cardamom-674506_960_720.jpg -->
+
+<!-- Cilantro Photo by solucionindividual on Pixabay, https://cdn.pixabay.com/photo/2014/05/19/17/32/cilantro-348291_960_720.jpg -->
+
+<!-- Cilantro Photo by Nayatu on Pixabay, https://cdn.pixabay.com/photo/2017/03/31/23/43/cilantro-2192646_960_720.jpg -->
+
+<!-- Cilantro Photo by Jessica Lewis on Pexels, https://images.pexels.com/photos/606540/pexels-photo-606540.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260, (backup) https://cdn.pixabay.com/photo/2017/10/14/11/00/salad-2850199_960_720.jpg -->
+
+<!-- Cinnamon Photo by stevepb on Pixabay, https://pixabay.com/en/cinnamon-stick-cinnamon-powder-spice-514243/ -->
+
+<!-- Cloves Photo by Ajale on Pixabay, https://cdn.pixabay.com/photo/2015/11/18/17/32/cloves-1049598_960_720.jpg -->
+
+<!-- Coriander Photo by PDPics on Pixabay, https://cdn.pixabay.com/photo/2013/07/25/12/03/coriander-166989_960_720.jpg -->
+
+<!-- Cumin Photo by CC0 License on Pexels, https://images.pexels.com/photos/39073/spices-caraway-garden-eat-39073.jpeg?cs=srgb&dl=bowl-bread-caraway-39073.jpg&fm=jpg -->
+
+<!-- Dill Photo by Kaboompics.com on Pexels, https://images.pexels.com/photos/6034/flowers-summer-garden-yellow.jpg?cs=srgb&dl=background-beautiful-blooming-6034.jpg&fm=jpg  -->
+
+<!-- Dill Photo by Hans on Pixabay, https://cdn.pixabay.com/photo/2011/06/21/14/43/dill-8104_960_720.jpg -->
+
+<!-- Ginger Photo by Joris Neyt on Pexels, https://images.pexels.com/photos/1337585/pexels-photo-1337585.jpeg?cs=srgb&dl=close-up-color-cooking-1337585.jpg&fm=jpg -->
+
+<!-- Ginger Photo by gate74 on Pixabay, https://cdn.pixabay.com/photo/2017/07/20/20/58/ginger-2523758_960_720.jpg -->
+
+<!-- Mustard Photo by gokalpiscan on Pixabay, https://cdn.pixabay.com/photo/2013/12/20/14/01/mustard-231302_960_720.jpg -->
+
+<!-- Nutmeg Photo by scym on Pixabay, https://cdn.pixabay.com/photo/2017/06/21/16/57/nutmeg-2427844_960_720.jpg -->
+
+<!-- Oregano Photo by HansLinde on Pixabay, https://cdn.pixabay.com/photo/2017/08/20/19/33/oregano-2662890_960_720.jpg -->
+
+<!-- Parsley Photo by AllNikArt on Pixabay, https://cdn.pixabay.com/photo/2014/02/07/15/32/parsley-261039_960_720.jpg -->
+
+<!-- Paprika Photo by Couleur on Pixabay, https://cdn.pixabay.com/photo/2018/09/06/23/12/paprika-3659548_960_720.jpg -->
+
+<!-- Rosemary Photo by Hans on Pixabay, https://cdn.pixabay.com/photo/2015/12/13/00/11/rosemary-1090419_960_720.jpg -->
+
+<!-- Saffron Photo by Xtendo on Pixabay, https://cdn.pixabay.com/photo/2017/10/09/22/40/saffron-2835249_960_720.jpg -->
+
+<!-- Sage Photo by _Alicja_ on Pixabay, https://cdn.pixabay.com/photo/2018/07/06/17/08/sage-3520814_960_720.jpg -->
+
+<!-- Thyme Photo by Hans on Pixabay, https://cdn.pixabay.com/photo/2013/06/01/03/43/thyme-115379_960_720.jpg -->
+
+<!-- Turmeric Photo by stevepb on Pixabay, https://cdn.pixabay.com/photo/2018/03/22/19/21/turmeric-3251560_960_720.jpg -->
+
+<!-- Turmeric Photo by cgdsro on Pixabay, https://cdn.pixabay.com/photo/2018/01/18/00/07/turmeric-3089308_960_720.jpg -->
+
+<!-- Vanilla Photo by flomo001 on Pixabay, https://cdn.pixabay.com/photo/2014/04/18/13/14/creme-brulee-327134_960_720.jpg -->
