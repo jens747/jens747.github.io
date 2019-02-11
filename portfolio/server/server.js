@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const fs = require('fs');
 const cors = require('cors');
 const knex = require('knex');
-const spice = require('../orange/spicy.js');
+const spice = require('../orange/src/spicy.js');
 // const spice = require('../jens747.github.io/portfolio/orange/spicy.js');
 
 const app = express();
@@ -20,6 +20,37 @@ const db = knex({
 		database: 'orange'
 	}
 });
+
+const yearlyCache = {
+	dotfiles: 'ignore',
+	etag: false,
+	extensions: ['htm', 'html'],
+	immutable: true,
+	index: false,
+	lastModified: false,
+	maxAge: '1y',
+	redirect: false,
+	setHeaders: function (res, path, stat) {
+		res.set('x-timestamp', Date.now())
+	}
+}
+
+const weeklyCache = {
+	dotfiles: 'ignore',
+	etag: false,
+	extensions: ['css', 'js'],
+	immutable: true,
+	index: false,
+	lastModified: false,
+	maxAge: '1w',
+	redirect: false,
+	setHeaders: function (res, path, stat) {
+		res.set('x-timestamp', Date.now())
+	}
+}
+
+app.use(express.static('public', yearlyCache));
+app.use(express.static('src', weeklyCache));
 
 const obis = (x, y) => {
 		// Object.is polyfill, source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
@@ -352,7 +383,7 @@ app.post('/storeorder', (req, res) => {
 // })
 
 app.get('/usaddr', (req, res) => {
-	fs.readFile('../orange/us-min.txt', (err, data) => {
+	fs.readFile('../orange/public/us-min.txt', (err, data) => {
 		if (data === undefined) { 
 			throw res.status(400).json('Could not get city.');
 		}
