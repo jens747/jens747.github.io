@@ -1961,16 +1961,18 @@ input[type=password]:focus,*/
 
 #test-container {
 	background: rgba(10,10,0,1);
-	height: 100%;
+	height: 4vh;
+	/*height: 17vh;*/
 	width: 100%;
-	top: 0vh;
+	top: 96vh;
+	/*top: 83vh;*/
 	overflow: hidden;
 	z-index: 700;
 }
 
 #test-container.close {
-	top: 100vh;
-	height: 0vh;
+	height: 95vh;
+	top: 0vh;
 
 	-webkit-transition: top 600ms, height 600ms;
 	-moz-transition: top 600ms, height 600ms;
@@ -1983,7 +1985,7 @@ input[type=password]:focus,*/
 	background: seagreen;
 	color: moccasin;
 	font-size: 1.4rem;
-	height: 5vh;
+	height: 4vh;
 	width: 100%;
 	top: 0vh;
 }
