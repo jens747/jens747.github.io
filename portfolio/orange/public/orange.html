@@ -55,8 +55,603 @@
 		<div class="test-bar">Bar</div>
 	</div> -->
 		
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+	<!-- Signin / Login container -->
 
 
+	<div class="container">
+		<div class="abs-pos" id="shopping-bag">
+			<div class="abs-pos scroll-panel" id="scroll-shopping">
+
+			</div>
+			<div class="abs-pos" id="review">
+				<p class="shopping-txt in-stock" id="review-txt">*Review and complete your order.</p>
+				<div class="shopping-txt" id="review-calc">
+					<p class="review-p" id="review-sub">subtotal: $<span class="review-span" id="sub-span">13.58</span></p>
+					<p class="review-p">ship: <span class="review-span" id="ship-span">5.99</span></p>
+					<p class="review-p">tax: <span class="review-span" id="tax-span">1.15</span></p>
+					<h3 class="review-p" id="review-h">$<span class="review-span" id="tot-span">20.72</span></h3>
+				</div>
+				<div class="abs-pos review-btn-cls" id="review-checkout">
+					<!-- https://fontawesome.com/icons/shopping-cart?style=solid -->
+					<i class="fas fa-shopping-cart review-color" id="review-order"></i>
+					<p class="abs-pos review-color" id="review-buy">Buy</p>
+				</div>
+				<div class="abs-pos review-btn-cls review-join-login" id="review-join">
+					Join
+				</div>
+				<div class="abs-pos review-btn-cls review-join-login" id="review-login">
+					Log in
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="abs-pos" id="cart">
+		<img src="../images/cart-moc12-128-iconsdb.png" alt="shopping bag" height="72px" width="72px">
+		<input class="abs-pos review-color" id="cart-amt" type="number" name="cart-amt" value="0" disabled="disabled">
+	</div>
+
+	<div class="container">
+		<div class="abs-pos panels max-con" id="products-panel">
+			<!-- scroll-products id not used, or similar id's -->
+			<div class="abs-pos scroll-panel max-con" id="scroll-products">
+				<div class="panel-container" id="load-products-panel">
+					<div class="divo-load">
+						<h3 class="o-load1">/</h3>
+						<h3 class="o-load2">/</h3>
+						<h3 class="o-load3">/</h3>
+						<h3 class="o-load4">/</h3>
+					</div>
+					<div class="abs-pos divh-load">
+						<h2 class="h-load">Loading</h2>
+					</div>
+				</div>
+				<!-- <div class="panel-container">
+					<div class="abs-pos panel-header">
+						<p class="panel-p weight-p">2 oz.</p>
+						<p class="panel-p cost-p">$7.99</p>
+					</div>
+					<h1 class="abs-pos panel-title">Cinnamon</h1>
+					<img id="cin-img" src="https://images.pexels.com/photos/47046/cinnamon-stick-cinnamon-powder-spice-flavoring-47046.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+					<div class="panel-info">
+						<p class="panel-p">
+							Source: <span class="span-p">Cinnamomum verum</span> trees in Indonesia.
+						</p>
+						<p class="panel-p">
+							Color: beige, sandy-brown
+						</p>
+						<p class="panel-p">
+							Flavor: semi-sweet, pungent woody flavor 
+						</p>
+						<p class="panel-p">
+							Uses: aromatics, cooking and baking
+						</p>
+					</div>
+					<form class="panel-form">
+						<button class="form-btn add-sub sub-btn" id="cin-sub">-</button>
+						<input 
+								class="form-btn" 
+								id="cin-amt" 
+								type="number" 
+								name="" 
+								value="0" 
+								min="0" 
+								max="99"
+							>
+						<button class="form-btn add-sub add-btn" id="cin-add">+</button>
+						<div>
+							<input 
+								class="form-btn" 
+								id="cin-sav" 
+								type="submit" 
+								value="Save" 
+								name="save"
+								>
+							<input 
+								class="form-btn" 
+								id="cin-buy" 
+								type="submit" 
+								value="Purchase" 
+								name="buy"
+								>
+						</div>    			
+					</form>
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="abs-pos panels max-con" id="orders-panel">
+			<div class="abs-pos scroll-panel max-con" id="scroll-orders">
+				<div class="abs-pos panel-container" id="orders-msg">
+					<h3 class="form-input">Please log in to view your orders.</h3>
+				</div>
+				<div class="panel-container" id="load-orders-panel">
+					<div id="divo-orders">
+						<h3 id="o-orders1">/</h3>
+						<h3 id="o-orders2">/</h3>
+						<h3 id="o-orders3">/</h3>
+						<h3 id="o-orders4">/</h3>
+					</div>
+					<div class="abs-pos divh-orders">
+						<h2 class="h-orders">Loading</h2>
+					</div>
+				</div>
+
+				<!-- <div class="orders-container">
+					<div class="oitem-iddiv">
+						<h2 class="oitem-orderid">Order: </h2>
+						<h2 class="oitem-orderid">BB-1900-0023</h2>
+					</div>
+					<div class="oitem-bar4"></div>
+
+
+					<div class="tag-txt tag-calc">
+						<h3 class="oitem-cart tag-p tag-sub">subtotal: $4.59</h3>
+						<h4 class="oitem-cart tag-p" id="ship-span">ship: 6.99</h4>
+						<h4 class="oitem-cart tag-p" id="tax-span">tax: 0.30</h4>
+						<h2 class="oitem-cart tag-p tag-tot">$11.88</h2>
+					</div>
+
+					<div class="oitem-div">
+						<img src="../images/thumbnails/allspice-thumb-pixabay.jpg" alt="Allspice" class="oitem-img">
+						<div class="abs-pos oitem-bar1"></div>
+						<div class="abs-pos oitem-bar2"></div>
+						<div class="abs-pos oitem-bar3"></div>
+						<h6 class="abs-pos oitems oitem-name">Allspice</h6>
+						<h5 class="abs-pos oitems oitem-price">$8.99</h5>
+						<h6 class="abs-pos oitems oitem-qty">Qty. </h6>
+						<h6 class="abs-pos oitems oitem-num">2</h6>
+					</div>
+					<div class="oitem-div">
+						<img src="../images/thumbnails/basil-thumb-unsplash.jpg" alt="Allspice" class="oitem-img">
+						<div class="abs-pos oitem-bar1"></div>
+						<div class="abs-pos oitem-bar2"></div>
+						<div class="abs-pos oitem-bar3"></div>
+						<h6 class="abs-pos oitems oitem-name">Basil</h6>
+						<h5 class="abs-pos oitems oitem-price">$5.99</h5>
+						<h6 class="abs-pos oitems oitem-qty">Qty. </h6>
+						<h6 class="abs-pos oitems oitem-num">3</h6>
+					</div>
+					<div class="oitem-div">
+						<img src="../images/thumbnails/cardamom-thumb-pixabay.jpg" alt="Allspice" class="oitem-img">
+						<div class="abs-pos oitem-bar1"></div>
+						<div class="abs-pos oitem-bar2"></div>
+						<div class="abs-pos oitem-bar3"></div>
+						<h6 class="abs-pos oitems oitem-name">Cardamom</h6>
+						<h5 class="abs-pos oitems oitem-price">$11.99</h5>
+						<h6 class="abs-pos oitems oitem-qty">Qty. </h6>
+						<h6 class="abs-pos oitems oitem-num">5</h6>
+					</div>
+					<div class="oitem-bar4"></div>
+			</div> -->
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="abs-pos panels max-con" id="account-panel">
+			<div class="abs-pos scroll-panel max-con" id="scroll-account">
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 nameX nameZ" id="nameA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data nameX nameZ" id="nameB">
+									Add your name
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info nameX nameZ" 
+								id="nameC" 
+								type="text" 
+								name="name"
+								placeholder="change name" 
+							>
+						<div class="abs-pos btn-container editClick nameZ" id="nameD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick nameX" id="nameD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-name-128-iconsdb.png" alt="full name">
+					<h1 class="abs-pos sm-panel-title">Name</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 emailX emailZ" id="emailA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data emailX emailZ" 
+										id="emailB"
+									>
+									email@example.com
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info emailX emailZ" 
+								id="emailC" 
+								type="email" 
+								name=""
+								placeholder="update email"  
+							>
+						<div class="abs-pos btn-container editClick emailZ" id="emailD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick emailX" id="emailD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+						<img class="sm-panel-img" src="../images/user-email-2-128-iconsdb.png" alt="email address">
+						<h1 class="abs-pos sm-panel-title">Email</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 passX passZ" id="passA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data passX passZ" id="passB">
+									********
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info passX passZ" 
+								id="passC" 
+								type="password" 
+								name=""
+								placeholder="reset password" 
+							>
+						<div class="abs-pos btn-container editClick passZ" id="passD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick passX" id="passD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-key-128-iconsdb.png" alt="password">
+					<h1 class="abs-pos sm-panel-title">Password</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 addrX addrZ" id="addrA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data addrX addrZ" id="addrB">
+									Update your address
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info addrX addrY" 
+								id="addrC" 
+								type="text" 
+								name=""
+								placeholder="enter City or Zip code" 
+							>
+						<input 
+								class="abs-pos sm-panel-info addrY addrZ" 
+								id="addrE" 
+								type="text" 
+								name=""
+								placeholder="enter street address" 
+							>
+						<div class="abs-pos btn-container editClick addrZ" id="addrD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container fwdClick addrX" id="addrD3">
+							<button class="abs-pos sm-btn fwder">
+								<!-- https://fontawesome.com/icons/angle-right?style=solid -->
+								<i class="fas fa-angle-right"></i>
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick addrY" id="addrD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-house-128-iconsdb.png" alt="home address">
+					<h1 class="abs-pos sm-panel-title">Address</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 payX payZ" id="payA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data payX payZ" id="payB">
+									**65 12/22
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info payY payZ" 
+								id="payC" 
+								type="text" 
+								name="cc_no"
+								placeholder="update credit card" 
+							>
+						<div class="abs-pos">
+							<select class="nextPay payX payY" id="payE" name="exp_mo">
+								<option value="0" selected>Month</option>
+								<option value="1">1 - Jan</option>
+								<option value="2">2 - Feb</option>
+								<option value="3">3 - Mar</option>
+								<option value="4">4 - Apr</option>
+								<option value="5">5 - May</option>
+								<option value="6">6 - Jun</option>
+								<option value="7">7 - Jul</option>
+								<option value="8">8 - Aug</option>
+								<option value="9">9 - Sep</option>
+								<option value="10">10 - Oct</option>
+								<option value="11">11 - Nov</option>
+								<option value="12">12 - Dec</option>
+							</select>
+							<select class="nextPay payX payY" id="payF" name="exp_yr">
+								<option value="0" selected>Year</option>
+								<option value="19">2019</option>
+								<option value="20">2020</option>
+								<option value="21">2021</option>
+								<option value="22">2022</option>
+								<option value="23">2023</option>
+								<option value="24">2024</option>
+								<option value="25">2025</option>
+								<option value="26">2026</option>
+								<option value="27">2027</option>
+								<option value="28">2028</option>
+								<option value="29">2029</option>
+								<option value="30">2030</option>
+							</select>
+							<input class="nextPay payX payY" id="payG" type="text" name="sec_no" placeholder="CVV" maxlength="3">
+						</div>
+						<div class="abs-pos btn-container editClick payZ" id="payD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container fwdClick payX" id="payD3">
+							<button class="abs-pos sm-btn fwder">
+								<i class="fas fa-angle-right"></i>
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick payY" id="payD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-banknotes-128-iconsdb.png" alt="payment info">
+					<h1 class="abs-pos sm-panel-title">Payment</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1 phoneX phoneZ" id="phoneA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data phoneX phoneZ" 
+										id="phoneB"
+									>
+									Add a phone number
+								</p>
+							</div>
+						</div>
+						<input 
+								class="abs-pos sm-panel-info phoneX phoneZ" 
+								id="phoneC" 
+								type="phone" 
+								name=""
+								placeholder="update phone number"
+							>
+						<div class="abs-pos btn-container editClick phoneZ" id="phoneD1">
+							<button class="abs-pos sm-btn editor">
+								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+							</button>
+						</div>
+						<div class="abs-pos btn-container saveClick phoneX" id="phoneD2">
+							<button class="abs-pos sm-btn saver">
+								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
+							</button>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-phone-68-128-iconsdb.png" alt="phone number">
+					<h1 class="abs-pos sm-panel-title">Phone</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1" id="bidA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="bidB">
+									BB-1215-0000-0001
+								</p>
+							</div>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-info-5-128-iconsdb.png" alt="account id number">
+					<h1 class="abs-pos sm-panel-title">Boxer ID</h1>
+				</div>
+
+				<div class="panel-container sm-panel">
+					<div class="abs-pos xs-panels xs-panel-1" id="boxA"></div>
+					<div class="abs-pos sm-panel-container">
+						<div class="abs-pos sm-panel-overflow">
+							<div class="sm-panel-scroll">
+								<p class="sm-panel-title sm-panel-text sm-data" id="boxB">
+									Ordered: 12/15/2018
+								</p>
+							</div>
+						</div>
+					</div>
+					<img class="sm-panel-img" src="../images/user-filled-box-128-iconsdb.png" alt="registration date">
+					<!-- Membership -->
+					<h1 class="abs-pos sm-panel-title">First Box</h1>
+				</div>
+
+				<!-- <div class="panel-container sm-panel">
+					<h1 class="abs-pos sm-panel-title">Membership</h1>
+					<div class="abs-pos sm-panel-container">
+						<button class="abs-pos sm-btn">
+							<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
+						</button>
+						<div class="pos-abs xs-panels xs-panel-1"></div>
+						<div class="pos-abs xs-panels xs-panel-2"></div>
+						<div class="pos-abs xs-panels xs-panel-3"></div>
+					</div>
+				</div> -->
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="abs-pos panels max-con" id="about-panel">
+			<div class="abs-pos scroll-panel max-con" id="scroll-about">
+				<div id="about-container">
+					<div class="about-div about-font">
+						<h3 class="about-h">Blue Box is an indy startup spice shop.</h3>
+						<h4 class="about-h">Come and help us grow.</h4>
+						<ul class="about-box about-ul">
+							<li class="about-li">Neighborhood friendly service</li>
+							<li class="about-li">Quality, fresh herbs & spices</li>
+							<li class="about-li">Responsibly sourced</li>
+						</ul>
+						<h3 class="about-h" id="about-connect">Connect with Blue Box:</h3>
+					</div> 
+
+					<div class="about-box about-div" id="about-icons">
+						<a href="#">
+							<i class="fab fa-facebook-square about-media" id="about-fb"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-twitter about-media" id="about-tw"></i>
+						</a>
+						<a href="#">
+							<i class="fas fa-rss about-media" id="about-rs"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-instagram about-media" id="about-ig"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-google-plus about-media" id="about-gp"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-pinterest about-media" id="about-pn"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-patreon about-media" id="about-pt"></i>
+						</a>
+					</div>
+
+					<div class="about-app-container">
+						<a href="https://www.apple.com/ios/app-store/">
+							<div class="about-box about-app-div">
+								<i class="fab fa-app-store-ios about-media" id="about-ap"></i>
+								<div class="about-app-txt">
+									<p class="about-app-p">Download on the</p>
+									<p class="about-app-title">App Store</p>
+								</div>
+							</div>
+						</a>
+						
+						<a href="https://play.google.com/store">
+							<div class="about-box about-app-div">
+								<i class="fab fa-google-play about-media" id="about-pl"></i>
+								<div class="about-app-txt">
+									<p class="about-app-p">Get it on</p>
+									<p class="about-app-title">Google Play</p>
+								</div>
+							</div>
+						</a>
+						
+					</div>
+					<!-- <p class="about-font" id="about-donate">10% of all Patreon contributions are donated toward non-profit charity groups for sustainable food production.</p> -->
+				</div>
+				<p class="abs-pos about-font" id="about-donate">10% of all Patreon contributions are donated toward non-profit charity groups for sustainable food production.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- arrows -->
+	<div class="abs-pos container" id="arrow-container">
+		<div class="abs-pos arrow-div max-con">
+			<!-- <div class="options arrows" id="left-arrow"></div>
+			<div class="options arrows" id="right-arrow"></div> -->
+			<i class="fas fa-angle-left awesome-arrows" id="left-arrow"></i>
+			<i class="fas fa-angle-right awesome-arrows" id="right-arrow"></i>
+		</div>
+	</div>
+
+	<!-- mobile menu button -->
+	<div class="abs-pos" id="mobile-menu-div">
+		<i class="fas fa-bars" id="mobile-menu-icon"></i>
+	</div>
+	
+	<!-- menu options container -->
+	<div class="abs-pos" id="op-container"> <!-- onmouseover="showGo()" onmouseout="hideGo()"> -->
+		<div class="abs-pos" id="op-overflow">	
+			<div class="op-div">
+				<a href="../../index.html">
+					<h1 class="options op-events homeLoad" id="home">
+						Home
+					</h1>
+				</a>
+			</div>
+			<div class="op-div">
+				<a href="#">
+					<h1 class="options op-events productsLoad" id="products">
+						Products
+					</h1>
+				</a>
+			</div>
+			<div class="op-div">
+				<a href="#">
+					<h1 class="options op-events" id="orders">
+						Orders
+					</h1>
+				</a>
+			</div>
+			<div class="op-div">
+				<a href="#">
+					<h1 class="options op-events" id="account">
+						Account
+					</h1>
+				</a>
+			</div>
+			<div class="op-div">
+				<a href="#">
+					<h1 class="options op-events" id="about">
+						About
+					</h1>
+				</a>
+			</div>
+		</div>
+	</div>
+
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 	<!-- script files -->
 	<script type="text/javascript" src="../src/orange.js"></script>
 	<!-- source: https://circletype.labwire.ca/ -->
