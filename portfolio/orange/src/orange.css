@@ -14,6 +14,10 @@ body {
 	/*margin-top: 0vh;*/
 }
 
+body.noScroll {
+	overflow: hidden;
+}
+
 a {
 	text-decoration: none;
 }
@@ -1474,7 +1478,7 @@ input[type=password]:focus,*/
 }
 
 @media only screen and (max-width: 512px) { 
-	.panels { height: 0vh; }
+	/*.panels { height: 0vh; }*/
 	.panels.show { height: 94.4vh; } 
 
 	#credsDiv { margin-top: 47px; }
