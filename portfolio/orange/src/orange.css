@@ -3,7 +3,7 @@ body {
 	/*background-image: url(https://images.unsplash.com/photo-1496868834840-5f4c98840aaa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=271557c887bb814d49dc3d624fe0bfbe&auto=format&fit=crop&w=1350&q=80);*/
 	/*background-image: url(../images/bg-sm-blue-box-maarten-deckers-unsplash.jpg);*/
 	background-color: orange;
-	background-image: url(../../server/images/bg-sm-blue-box-maarten-deckers-unsplash.jpg);
+	/*background-image: url(../../server/images/bg-sm-blue-box-maarten-deckers-unsplash.jpg);*/
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -14,9 +14,9 @@ body {
 	/*margin-top: 0vh;*/
 }
 
-body.noScroll {
+/*body.noScroll {
 	overflow: hidden;
-}
+}*/
 
 a {
 	text-decoration: none;
