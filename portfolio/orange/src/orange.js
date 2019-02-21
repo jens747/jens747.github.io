@@ -18,6 +18,7 @@ const openMenus = (...elements) => {
 
 const addClasses = (cls, ...elm) => elm.map(list => list.classList.add(cls));
 const rmClasses = (cls, ...elm) => elm.map(list => list.classList.remove(cls));
+const tglClasses = (cls, ...elm) => elm.map(list => list.classList.toggle(cls));
 
 /********************************************/
 /* autoclick element if it has class and other does not */
@@ -27,6 +28,20 @@ const classCheck = (e1, cls1, e2, cls2) => {
 		e1.click();
 	}
 }
+
+/********************************************/
+/* autoclick element if it has class and other does not */
+/********************************************/
+const alertPanel = document.querySelector("#alert-panel");
+const alertMessage = document.querySelector("#alert-message");
+
+const sendMessage = (msgStyle, msg) => {
+	alertMessage.innerText = msg;
+	// alertMessage.style.cssText = msgStyle;
+	alertMessage.setAttribute("style", msgStyle);
+	alertPanel.classList.add('show');
+	setTimeout(() => alertPanel.classList.remove('show'), 5000);
+} 
 
 /********************************************/
 /* dynamically combine element components */
@@ -119,6 +134,10 @@ const joinUser = (email = joinEmail.value, pw = joinPass.value, pw2 = joinConfir
 			// console.log(`uDat: ${userData}, d: ${data}`)
 			// openMenus('select', joinDiv, join, login, loginDiv, credsDiv, credsForm);
 			switchOptions(account); 
+			sendMessage(
+				"color: limegreen;", 
+				"Get set for your first order by updating your billing and contact information."
+			);
 			emailB.innerText = `${userData.email}`; 
 			bidB.innerText = `BB-1218-${userData.user_id.toString().padStart(5, '0')}`; 
 			boxB.innerText = `Ordered: ${new Intl.DateTimeFormat('en-US').format(userData.joined)}`; 
@@ -169,7 +188,14 @@ const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 			cartUserCheck();
 			console.log(userData);
 			userIsLoggedIn(login, loginDiv);
-			switchOptions(account);
+			if (home.classList.contains('homeLoad')
+					|| home.classList.contains('lg')) { 
+						switchOptions(products); 
+			}
+			sendMessage(
+				"color: limegreen;", 
+				"Welcome back! Come see what we have in stock!"
+			);
 			userAccount(data);
 			setInMotion([nameB, emailB, addrB]);
 		})
@@ -183,6 +209,9 @@ const userIsLoggedIn = (menu, menuDiv) => {
 		setTimeout(() => 
 			openMenus('select', menu, menuDiv, 0, 0, credsDiv, credsForm, logoutDiv), 1000
 		);
+	}
+	if (mobileMenuIcon.classList.contains('hide')) { 
+		setTimeout(() => mobileMenuDiv.click(), 1000); 
 	}
 } 
 
@@ -388,7 +417,7 @@ const passUser = new Pass(
 // RegEx source: https://www.regextester.com/93592
 const addrUser = new Address(
 		'Bad address', 
-		'Please enter a proper street address.',
+		'We could not locate your address. Please try again.',
 		// new RegExp(/^\d+\s[A-z]+\s[A-z]+/),
 		new RegExp(/^\d+\s[A-z]+\s[A-z]|\d+\s[A-z]+|\s[A-z]+/),
 		addrB,
@@ -398,7 +427,7 @@ const addrUser = new Address(
 	);
 const payUser = new Pay (
 		"Bad card information", 
-		"Please enter a valid card number.", 
+		"Card invalid. Please try again.", 
 		new RegExp(/<(|\/|[^\/>][^>]+|\/[^>][^>]+)>/), 
 		payB, //score - card
 		"http://localhost:3000/pay", 
@@ -410,7 +439,7 @@ const payUser = new Pay (
 //RegExp source: https://stackoverflow.com/questions/16699007/regular-expression-to-match-standard-10-digit-phone-number
 const phoneUser = new Account(
 		"Bad phone number", 
-		"Please enter a 10-digit phone number ie: 123-456-7890.", 
+		"Please enter a 10-digit phone number such as: 123-456-7890.", 
 		new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/), 
 		phoneB, 
 		"http://localhost:3000/phone", 
@@ -418,10 +447,16 @@ const phoneUser = new Account(
 	);
 
 const editInput = (user = userAddr) => {
-	if (user.check()) { return alert("Please enter some information."); }
+	if (user.check()) { 
+		return sendMessage("color: orangered;", "Please enter some information.");
+	}
+	
 	if (!user.validate()) {
-		user.clear();
-		return alert(user.invalid);
+		user.clear(); 
+		return sendMessage(
+				"color: orangered;", 
+				user.invalid
+			);
 	}
 	fetch(user.urlSrv, {
 		method: 'put',
@@ -431,10 +466,14 @@ const editInput = (user = userAddr) => {
 	.then(response => {
 		if (response.status !== 200) {
 			user.clear();
-			return alert("There is a conflict with your information. Please try again.");
+			return sendMessage(
+					"color: orangered;",
+					"There is a conflict with your information. Please try again."
+				);
 		}
 		response.json()
 		.then(data => { 
+			sendMessage("color: limegreen;", "Your info has been saved!");
 			user.add();
 			user.clear(); 
 			if (user.scroll.innerText.length > 24) 
@@ -447,18 +486,45 @@ const editInput = (user = userAddr) => {
 /********************************************/
 /* load products */
 /********************************************/
-const getProds = () => {
-	fetch("http://localhost:3000/spicy")
-	.then(response => response.json())
-	.then(resolve => {
-		if (!boolProds) {
-			printProds(resolve);
-			boolProds = true;
-			// addProdsEvents(resolve);
-		} else {
-			return;
-		}
-	});
+
+// ********loading screen needs work*********
+let showProductsPanel = false;
+
+const productsLoader = () => { 
+	const loadProductsPanel = document.querySelector("#load-products-panel");
+
+	if (!showProductsPanel) {
+		addClasses('show', loadProductsPanel);
+		setTimeout(() => rmClasses('show', loadProductsPanel), 3000);
+		showProductsPanel = true;
+	}
+	return;
+}
+// ********loading screen needs work*********
+
+const getProds = () => { 
+	// if (spicy !== undefined || spicy.length !== 0) {
+	// 	console.log('spicy');
+	// 	printProds(spicy);
+	// 	boolProds = true;
+	// } else {
+	// 	fetch("http://localhost:3000/spicy")
+	// // ********productsLoader needs work*********
+	// 	.then(productsLoader())
+	// 	.then(response => response.json())
+	// 	.then(resolve => {
+
+			if (!boolProds) { 
+				// printProds(resolve);
+				printProds(spicy);
+				boolProds = true;
+				productsLoader();
+				// addProdsEvents(resolve);
+			} else {
+				return;
+			}
+	// 	});
+	// }
 }
 
 const scrollProducts = document.querySelector("#scroll-products");
@@ -501,7 +567,7 @@ const printProds = (prodArObj) => {
 		const newDiv3 = createTile(newDiv1, 'div', 'eClass', 'panel-info');
 
 		const newP3 = createTile(
-				newDiv3, 'span', 'eText', 'Source: ', 'eClass', 'span-p');
+				newDiv3, 'span', 'eText', 'Source: ', 'eClass', 'panel-p');
 		const newSpan = createTile(
 				newP3, 'span', 'eText', spice.latin, 'eClass', 'span-p');
 		const afterP3 = createTile(
@@ -613,6 +679,8 @@ const reviewCheckout = document.getElementById("review-checkout");
 const reviewJoin = document.getElementById("review-join"); 
 const reviewLogin = document.getElementById("review-login"); 
 
+const scrollOrders = document.querySelector("#scroll-orders");
+
 const subProduct = (event) => {
 	let amount = event.target.nextElementSibling;
 	if (amount.value > 0) {
@@ -636,8 +704,11 @@ let alertMsg = true;
 const cartUserCheck = () => {
 	if (Object.entries(userData).length === 0 && userData.constructor === Object) {
 		if (alertMsg) {
-			alertMsg = false;
-			alert("Please register or login to complete your order."); 
+			alertMsg = false; 
+			sendMessage(
+					"color: orangered;", 
+					"Please register or login to complete your order."
+				);
 		}
 		if (reviewJoin.classList.contains('show') === false) {
 			openMenus('show', reviewJoin, reviewLogin, reviewCheckout); 
@@ -829,7 +900,11 @@ const addToCart = (event) => {
 			if (check >= 10) { 
 				itemAmount.value = 10 - list.amt; /******/
 				// list.amt += Number(itemAmount.value); /******/ 
-				alert("You may only add 10 of each item per order."); 
+				// alert("You may only add 10 of each item per order."); 
+				sendMessage(
+					"color: orangered;", 
+					"Sorry, your shopping bag can only hold 10 of this item."
+				);
 			}
 		}
 	});
@@ -912,9 +987,17 @@ const deleteFromCart = (event, list) => {
 
 const placeOrder = () =>  {
 	if (totSpan.innerText === "0.00") {
-		alert("You must place an item in your cart before you can check out.")
+		sendMessage(
+				"color: orangered;", 
+				"Please add an item to your shopping bag before checking out."
+			);
+		switchOptions(products);
+		cart.click();
 	} else {
-		alert("Your order is complete! We will send you an email with your order details shortly.");
+		sendMessage(
+					"color: limegreen;", 
+					"Your order is complete! We will send you an email with your order details shortly."
+				);
 		const orderTotals = {
 			subtotal: Number(reviewSpan[0].innerText),
 			getShipping: function() {
@@ -1007,10 +1090,129 @@ const loadOrders = () => {
 		showOrdersPanel = true; 
 		rmClasses('show', ordersMsg);
 		addClasses('show', loadOrdersPanel);
-		setTimeout(() => rmClasses('show', loadOrdersPanel), 9000);
+		setTimeout(() => rmClasses('show', loadOrdersPanel), 3000);
 	}
 
+	fetch('http://localhost:3000/loadorders', {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({
+			id: userData.user_id
+		})
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			return;
+		}
+		response.json()
+		.then(orders => {
+			displayOrders(orders);
+			userData.orders = orders;
+			console.log(orders);
+		})
+	})
 	console.log(userData);
+} 
+
+let ordersLoaded = false;
+let spicy = [];
+
+fetch("http://localhost:3000/spicy") 
+		.then(response => response.json())
+		.then(resolve => spicy = resolve)
+		.catch(err => console.log("Failed to access images."));
+
+const displayOrders = (ordersList) => {
+	if (!ordersLoaded) {
+		ordersLoaded = true;
+		let orderId = 0; 
+		let savedDiv = 0;
+		const orderCount = ordersList.length;
+
+		ordersList.map((item, idx) => {
+			if (orderId !== item.order_id) {
+				const newDiv1 = createTile(
+						scrollOrders, 'div', 'eClass', 'orders-container');
+
+				const newIdDiv = createTile(newDiv1, 'div', 'eClass', 'oitem-iddiv');
+				const newIdHead1 = createTile(
+						newIdDiv, 'h2', 'eClass', 'oitem-orderid', 'eText', 'Order: ');
+				const newIdHead2 = createTile(
+						newIdDiv, 'h2', 
+						'eClass', 'oitem-orderid', 
+						'eText', 'BB-1900-' + item.order_id.toString().padStart(4, '0'));
+				
+				const newDiv2 = createTile(newDiv1, 'div', 'eClass', 'oitem-bar4');
+				const newDiv3 = createTile(newDiv1, 'div', 'eClass', 'tag-txt tag-calc');
+				
+				const newHead1 = createTile(
+						newDiv3, 'h3', 'eClass', 
+						'oitem-cart tag-p tag-sub', 
+						'eText', 'subtotal: $' 
+						+ (Number(item.tot) - (Number(item.ship) + Number(item.tax))).toFixed(2)
+					); 
+				
+				const newHead2 = createTile(
+						newDiv3, 'h4', 
+						'eClass', 'oitem-cart tag-p', 
+						'eText', 'ship: ' + item.ship
+					); 	
+				
+				const newHead3 = createTile(
+						newDiv3, 'h4', 
+						'eClass', 'oitem-cart tag-p', 
+						'eText', 'tax: ' + item.tax
+					); 
+
+				const newHead4 = createTile(
+						newDiv3, 'h2', 
+						'eClass', 'oitem-cart tag-p tag-tot',
+						'eText', '$' + item.tot
+					); 
+				savedDiv = newDiv1;
+				orderId = item.order_id;
+			} 
+
+			const newDiv4 = createTile(savedDiv, 'div', 'eClass', 'oitem-div');
+
+			let image = 0;
+
+			spicy.some(spice => {
+				image = spice.thumb;
+				return spice.name === item.product;
+			}); 
+
+			const newImg1 = createTile(
+					newDiv4, 'img', 'eClass', 'oitem-img', 'eSrc', image);
+
+			const newDiv5 = createTile(newDiv4, 'div', 'eClass', 'abs-pos oitem-bar1');
+			const newDiv6 = createTile(newDiv4, 'div', 'eClass', 'abs-pos oitem-bar2');
+			const newDiv7 = createTile(newDiv4, 'div', 'eClass', 'abs-pos oitem-bar3');
+			
+			const newHead5 = createTile(
+					newDiv4, 'h4', 
+					'eClass', 'abs-pos oitems oitem-name',
+					'eText', item.product
+				);
+
+			const newHead6 = createTile(
+					newDiv4, 'h5',
+					'eClass', 'abs-pos oitems oitem-price',
+					'eText', '$' + (Number(item.prod_price) * item.qty).toFixed(2)
+				); 
+
+			const newHead7 = createTile(
+					newDiv4, 'h4', 'eClass', 'abs-pos oitems oitem-qty', 'eText', 'Qty. ');
+			const newHead8 = createTile(
+					newDiv4, 'h4', 'eClass', 'abs-pos oitems oitem-num', 'eText', item.qty);
+
+			if (ordersList[idx + 1] !== undefined 
+					&& ordersList[idx + 1].order_id !== item.order_id
+					|| idx === orderCount - 1) { 
+				const newDiv8 = createTile(savedDiv, 'div', 'eClass', 'oitem-bar4');
+			} 
+		}); 
+	}
 }
 
 /********************************************/
@@ -1023,8 +1225,12 @@ const select = (element) => {
 /********************************************/
 /* clicking menu selector arrows resizes options */
 /********************************************/
+const arrowContainer = document.getElementById("arrow-container");
+const arrowDiv = document.getElementById("arrow-div");
 const leftArrow = document.getElementById("left-arrow");
 const rightArrow = document.getElementById("right-arrow");
+const mobileMenuDiv = document.getElementById("mobile-menu-div");
+const mobileMenuIcon = document.getElementById("mobile-menu-icon");
 
 const options = [home, products, orders, account, about];
 let selected = 0;
@@ -1122,6 +1328,8 @@ const stringToVar = (word, cut = 0, str = "") => {
 	return Function('"user strict";return (' + word + ')')();
 }
 
+const opContainer = document.getElementById('op-container');
+
 const productsPanel = document.getElementById('products-panel');
 const ordersPanel = document.getElementById('orders-panel');
 const opEvents = document.getElementsByClassName('op-events');
@@ -1171,19 +1379,33 @@ const editClick = document.getElementsByClassName('editClick');
 const fwdClick = document.getElementsByClassName('fwdClick');
 const saveClick = document.getElementsByClassName('saveClick');
 
+const mobileMenuCheck = () => {
+	if (mobileMenuIcon.classList.contains('hide') 
+		&& (joinDiv.classList.contains('select')
+		|| loginDiv.classList.contains('select')
+		|| logoutDiv.classList.contains('select')
+	)) { 
+		rmClasses('hide', credsDiv); 
+	} else {
+		addClasses('hide', credsDiv);
+	}
+}
+
 join.addEventListener("click", function() { 
 	classCheck(cart, 'open', join, 'select');	
 	openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
 	addCursor(joinEmail);
-
+	mobileMenuCheck();
  });
 login.addEventListener("click", function() { 
 	classCheck(cart, 'open', login, 'select');	
 	openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
 	addCursor(loginEmail);
+	mobileMenuCheck();
  });
 logout.addEventListener("click", function() { 
 	openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm, logoutDiv);
+	mobileMenuCheck();	
 	classCheck(cart, 'open', logout, 'select');	
 });
 
@@ -1232,10 +1454,17 @@ reviewCheckout.addEventListener("click", function() {
 });
 
 Object.values(editClick).map((dat, idx) => {
-	dat.addEventListener("click", function() { 
-		editAccounts(this, ...stringToVar(this.id.toString(), 2, 'X'));
-		addCursor(stringToVar(this.id.toString(), 2, 'C'));
-	});
+		dat.addEventListener("click", function() { 
+			if (Object.entries(userData).length === 0 && userData.constructor === Object) {
+				sendMessage(
+						"color: orangered;", 
+						"Please login to update your info."
+					);
+			} else {
+				editAccounts(this, ...stringToVar(this.id.toString(), 2, 'X'));
+				addCursor(stringToVar(this.id.toString(), 2, 'C'));
+			}
+		});
 });
 
 Object.values(fwdClick).map((dat, idx) => {
@@ -1250,12 +1479,84 @@ Object.values(saveClick).map((dat, idx) => {
 	dat.addEventListener("click", function() {
 		editAccounts(this, ...stringToVar(this.id.toString(), 2, 'Z'));
 		// addCursor(stringToVar(this.id.toString(), 2, 'C'));
-		editInput(stringToVar(this.id.toString(), 2, 'User'));
+		editInput(stringToVar(this.id.toString(), 2, 'User')); 
 	});
 });
 
 leftArrow.addEventListener("click", cycleLeft);
 rightArrow.addEventListener("click", cycleRight);
+
+mobileMenuDiv.addEventListener("click", function() {
+	tglClasses('hide', credsDiv, arrowContainer, mobileMenuIcon, opContainer);
+	if (!mobileMenuIcon.classList.contains('hide')) {
+		rmClasses('select', join, joinDiv, login, loginDiv, credsDiv, credsForm, logoutDiv);
+		rmClasses('hide', credsDiv);
+	}
+});
+
+const resetAfterResize = (elm, min) => {
+	if (window.innerWidth < min 
+			&& !(mobileMenuIcon.classList.contains('hide'))
+			&& (join.classList.contains('select') 
+			|| login.classList.contains('select')
+			|| logout.classList.contains('select')
+		)) {
+		elm.click();
+		// bug: credsDiv still keeps 'hide' w/logout, may be due to shared func w/login
+		// if (!credsDiv.classList.contains('select')) {
+			rmClasses('hide', credsDiv);
+		// }
+		
+	}
+}
+
+const delay = 1000;
+let isThrottled = false;
+// Source: http://bencentra.com/code/2015/02/27/optimizing-window-resize.html
+window.addEventListener('resize', function() {
+	if (!isThrottled) {
+		isThrottled = true;
+		setTimeout(function() {
+			resetAfterResize(join, 512);
+			resetAfterResize(login, 512);
+			resetAfterResize(logout, 512);
+			isThrottled = false;
+		}, delay);
+	}
+})
+
+// const hideMenus = () => {
+// 	return window.setInterval(function() {
+// 		addClasses('hide', credsDiv, opContainer, arrowContainer);
+// 	}, 5000);
+// }
+
+// let hider = hideMenus();
+
+// window.addEventListener("keypress", function() {
+// 	rmClasses('hide', credsDiv, opContainer, arrowContainer);
+// 	clearInterval(hider);
+// 	hider = hideMenus();
+// }); 
+
+// mobileMenuDiv.addEventListener("click", function() {
+// 	rmClasses('hide', credsDiv, opContainer, arrowContainer);
+// 	clearInterval(hider);
+// 	hider = hideMenus();
+// });
+
+// leftArrow.addEventListener("click", function() {
+// 	cycleLeft();
+// 	rmClasses('hide', credsDiv, opContainer);
+// 	clearInterval(hider);
+// 	hider = hideMenus();
+// });
+// rightArrow.addEventListener("click", function() {
+// 	cycleRight();
+// 	rmClasses('hide', credsDiv, opContainer);
+// 	clearInterval(hider);
+// 	hider = hideMenus();
+// });
 
 Object.values(opEvents).map((num, idx) => { 
 	num.addEventListener("mouseover", () => {
