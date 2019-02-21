@@ -10,6 +10,7 @@ body {
 	overflow: hidden;
 	margin: 0px;
 	margin-top: 100vh; /**/
+	margin-top: 0vh;
 }
 
 a {
@@ -1201,15 +1202,16 @@ input[type=number]::-webkit-outer-spin-button {
 	display: flex;
 	justify-content: center;
 
-	-webkit-transition: height 0.2s, background 0.2s;
-	-ms-transition: height 0.2s, background 0.2s;
-	-moz-transition: height 0.2s, background 0.2s;
-	-o-transition: height 0.2s, background 0.2s;
-	transition: height 0.2s, background 0.2s;
+	-webkit-transition: height 1s, background 0.2s;
+	-ms-transition: height 1s, background 0.2s;
+	-moz-transition: height 1s, background 0.2s;
+	-o-transition: height 1s, background 0.2s;
+	transition: height 1s, background 0.2s;
 }
 
 #credsForm.select {
-	height: 610px;
+	height: 90vh;
+	max-height: 610px;
 	/*background: oldlace;*/
 	/*background: rgba(255,235,125,0.8);*/
 	/*background: rgba(255,165,0,0.75);*/
@@ -1253,7 +1255,8 @@ input[type=number]::-webkit-outer-spin-button {
 	border-color: transparent;
 	color: moccasin;
 	/*font-size: 16px;*/
-	font-size: 2.25rem;
+	/*font-size: 2.25rem;*/
+	font-size: 1.8rem;
 	font-family: "ar julian", "perpetual titling mt", "times new roman";
 	font-size-adjust: initial; /*inherit*/
 }
@@ -1478,7 +1481,7 @@ input[type=password]:focus,*/
 		/*overflow: hidden;*/
 	}
 
-	#credsForm.select { z-index: 200; }
+	#credsForm.select { z-index: 250; }
 
 	#arrow-container {
 		overflow: hidden;
@@ -1948,6 +1951,35 @@ input[type=password]:focus,*/
 .options.md { 
 	/*font-size: 2.5rem; */
 	font-size: 2rem;
+}
+
+#test-container {
+	background: rgba(10,10,0,1);
+	height: 100%;
+	width: 100%;
+	top: 0vh;
+	overflow: hidden;
+	z-index: 700;
+}
+
+#test-container.close {
+	top: 100vh;
+	height: 0vh;
+
+	-webkit-transition: top 600ms, height 600ms;
+	-moz-transition: top 600ms, height 600ms;
+	-ms-transition: top 600ms, height 600ms;
+	-o-transition: top 600ms, height 600ms;
+	transition: top 600ms, height 600ms;
+}
+
+.test-bar {
+	background: seagreen;
+	color: moccasin;
+	font-size: 1.4rem;
+	height: 5vh;
+	width: 100%;
+	top: 0vh;
 }
 
 @-ms-viewport { width: device-width; }
