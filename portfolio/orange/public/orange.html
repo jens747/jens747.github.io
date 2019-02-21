@@ -5,10 +5,30 @@
 	<!-- <meta http-equiv="Cache-control" content="public"> -->
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<meta name="viewport" content="width=device-width">
+	<meta name="Description" content="prototype ecommerce website">
 	<title>orange</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../src/auto-complete.css">
 	<link rel="stylesheet" type="text/css" href="../src/orange.css">
+	<!-- adding favicon for Web, Android, MS & iOS -->
+	<link rel="apple-touch-icon" sizes="57x57" href="../images/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../images/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../images/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../images/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../images/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../images/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../images/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../images/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="../images/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../images/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../images/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="../images/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 </head>
 <body class="image-container">
 	<!-- Company Title and Subtitle container -->
@@ -23,6 +43,14 @@
 			<h2 class="coBaseText">a peculiar creation</h2>
 		</div>
 	</div>
+	<!-- error message window -->
+	<div class="abs-pos alert-container">
+		<div id="alert-panel">
+			<i class="fas fa-exclamation-triangle" id="alert-icon"></i>
+			<h5 id="alert-message"></h5>
+		</div>
+	</div>
+		
 	<!-- Signin / Login container -->
 	<div id="credsDiv">
 		<div id="credsForm">
@@ -154,6 +182,17 @@
 		<div class="abs-pos panels max-con" id="products-panel">
 			<!-- scroll-products id not used, or similar id's -->
 			<div class="abs-pos scroll-panel max-con" id="scroll-products">
+				<div class="panel-container" id="load-products-panel">
+					<div class="divo-load">
+						<h3 class="o-load1">/</h3>
+						<h3 class="o-load2">/</h3>
+						<h3 class="o-load3">/</h3>
+						<h3 class="o-load4">/</h3>
+					</div>
+					<div class="abs-pos divh-load">
+						<h2 class="h-load">Loading</h2>
+					</div>
+				</div>
 				<!-- <div class="panel-container">
 					<div class="abs-pos panel-header">
 						<p class="panel-p weight-p">2 oz.</p>
@@ -222,12 +261,58 @@
 						<h3 id="o-orders3">/</h3>
 						<h3 id="o-orders4">/</h3>
 					</div>
-					<div class="abs-pos" id="divh-orders">
-						<h2 id="h-orders">Loading</h2>
+					<div class="abs-pos divh-orders">
+						<h2 class="h-orders">Loading</h2>
 					</div>
-					
 				</div>
-			</div>
+
+				<!-- <div class="orders-container">
+					<div class="oitem-iddiv">
+						<h2 class="oitem-orderid">Order: </h2>
+						<h2 class="oitem-orderid">BB-1900-0023</h2>
+					</div>
+					<div class="oitem-bar4"></div>
+
+
+					<div class="tag-txt tag-calc">
+						<h3 class="oitem-cart tag-p tag-sub">subtotal: $4.59</h3>
+						<h4 class="oitem-cart tag-p" id="ship-span">ship: 6.99</h4>
+						<h4 class="oitem-cart tag-p" id="tax-span">tax: 0.30</h4>
+						<h2 class="oitem-cart tag-p tag-tot">$11.88</h2>
+					</div>
+
+					<div class="oitem-div">
+						<img src="../images/thumbnails/allspice-thumb-pixabay.jpg" alt="Allspice" class="oitem-img">
+						<div class="abs-pos oitem-bar1"></div>
+						<div class="abs-pos oitem-bar2"></div>
+						<div class="abs-pos oitem-bar3"></div>
+						<h6 class="abs-pos oitems oitem-name">Allspice</h6>
+						<h5 class="abs-pos oitems oitem-price">$8.99</h5>
+						<h6 class="abs-pos oitems oitem-qty">Qty. </h6>
+						<h6 class="abs-pos oitems oitem-num">2</h6>
+					</div>
+					<div class="oitem-div">
+						<img src="../images/thumbnails/basil-thumb-unsplash.jpg" alt="Allspice" class="oitem-img">
+						<div class="abs-pos oitem-bar1"></div>
+						<div class="abs-pos oitem-bar2"></div>
+						<div class="abs-pos oitem-bar3"></div>
+						<h6 class="abs-pos oitems oitem-name">Basil</h6>
+						<h5 class="abs-pos oitems oitem-price">$5.99</h5>
+						<h6 class="abs-pos oitems oitem-qty">Qty. </h6>
+						<h6 class="abs-pos oitems oitem-num">3</h6>
+					</div>
+					<div class="oitem-div">
+						<img src="../images/thumbnails/cardamom-thumb-pixabay.jpg" alt="Allspice" class="oitem-img">
+						<div class="abs-pos oitem-bar1"></div>
+						<div class="abs-pos oitem-bar2"></div>
+						<div class="abs-pos oitem-bar3"></div>
+						<h6 class="abs-pos oitems oitem-name">Cardamom</h6>
+						<h5 class="abs-pos oitems oitem-price">$11.99</h5>
+						<h6 class="abs-pos oitems oitem-qty">Qty. </h6>
+						<h6 class="abs-pos oitems oitem-num">5</h6>
+					</div>
+					<div class="oitem-bar4"></div>
+			</div> -->
 		</div>
 	</div>
 
@@ -531,9 +616,67 @@
 	<div class="container">
 		<div class="abs-pos panels max-con" id="about-panel">
 			<div class="abs-pos scroll-panel max-con" id="scroll-about">
-				<div class="panel-container">
+				<div id="about-container">
+					<div class="about-div about-font">
+						<h3 class="about-h">Blue Box is an indy startup spice shop.</h3>
+						<h4 class="about-h">Come and help us grow.</h4>
+						<ul class="about-box about-ul">
+							<li class="about-li">Neighborhood friendly service</li>
+							<li class="about-li">Quality, fresh herbs & spices</li>
+							<li class="about-li">Responsibly sourced</li>
+						</ul>
+						<h3 class="about-h" id="about-connect">Connect with Blue Box:</h3>
+					</div> 
 
+					<div class="about-box about-div" id="about-icons">
+						<a href="#">
+							<i class="fab fa-facebook-square about-media" id="about-fb"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-twitter about-media" id="about-tw"></i>
+						</a>
+						<a href="#">
+							<i class="fas fa-rss about-media" id="about-rs"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-instagram about-media" id="about-ig"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-google-plus about-media" id="about-gp"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-pinterest about-media" id="about-pn"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-patreon about-media" id="about-pt"></i>
+						</a>
+					</div>
+
+					<div class="about-app-container">
+						<a href="https://www.apple.com/ios/app-store/">
+							<div class="about-box about-app-div">
+								<i class="fab fa-app-store-ios about-media" id="about-ap"></i>
+								<div class="about-app-txt">
+									<p class="about-app-p">Download on the</p>
+									<p class="about-app-title">App Store</p>
+								</div>
+							</div>
+						</a>
+						
+						<a href="https://play.google.com/store">
+							<div class="about-box about-app-div">
+								<i class="fab fa-google-play about-media" id="about-pl"></i>
+								<div class="about-app-txt">
+									<p class="about-app-p">Get it on</p>
+									<p class="about-app-title">Google Play</p>
+								</div>
+							</div>
+						</a>
+						
+					</div>
+					<!-- <p class="about-font" id="about-donate">10% of all Patreon contributions are donated toward non-profit charity groups for sustainable food production.</p> -->
 				</div>
+				<p class="abs-pos about-font" id="about-donate">10% of all Patreon contributions are donated toward non-profit charity groups for sustainable food production.</p>
 			</div>
 		</div>
 	</div>
@@ -541,9 +684,16 @@
 	<!-- arrows -->
 	<div class="abs-pos container" id="arrow-container">
 		<div class="abs-pos arrow-div max-con">
-			<div class="options arrows" id="left-arrow"></div>
-			<div class="options arrows" id="right-arrow"></div>
+			<!-- <div class="options arrows" id="left-arrow"></div>
+			<div class="options arrows" id="right-arrow"></div> -->
+			<i class="fas fa-angle-left awesome-arrows" id="left-arrow"></i>
+			<i class="fas fa-angle-right awesome-arrows" id="right-arrow"></i>
 		</div>
+	</div>
+
+	<!-- mobile menu button -->
+	<div class="abs-pos" id="mobile-menu-div">
+		<i class="fas fa-bars" id="mobile-menu-icon"></i>
 	</div>
 	
 	<!-- menu options container -->
