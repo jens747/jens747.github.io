@@ -207,7 +207,8 @@ const userIsLoggedIn = (menu, menuDiv) => {
 	openMenus('select', loDiv, logoutDiv);
 	if (loDiv.classList.contains('select') === true) {
 		setTimeout(() => 
-			openMenus('select', menu, menuDiv, 0, 0, credsDiv, credsForm, logoutDiv), 1000
+			// openMenus('select', menu, menuDiv, 0, 0, credsDiv, credsForm, logoutDiv), 1000
+			openMenus('select', menu, menuDiv, 0, 0, credsContainer, credsForm, logoutDiv), 1000
 		);
 	}
 	if (mobileMenuIcon.classList.contains('hide')) { 
@@ -1328,6 +1329,7 @@ const stringToVar = (word, cut = 0, str = "") => {
 	return Function('"user strict";return (' + word + ')')();
 }
 
+const credsContainer = document.getElementById('creds-container');
 const opContainer = document.getElementById('op-container');
 
 const productsPanel = document.getElementById('products-panel');
@@ -1385,26 +1387,31 @@ const mobileMenuCheck = () => {
 		|| loginDiv.classList.contains('select')
 		|| logoutDiv.classList.contains('select')
 	)) { 
-		rmClasses('hide', credsDiv); 
+		// rmClasses('hide', credsDiv); 
+		rmClasses('hide', credsContainer);
 	} else {
-		addClasses('hide', credsDiv);
+		// addClasses('hide', credsDiv);
+		addClasses('hide', credsContainer);
 	}
 }
 
 join.addEventListener("click", function() { 
 	classCheck(cart, 'open', join, 'select');	
-	openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
+	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
+		openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
 	addCursor(joinEmail);
 	mobileMenuCheck();
  });
 login.addEventListener("click", function() { 
 	classCheck(cart, 'open', login, 'select');	
-	openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
+	// openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
+	openMenus('select', this, loginDiv, join, joinDiv, credsContainer, credsForm);
 	addCursor(loginEmail);
 	mobileMenuCheck();
  });
 logout.addEventListener("click", function() { 
-	openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm, logoutDiv);
+	// openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm, logoutDiv);
+	openMenus('select', login, loginDiv, join, joinDiv, credsContainer, credsForm, logoutDiv);
 	mobileMenuCheck();	
 	classCheck(cart, 'open', logout, 'select');	
 });
@@ -1438,13 +1445,15 @@ scrollAccount.addEventListener("scroll", function() { scrollText(this, addrB, 99
 reviewJoin.addEventListener("click", function() { 
 	// openMenus('open', cart, shoppingBag, 0, 0, review);
 	cart.click();
-	openMenus('select', join, joinDiv, login, loginDiv, credsDiv, credsForm); 
+	// openMenus('select', join, joinDiv, login, loginDiv, credsDiv, credsForm); 
+	openMenus('select', join, joinDiv, login, loginDiv, credsContainer, credsForm); 
 	addCursor(joinEmail); 
 });
 reviewLogin.addEventListener("click", function() {
 	// openMenus('open', cart, shoppingBag, 0, 0, review);
 	cart.click();
-	openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm);
+	// openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm); 
+	openMenus('select', login, loginDiv, join, joinDiv, credsContainer, credsForm);
 	addCursor(loginEmail);
 });
 reviewCheckout.addEventListener("click", function() {
@@ -1487,10 +1496,13 @@ leftArrow.addEventListener("click", cycleLeft);
 rightArrow.addEventListener("click", cycleRight);
 
 mobileMenuDiv.addEventListener("click", function() {
-	tglClasses('hide', credsDiv, arrowContainer, mobileMenuIcon, opContainer);
+	// tglClasses('hide', credsDiv, arrowContainer, mobileMenuIcon, opContainer);
+	tglClasses('hide', credsContainer, arrowContainer, mobileMenuIcon, opContainer);
 	if (!mobileMenuIcon.classList.contains('hide')) {
-		rmClasses('select', join, joinDiv, login, loginDiv, credsDiv, credsForm, logoutDiv);
-		rmClasses('hide', credsDiv);
+		// rmClasses('select', join, joinDiv, login, loginDiv, credsDiv, credsForm, logoutDiv);
+		// rmClasses('hide', credsDiv);
+		rmClasses('select', join, joinDiv, login, loginDiv, credsContainer, credsForm, logoutDiv);
+		rmClasses('hide', credsContainer);
 	}
 });
 
@@ -1504,7 +1516,8 @@ const resetAfterResize = (elm, min) => {
 		elm.click();
 		// bug: credsDiv still keeps 'hide' w/logout, may be due to shared func w/login
 		// if (!credsDiv.classList.contains('select')) {
-			rmClasses('hide', credsDiv);
+			rmClasses('hide', credsContainer);
+			// rmClasses('hide', credsDiv);
 		// }
 		
 	}

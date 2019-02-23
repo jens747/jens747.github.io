@@ -55,101 +55,113 @@
 <!-- Scrolling issues -->
 
 	<!-- Signin / Login container -->
-	<div class="abs-pos" id="test-container" onclick="getElementById('test-container').classList.toggle('close')">
-		<div class="test-bar">Bar</div>
+	<div class="abs-pos" id="creds-container">
+		<!-- <div class="test-bar">Bar</div> -->
 
 		<div id="credsDiv">
-			<div id="credsForm">
-				<ul id="creds-ul">
-					<div class="creds">
-						<button class="abs-pos credsBtn" id="join">
-							Join
-						</button>
-					</div>
-					<div class="creds">
-						<button class="abs-pos credsBtn" id="login">
-							Log in
-						</button>
-					</div>
-					<div class="abs-pos creds" id="loDiv">
-						<button class="abs-pos credsBtn" id="logout">
-							Log Out
-						</button>
-					</div>
-				</ul>
-				<!-- Join form -->
-				<div class="abs-pos panel-container join-login" id="joinDiv">
-					<form class="abs-pos form-div" id="joinForm"> 
-						<h3 class="form-input">
-							Username: 
-							<input class="form-info" id="joinEmail" type="email" name="username" placeholder="email">
-						</h3>
-						<h3 class="form-input">
-							Password: 
-							<input class="form-info" id="joinPass" type="Password" name="password" placeholder="password">
-							<input 
-								class="form-info" id="joinConfirmPass" type="Password"
-								name="password" 
-								placeholder="confirm password">
-						</h3>
-						<div class="form-input">
-							<input 
-									class="formBtn" 
-									id="joinBtn" 
-									type="button" 
-									value="Join" 
-									name="Join"
-								>
-						</div>
-					</form>
+
+			<div class="ctr-flx" id="creds-header">
+				<div class="creds">
+					<button class="abs-pos credsBtn" id="join">
+						Join
+					</button>
 				</div>
-				<div class="abs-pos panel-container join-login" id="failedJoin">
-					<h3 class="form-input">
-						Registration failed. Please check your email or password and try again.
-					</h3>
+				<div class="creds">
+					<button class="abs-pos credsBtn" id="login">
+						Log in
+					</button>
 				</div>
-				<!-- login form -->
-				<div class="abs-pos panel-container join-login" id="loginDiv">
-					<form class="form-div" id="loginForm">
-						<h3 class="form-input"> Username: 
-							<input class="form-info" id="loginEmail" type="email" name="username" value="" placeholder="email">
-						</h3>
-						<h3 class="form-input">Password: 
-							<input class="form-info" id="loginPass" type="Password" name="password" value="" placeholder="password">
-						</h3>
-						<div class="form-input">
-							<input 
-									class="formBtn" 
-									id="loginBtn" 
-									type="button" 
-									value="Log in" 
-									name="Log in"
-								>
-									<!-- windowSzScrollText(nameB),
-										windowSzScrollText(addrB) -->
-						</div>
-					</form>
-				</div>
-				<div class="abs-pos panel-container join-login" id="failedLogin">
-						<h3 class="form-input">
-							Your email or password is incorrect. Please try again.
-						</h3>
-				</div>
-				<div class="abs-pos panel-container join-login" id="logoutDiv">
-					<form class="form-div" id="logoutForm">
-						<h3 class="form-input">You are logged in!</h3>
-						<div class="form-input">
-							<input 
-									class="formBtn" 
-									id="logoutBtn" 
-									type="button" 
-									value="Log out" 
-									name="Log out"
-								>
-						</div>
-					</form>
+				<div class="abs-pos creds" id="loDiv">
+					<button class="abs-pos credsBtn" id="logout">
+						Log Out
+					</button>
 				</div>
 			</div>
+			
+			<div class="ctr-flx" id="creds-body">
+				<div class="ctr-flx" id="credsForm">
+					<!-- <ul id="creds-ul">
+						<div class="creds">
+							<button class="abs-pos credsBtn" id="join">
+								Join
+							</button>
+						</div>
+						<div class="creds">
+							<button class="abs-pos credsBtn" id="login">
+								Log in
+							</button>
+						</div>
+						<div class="abs-pos creds" id="loDiv">
+							<button class="abs-pos credsBtn" id="logout">
+								Log Out
+							</button>
+						</div>
+					</ul> -->
+					<!-- Join form -->
+					<div class="abs-pos panel-container join-login" id="joinDiv">
+						<form class="abs-pos form-div" id="joinForm"> 
+							<h3 class="form-input">
+								Username: 
+								<input class="form-info" id="joinEmail" type="email" name="username" placeholder="email">
+							</h3>
+							<h3 class="form-input">
+								Password: 
+								<input class="form-info" id="joinPass" type="Password" name="password" placeholder="password">
+								<input 
+									class="form-info" id="joinConfirmPass" type="Password"
+									name="password" 
+									placeholder="confirm password">
+							</h3>
+							<div class="form-input">
+								<!-- <input class="formBtn" id="joinBtn" type="button" value="Join" name="Join"> -->
+								<button class="formBtn" id="joinBtn">Join</button>
+							</div>
+						</form>
+					</div>
+					<div class="abs-pos panel-container join-login" id="failedJoin">
+						<h3 class="form-input">
+							Registration failed. Please check your email or password and try again.
+						</h3>
+					</div>
+					<!-- login form -->
+					<div class="abs-pos panel-container join-login" id="loginDiv">
+						<form class="form-div" id="loginForm">
+							<h3 class="form-input"> Username: 
+								<input class="form-info" id="loginEmail" type="email" name="username" value="" placeholder="email">
+							</h3>
+							<h3 class="form-input">Password: 
+								<input class="form-info" id="loginPass" type="Password" name="password" value="" placeholder="password">
+							</h3>
+							<div class="form-input">
+								<!-- <input class="formBtn" id="loginBtn" type="button" value="Log in" name="Log in"> -->
+								<button class="formBtn" id="loginBtn">Log in</button>
+										<!-- windowSzScrollText(nameB),
+											windowSzScrollText(addrB) -->
+							</div>
+						</form>
+					</div>
+					<div class="abs-pos panel-container join-login" id="failedLogin">
+							<h3 class="form-input">
+								Your email or password is incorrect. Please try again.
+							</h3>
+					</div>
+					<div class="abs-pos panel-container join-login" id="logoutDiv">
+						<form class="form-div" id="logoutForm">
+							<h3 class="form-input">You are logged in!</h3>
+							<div class="form-input">
+								<input 
+										class="formBtn" 
+										id="logoutBtn" 
+										type="button" 
+										value="Log out" 
+										name="Log out"
+									>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 	</div>
