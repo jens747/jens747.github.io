@@ -1498,11 +1498,15 @@ rightArrow.addEventListener("click", cycleRight);
 mobileMenuDiv.addEventListener("click", function() {
 	// tglClasses('hide', credsDiv, arrowContainer, mobileMenuIcon, opContainer);
 	tglClasses('hide', credsContainer, arrowContainer, mobileMenuIcon, opContainer);
+	if (itemsInCart.value > 0) { addClasses('show', cart); }
 	if (!mobileMenuIcon.classList.contains('hide')) {
 		// rmClasses('select', join, joinDiv, login, loginDiv, credsDiv, credsForm, logoutDiv);
 		// rmClasses('hide', credsDiv);
 		rmClasses('select', join, joinDiv, login, loginDiv, credsContainer, credsForm, logoutDiv);
 		rmClasses('hide', credsContainer);
+		rmClasses('show', cart);
+		rmClasses('open', cart, review, shoppingBag);
+		rmClasses('empty', cart, review, shoppingBag);
 	}
 });
 
@@ -1520,6 +1524,8 @@ const resetAfterResize = (elm, min) => {
 			// rmClasses('hide', credsDiv);
 		// }
 		
+	} else {
+		if (itemsInCart.value > 0) { addClasses('show', cart); }
 	}
 }
 
