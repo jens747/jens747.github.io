@@ -684,7 +684,8 @@ a {
 .sm-panel-container {
 	/*position: absolute;*/
 	height: 140px;
-	width: 286px;
+	width: 82vw;
+	max-width: 286px;
 	border-top: solid 2px darkcyan;
 	border-bottom: solid 2px darkcyan;
 	z-index: 30;
@@ -2287,6 +2288,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* Mobile screen formatting */
 /********************************************/
 @media only screen and (max-width: 512px) { 
+	#coMain { margin-top: -78vh; }
 	#coTitle {
 		font-size: 5rem;
 		/*margin-bottom: -1rem;
@@ -2408,7 +2410,24 @@ input[type=number]::-webkit-outer-spin-button {
 	} 
 	#cart.empty { 
 		top: 43px;
-		right: 226px; } 
+		right: 226px; 
+	} 
+
+	.about-container { height: 82%; }
+	.about-h { margin-top: auto; }
+	#about-h2 {
+		margin-top: 1.2rem;
+		margin-bottom: -0.6rem;
+	}
+	.about-ul { font-size: 0.82rem; }
+	#about-connect { 
+		font-size: 1rem;
+		margin-bottom: -1.6rem;
+		margin-bottom: -4rem;
+	}
+	.about-media { font-size: 1.6rem; }
+	.about-ap,
+	.about-pl { font-size: 2rem; }
 }
 
 @-ms-viewport { width: device-width; }
