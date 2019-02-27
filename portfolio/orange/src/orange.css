@@ -2398,6 +2398,7 @@ input[type=number]::-webkit-outer-spin-button {
 	#cart { z-index: 250; } 
 }
 
+/* approx. responsive settings 316 x 442 */
 @media only screen and (max-width: 320px) { 
 	.review-join-login { 
 		font-size: 1.2rem; 
@@ -2413,21 +2414,49 @@ input[type=number]::-webkit-outer-spin-button {
 		right: 226px; 
 	} 
 
-	.about-container { height: 82%; }
+	/*.about-container { height: 82%; }*/
+	/* resp */
+	.about-app-container { padding-bottom: 1rem; }
 	.about-h { margin-top: auto; }
 	#about-h2 {
-		margin-top: 1.2rem;
-		margin-bottom: -0.6rem;
+		/*margin-top: 1.2rem;*/
+		/* resp */
+		margin-top: 0.6rem; 
+		margin-bottom: -0.6rem; 
 	}
-	.about-ul { font-size: 0.82rem; }
+	.about-ul { 
+		font-size: 0.82rem; 
+		/* resp */
+		width: 74%;
+		margin-right: auto;
+		margin-left: auto;
+	}
 	#about-connect { 
 		font-size: 1rem;
-		margin-bottom: -1.6rem;
-		margin-bottom: -4rem;
+		/*margin-bottom: -1.6rem;*/
+		/*margin-bottom: -4rem;*/
+		/* resp */
+		margin-top: 0.6rem;
+		margin-bottom: -2rem;
 	}
+	/* resp */
+	#about-icons { 
+		width: 68%;
+		padding: 0.4rem 0.6rem;
+	}
+	.about-app-div { width: 7.6rem; }
+	.about-app-txt { font-size: 0.56rem; }
+	.about-app-title { font-size: 0.85rem; }
 	.about-media { font-size: 1.6rem; }
-	.about-ap,
-	.about-pl { font-size: 2rem; }
+	#about-ap { 
+		font-size: 2rem;
+		padding: 0.3rem 0rem 0.2rem 0.5rem;
+	 }
+	#about-pl { 
+		font-size: 2rem; 
+		padding: 0.3rem 0.3rem 0.2rem 0.3rem;
+	}
+	#about-pl + div { margin-left: 0rem; }
 }
 
 @-ms-viewport { width: device-width; }
