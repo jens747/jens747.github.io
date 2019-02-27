@@ -1075,7 +1075,8 @@ input[type=number]::-webkit-outer-spin-button {
 .about-box {
 	background: brown;
 	color: floralwhite;
-	opacity: 0.8;
+	/*opacity: 0.8;*/
+	opacity: 0.86;
 }
 
 .about-ul {
@@ -1644,12 +1645,30 @@ input[type=number]::-webkit-outer-spin-button {
 	background: orange;
 	text-shadow: 2px 2px 4px rgba(245,150,0,1);
 	box-shadow: 2px 0px 8px darkorange, -2px 0px 8px darkorange;
+	/*color: moccasin;
+	background: tomato;
+	opacity: 0.88;*/
 	font-size: 3rem;
 	border-radius: 28px;
 	margin: 1.4rem 1rem;
-	margin-bottom: 0rem;
+	/*margin-top: 1.4rem;
+	margin-bottom: 0rem;*/
 	padding: 0.1rem 0.8rem;
+
+	-webkit-transition: background 1s, color 1s, box-shadow 1s, margin 500ms;
+	-moz-transition: background 1s, color 1s, box-shadow 1s, margin 500ms;
+	-ms-transition: background 1s, color 1s, box-shadow 1s, margin 500ms;
+	-o-transition: background 1s, color 1s, box-shadow 1s, margin 500ms;
+	transition: background 1s, color 1s, box-shadow 1s, margin 500ms;
 }
+
+/*.awesome-arrows.hide { 
+	color: rgba(255,191,0,1); 
+	background: orange;
+	text-shadow: 2px 2px 4px rgba(245,150,0,1);
+	box-shadow: 2px 0px 8px darkorange, -2px 0px 8px darkorange;
+	margin: 1.4rem 1rem;
+}*/
 
 #left-arrow {
 	/*border-right: 3rem solid rgba(255,191,0,1);*/
@@ -2237,7 +2256,8 @@ input[type=number]::-webkit-outer-spin-button {
 } 
 
 #op-overflow {
-	width: 80vw;
+	/*width: 80vw;*/
+	width: 1092px;
 	overflow-x: scroll;
 	margin-bottom: 50px;
 	padding-top: 50px;
@@ -2246,7 +2266,19 @@ input[type=number]::-webkit-outer-spin-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	-webkit-transition: margin-left 400ms;
+	-ms-transition: margin-left 400ms;
+	-moz-transition: margin-left 400ms;
+	-o-transition: margin-left 400ms;
+	transition: margin-left 400ms;
 }
+
+#op-overflow.home { /*margin-left: 200px;*/ margin-left: 12.5rem; }
+#op-overflow.products { /*margin-left: 90px;*/ margin-left: 5.63rem; }
+#op-overflow.orders { /*margin-left: 0px;*/ margin-left: 0rem; }
+#op-overflow.account { /*margin-left: -89px;*/ margin-left: -5.57rem; }
+#op-overflow.about { /*margin-left: -198px;*/ margin-left: -12.37rem; }
 
 .op-div {
 	/*display: inline-block;*/
@@ -2267,23 +2299,21 @@ input[type=number]::-webkit-outer-spin-button {
 	transition: font-size 0.5s;
 }
 
-.homeLoad { 
-	/*font-size: 6rem; */
-	font-size: 3rem;
-}
 .productsLoad { 
 	/*font-size: 2.5rem; */
 	font-size: 2rem;
 }
-
+.homeLoad,
 .options.lg { 
 	/*font-size: 6rem; */
-	font-size: 3rem;
+	font-size: 4rem;
 }
 .options.md { 
 	/*font-size: 2.5rem; */
 	font-size: 2rem;
 }
+
+#mobile-menu-div { height: 0px; }
 /********************************************/
 /* Mobile screen formatting */
 /********************************************/
@@ -2323,8 +2353,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 	#arrow-container {
 		overflow: hidden;
-		height: 0vh;
-		margin-top: 0vh;
+		/*height: 0vh;*/
+		/*margin-top: 0vh;*/
+		height: 8.5rem; 
+		margin-top: -8rem;
 
 		-webkit-transition: height 1s, margin-top 1s;
 		-moz-transition: height 1s, margin-top 1s;
@@ -2341,6 +2373,26 @@ input[type=number]::-webkit-outer-spin-button {
 	}
 
 	.arrow-div { margin-top: 0vh; }
+
+	.awesome-arrows { 
+		color: moccasin;
+		background: tomato;
+		opacity: 0.88;
+		margin-top: 1.4rem;
+		margin-bottom: 0rem;
+		box-shadow: none;
+		text-shadow: none;
+		margin-right: 0rem;
+		margin-left: 0rem;
+	}
+
+	.awesome-arrows.hide { 
+		color: rgba(255,191,0,1); 
+		background: orange;
+		text-shadow: 2px 2px 4px rgba(245,150,0,1);
+		box-shadow: 2px 0px 8px darkorange, -2px 0px 8px darkorange;
+		margin: 1.4rem 1rem;
+	}
 
 	.scroll-shopping { margin-left: 0px; }
 
@@ -2366,6 +2418,7 @@ input[type=number]::-webkit-outer-spin-button {
 		/*border-radius: 0.76rem 0.76rem 0.2rem 0.2rem;*/
 		box-shadow: none;
 		text-shadow: none;
+		opacity: 0.88;
 		-webkit-transition: background 1s, color 1s, box-shadow 1s;
 		-moz-transition: background 1s, color 1s, box-shadow 1s;
 		-ms-transition: background 1s, color 1s, box-shadow 1s;
@@ -2390,6 +2443,8 @@ input[type=number]::-webkit-outer-spin-button {
 		height: 8.5rem;
 		margin-top: -8.5rem;
 	}
+	.homeLoad,
+	.options.lg { font-size: 3rem; }
 }
 
 @media only screen and (max-height: 720px) { 

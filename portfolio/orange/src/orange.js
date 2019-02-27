@@ -20,6 +20,12 @@ const addClasses = (cls, ...elm) => elm.map(list => list.classList.add(cls));
 const rmClasses = (cls, ...elm) => elm.map(list => list.classList.remove(cls));
 const tglClasses = (cls, ...elm) => elm.map(list => list.classList.toggle(cls));
 
+const setupClassList = (elm, ...cls) => {
+	const oldList = Object.values(elm.classList);
+	oldList.map(item => elm.classList.remove(item));
+	cls.map(entry => elm.classList.add(entry));
+}
+
 /********************************************/
 /* autoclick element if it has class and other does not */
 /********************************************/
@@ -627,14 +633,14 @@ const printProds = (prodArObj) => {
 
 		const newDiv5 = createTile(newDiv4, 'div');
 
-		const newInput2 = createTile(
-				newDiv5, 'input',
-				'eClass', 'form-btn',
-				'eId', spice.savId,
-				'eType', 'submit',
-				'eName', spice.savId,
-				'eValue', 'Save'
-			);
+		// const newInput2 = createTile(
+		// 		newDiv5, 'input',
+		// 		'eClass', 'form-btn',
+		// 		'eId', spice.savId,
+		// 		'eType', 'submit',
+		// 		'eName', spice.savId,
+		// 		'eValue', 'Save'
+		// 	);
 
 		const newInput3 = createTile(
 				newDiv5, 'input',
@@ -647,7 +653,7 @@ const printProds = (prodArObj) => {
 
 		newBtn1.addEventListener("click", subProduct);
 		newBtn2.addEventListener("click", addProduct);
-		newInput2.addEventListener("click", saveProduct);
+		// newInput2.addEventListener("click", saveProduct);
 		newInput3.addEventListener("click", addToCart);
 	});
 }
@@ -1279,15 +1285,22 @@ const switchOptions = (page) => {
 	switch(page) {
 		case home:
 			home.classList.add('lg');
-			products.classList.add('md');
+			products.classList.add('md'); 
 			leftArrow.classList.remove('display');
+			// addClasses('home', opOverflow);
+			// rmClasses('products', opOverflow);
+			setupClassList(opOverflow, 'abs-pos', 'home');
 			Object.values(panels).map(num => num.classList.remove('show'));
 			selected = 0;
 			break;
 		case products:
 			home.classList.add('md');
 			products.classList.add('lg');
-			orders.classList.add('md');
+			orders.classList.add('md'); 
+			// addClasses('products', opOverflow);
+			// rmClasses('home', opOverflow);
+			// rmClasses('orders', opOverflow);
+			setupClassList(opOverflow, 'abs-pos', 'products');
 			Object.values(panels).map(num => num.classList.remove('show'));
 			panels[0].classList.add('show');
 			getProds();
@@ -1296,7 +1309,8 @@ const switchOptions = (page) => {
 		case orders:
 			products.classList.add('md');
 			orders.classList.add('lg');
-			account.classList.add('md');
+			account.classList.add('md'); 
+			setupClassList(opOverflow, 'abs-pos', 'orders');
 			Object.values(panels).map(num => num.classList.remove('show'));
 			panels[1].classList.add('show');
 			loadOrders();
@@ -1306,7 +1320,8 @@ const switchOptions = (page) => {
 			products.classList.remove('productsLoad');
 			orders.classList.add('md');
 			account.classList.add('lg');
-			about.classList.add('md');
+			about.classList.add('md'); 
+			setupClassList(opOverflow, 'abs-pos', 'account');
 			Object.values(panels).map(num => num.classList.remove('show'));
 			panels[2].classList.add('show');
 			selected = 3;
@@ -1314,8 +1329,9 @@ const switchOptions = (page) => {
 		case about:
 			products.classList.remove('productsLoad');
 			account.classList.add('md');
-			about.classList.add('lg');
+			about.classList.add('lg'); 
 			rightArrow.classList.add('display');
+			setupClassList(opOverflow, 'abs-pos', 'about');
 			Object.values(panels).map(num => num.classList.remove('show'));
 			panels[3].classList.add('show');
 			selected = 4;
@@ -1331,6 +1347,7 @@ const stringToVar = (word, cut = 0, str = "") => {
 
 const credsContainer = document.getElementById('creds-container');
 const opContainer = document.getElementById('op-container');
+const opOverflow = document.getElementById('op-overflow');
 
 const productsPanel = document.getElementById('products-panel');
 const ordersPanel = document.getElementById('orders-panel');
@@ -1497,7 +1514,8 @@ rightArrow.addEventListener("click", cycleRight);
 
 mobileMenuDiv.addEventListener("click", function() {
 	// tglClasses('hide', credsDiv, arrowContainer, mobileMenuIcon, opContainer);
-	tglClasses('hide', credsContainer, arrowContainer, mobileMenuIcon, opContainer);
+	tglClasses('hide', credsContainer, leftArrow, rightArrow, mobileMenuIcon, opContainer);
+	// tglClasses('hide', credsContainer, arrowContainer, mobileMenuIcon, opContainer);
 	if (itemsInCart.value > 0) { addClasses('show', cart); }
 	if (!mobileMenuIcon.classList.contains('hide')) {
 		// rmClasses('select', join, joinDiv, login, loginDiv, credsDiv, credsForm, logoutDiv);
