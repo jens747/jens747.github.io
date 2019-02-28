@@ -14,6 +14,9 @@ body {
 	/*margin-top: 0vh;*/
 }
 
+#image-container { margin-top: 100vh; }
+#image-container.reset { margin-top: 99vh; }
+
 /*body.noScroll {
 	overflow: hidden;
 }*/

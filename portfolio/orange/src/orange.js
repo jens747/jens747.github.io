@@ -1345,6 +1345,7 @@ const stringToVar = (word, cut = 0, str = "") => {
 	return Function('"user strict";return (' + word + ')')();
 }
 
+const imageContainer = document.getElementById('image-container');
 const credsContainer = document.getElementById('creds-container');
 const opContainer = document.getElementById('op-container');
 const opOverflow = document.getElementById('op-overflow');
@@ -1427,19 +1428,20 @@ document.addEventListener("touchmove", function(e) { e.preventDefault() });
 //   body.msrequestFullscreen();
 // }
 // ************************************************************************
-const wBox = coMain.getBoundingClientRect();
+const scrollInView = () => {
+	// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
+	const wBox = coMain.getBoundingClientRect();
+	
+	window.scrollTo(0, wBox.top);
+	addClasses('reset', imageContainer);
+	setTimeout(function() { rmClasses('reset', imageContainer) }, 0);
+}
 
 join.addEventListener("click", function() { 
 	classCheck(cart, 'open', join, 'select');	
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
 	openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
-	// setTimeout(function() {
-	// 	// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
-	// 	const wBox = joinForm.getBoundingClientRect();
-	// 	console.log(wBox.top);
-		// window.scrollTo({ top: wBox.top, behavior: 'smooth' });
-		window.scrollTo(0, wBox.top);
-	// }, 600);
+	scrollInView();
 	addCursor(joinEmail);
 	mobileMenuCheck();
  });
@@ -1447,17 +1449,14 @@ login.addEventListener("click", function() {
 	classCheck(cart, 'open', login, 'select');	
 	// openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
 	openMenus('select', this, loginDiv, join, joinDiv, credsContainer, credsForm);
-	// setTimeout(function() {
-		// const wBox = loginForm.getBoundingClientRect(); 
-		// console.log(wBox.top);
-		window.scrollTo(0, wBox.top);
-	// }, 600);
+	scrollInView();
 	addCursor(loginEmail);
 	mobileMenuCheck();
  });
 logout.addEventListener("click", function() { 
 	// openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm, logoutDiv);
 	openMenus('select', login, loginDiv, join, joinDiv, credsContainer, credsForm, logoutDiv);
+	scrollInView();
 	mobileMenuCheck();	
 	classCheck(cart, 'open', logout, 'select');	
 });
