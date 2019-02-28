@@ -2313,7 +2313,10 @@ input[type=number]::-webkit-outer-spin-button {
 	font-size: 2rem;
 }
 
-#mobile-menu-div { height: 0px; }
+#mobile-menu-div { 
+	height: 0px; 
+	overflow: hidden;
+}
 /********************************************/
 /* Mobile screen formatting */
 /********************************************/
