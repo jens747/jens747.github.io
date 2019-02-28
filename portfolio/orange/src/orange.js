@@ -1434,10 +1434,10 @@ join.addEventListener("click", function() {
 	openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
 	setTimeout(function() {
 		// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
-		const wBox = joinEmail.getBoundingClientRect();
+		const wBox = joinForm.getBoundingClientRect();
 		console.log(wBox.top, wBox.right, wBox.bottom, wBox.left);
 		window.scrollTo({ top: wBox.top, behavior: 'smooth' });
-	}, 600);
+	}, 500);
 	addCursor(joinEmail);
 	mobileMenuCheck();
  });
