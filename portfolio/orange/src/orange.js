@@ -1416,16 +1416,16 @@ const mobileMenuCheck = () => {
 window.addEventListener("load", function() { window.scrollTo(0, 0); });
 document.addEventListener("touchmove", function(e) { e.preventDefault() });
 
-var body = document.documentElement;
-if (body.requestFullscreen) {
-  body.requestFullscreen();
-} else if (body.webkitrequestFullscreen) {
-  body.webkitrequestFullscreen();
-} else if (body.mozrequestFullscreen) {
-  body.mozrequestFullscreen();
-} else if (body.msrequestFullscreen) {
-  body.msrequestFullscreen();
-}
+// var body = document.documentElement;
+// if (body.requestFullscreen) {
+//   body.requestFullscreen();
+// } else if (body.webkitrequestFullscreen) {
+//   body.webkitrequestFullscreen();
+// } else if (body.mozrequestFullscreen) {
+//   body.mozrequestFullscreen();
+// } else if (body.msrequestFullscreen) {
+//   body.msrequestFullscreen();
+// }
 // ************************************************************************
 
 join.addEventListener("click", function() { 
@@ -1433,7 +1433,13 @@ join.addEventListener("click", function() {
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
 		openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
 	addCursor(joinEmail);
+	// window.scrollTo(4000,0);
 	mobileMenuCheck();
+	setTimeout(function() {
+		const wBox = joinForm.getBoundingClientRect();
+		console.log(wBox.top, wBox.right, wBox.bottom, wBox.left);
+		window.scrollTo(0, wBox.top);
+	}, 600);
  });
 login.addEventListener("click", function() { 
 	classCheck(cart, 'open', login, 'select');	
