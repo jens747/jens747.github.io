@@ -1436,9 +1436,13 @@ join.addEventListener("click", function() {
 	// window.scrollTo(4000,0);
 	mobileMenuCheck();
 	setTimeout(function() {
-		const wBox = joinForm.getBoundingClientRect();
+		const wBox = joinEmail.getBoundingClientRect();
 		console.log(wBox.top, wBox.right, wBox.bottom, wBox.left);
-		window.scrollTo(0, wBox.top);
+		window.scrollTo({
+			top: wBox.top,
+			left: 0,
+			behavior: 'smooth'
+		});
 	}, 600);
  });
 login.addEventListener("click", function() { 
