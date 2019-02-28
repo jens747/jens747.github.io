@@ -1435,9 +1435,8 @@ const scrollInView = () => {
 	
 	window.scrollTo(0, wBox.top);
 	// temp. resolution for empty margin space screen bottom after scrollTo()
-	// addClasses('reset', imageContainer);
-	// setTimeout(function() { rmClasses('reset', imageContainer) }, 0);
-	window.scrollTo(0, 0);
+	addClasses('reset', imageContainer);
+	setTimeout(function() { rmClasses('reset', imageContainer) }, 0);
 }
 
 join.addEventListener("click", function() { 
