@@ -1417,26 +1417,26 @@ const mobileMenuCheck = () => {
 window.addEventListener("load", function() { window.scrollTo(0, 0); });
 document.addEventListener("touchmove", function(e) { e.preventDefault() });
 
-var body = document.documentElement;
-if (body.requestFullscreen) {
-  body.requestFullscreen();
-} else if (body.webkitrequestFullscreen) {
-  body.webkitrequestFullscreen();
-} else if (body.mozrequestFullscreen) {
-  body.mozrequestFullscreen();
-} else if (body.msrequestFullscreen) {
-  body.msrequestFullscreen();
-}
+// var body = document.documentElement;
+// if (body.requestFullscreen) {
+//   body.requestFullscreen();
+// } else if (body.webkitrequestFullscreen) {
+//   body.webkitrequestFullscreen();
+// } else if (body.mozrequestFullscreen) {
+//   body.mozrequestFullscreen();
+// } else if (body.msrequestFullscreen) {
+//   body.msrequestFullscreen();
+// }
 // ************************************************************************
 
 const scrollInView = () => {
 	// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
 	const wBox = coMain.getBoundingClientRect();
 	
-	window.scrollTo(0, wBox.top);
+	imageContainer.scrollTo(0, wBox.top);
 	// temp. resolution for empty margin space screen bottom after scrollTo()
-	addClasses('reset', imageContainer);
-	setTimeout(function() { rmClasses('reset', imageContainer) }, 0);
+	// addClasses('reset', imageContainer);
+	// setTimeout(function() { rmClasses('reset', imageContainer) }, 0);
 }
 
 join.addEventListener("click", function() { 
