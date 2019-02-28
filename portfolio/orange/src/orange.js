@@ -1427,17 +1427,19 @@ document.addEventListener("touchmove", function(e) { e.preventDefault() });
 //   body.msrequestFullscreen();
 // }
 // ************************************************************************
+const wBox = coMain.getBoundingClientRect();
 
 join.addEventListener("click", function() { 
 	classCheck(cart, 'open', join, 'select');	
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
 	openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
-	setTimeout(function() {
-		// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
-		const wBox = joinForm.getBoundingClientRect();
-		console.log(wBox.top, wBox.right, wBox.bottom, wBox.left);
-		window.scrollTo({ top: wBox.top, behavior: 'smooth' });
-	}, 1000);
+	// setTimeout(function() {
+	// 	// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
+	// 	const wBox = joinForm.getBoundingClientRect();
+	// 	console.log(wBox.top);
+		// window.scrollTo({ top: wBox.top, behavior: 'smooth' });
+		window.scrollTo(0, wBox.top);
+	// }, 600);
 	addCursor(joinEmail);
 	mobileMenuCheck();
  });
@@ -1445,10 +1447,11 @@ login.addEventListener("click", function() {
 	classCheck(cart, 'open', login, 'select');	
 	// openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
 	openMenus('select', this, loginDiv, join, joinDiv, credsContainer, credsForm);
-	setTimeout(function() {
-		const wBox = loginForm.getBoundingClientRect(); 
-		window.scrollTo({ top: wBox.top, behavior: 'smooth' });
-	}, 600);
+	// setTimeout(function() {
+		// const wBox = loginForm.getBoundingClientRect(); 
+		// console.log(wBox.top);
+		window.scrollTo(0, wBox.top);
+	// }, 600);
 	addCursor(loginEmail);
 	mobileMenuCheck();
  });
