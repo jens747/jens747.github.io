@@ -1546,6 +1546,12 @@ input[type=number]::-webkit-outer-spin-button {
 	align-self: center;
 	justify-content: center; 
 	color: lightseagreen;
+
+	-webkit-transition: top 400ms;
+	-ms-transition: top 400ms;
+	-moz-transition: top 400ms;
+	-o-transition: top 400ms;
+	transition: top 400ms;
 }
 
 /*.joinInput {
