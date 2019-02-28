@@ -1431,24 +1431,24 @@ document.addEventListener("touchmove", function(e) { e.preventDefault() });
 join.addEventListener("click", function() { 
 	classCheck(cart, 'open', join, 'select');	
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
-		openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
-	addCursor(joinEmail);
-	// window.scrollTo(4000,0);
-	mobileMenuCheck();
+	openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
 	setTimeout(function() {
+		// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
 		const wBox = joinEmail.getBoundingClientRect();
 		console.log(wBox.top, wBox.right, wBox.bottom, wBox.left);
-		window.scrollTo({
-			top: wBox.top,
-			left: 0,
-			behavior: 'smooth'
-		});
+		window.scrollTo({ top: wBox.top, behavior: 'smooth' });
 	}, 600);
+	addCursor(joinEmail);
+	mobileMenuCheck();
  });
 login.addEventListener("click", function() { 
 	classCheck(cart, 'open', login, 'select');	
 	// openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
 	openMenus('select', this, loginDiv, join, joinDiv, credsContainer, credsForm);
+	setTimeout(function() {
+		const wBox = loginForm.getBoundingClientRect(); 
+		window.scrollTo({ top: wBox.top, behavior: 'smooth' });
+	}, 600);
 	addCursor(loginEmail);
 	mobileMenuCheck();
  });
