@@ -1437,7 +1437,7 @@ join.addEventListener("click", function() {
 		const wBox = joinForm.getBoundingClientRect();
 		console.log(wBox.top, wBox.right, wBox.bottom, wBox.left);
 		window.scrollTo({ top: wBox.top, behavior: 'smooth' });
-	}, 600);
+	}, 1000);
 	addCursor(joinEmail);
 	mobileMenuCheck();
  });
@@ -1448,7 +1448,7 @@ login.addEventListener("click", function() {
 	setTimeout(function() {
 		const wBox = loginForm.getBoundingClientRect(); 
 		window.scrollTo({ top: wBox.top, behavior: 'smooth' });
-	}, 400);
+	}, 600);
 	addCursor(loginEmail);
 	mobileMenuCheck();
  });
