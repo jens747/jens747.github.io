@@ -1428,13 +1428,16 @@ document.addEventListener("touchmove", function(e) { e.preventDefault() });
 //   body.msrequestFullscreen();
 // }
 // ************************************************************************
+
 const scrollInView = () => {
 	// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
 	const wBox = coMain.getBoundingClientRect();
 	
 	window.scrollTo(0, wBox.top);
-	addClasses('reset', imageContainer);
-	setTimeout(function() { rmClasses('reset', imageContainer) }, 0);
+	// temp. resolution for empty margin space screen bottom after scrollTo()
+	// addClasses('reset', imageContainer);
+	// setTimeout(function() { rmClasses('reset', imageContainer) }, 0);
+	window.scrollTo(0, 0);
 }
 
 join.addEventListener("click", function() { 
