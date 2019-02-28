@@ -1433,17 +1433,21 @@ const scrollInView = () => {
 	// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
 	const wBox = coMain.getBoundingClientRect();
 	
-	imageContainer.scrollTo(0, wBox.top);
+	window.scrollTo(0, wBox.top);
 	// temp. resolution for empty margin space screen bottom after scrollTo()
 	// addClasses('reset', imageContainer);
 	// setTimeout(function() { rmClasses('reset', imageContainer) }, 0);
+	// addClasses('reset', arrowContainer);
+	// setTimeout(function() { rmClasses('reset', arrowContainer) }, 300);
 }
 
 join.addEventListener("click", function() { 
 	classCheck(cart, 'open', join, 'select');	
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
 	openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
-	scrollInView();
+	if (window.innerWidth < 512) {
+				scrollInView();
+			}	
 	addCursor(joinEmail);
 	mobileMenuCheck();
  });
@@ -1451,14 +1455,18 @@ login.addEventListener("click", function() {
 	classCheck(cart, 'open', login, 'select');	
 	// openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
 	openMenus('select', this, loginDiv, join, joinDiv, credsContainer, credsForm);
-	scrollInView();
+	if (window.innerWidth < 512) {
+				scrollInView();
+			}
 	addCursor(loginEmail);
 	mobileMenuCheck();
  });
 logout.addEventListener("click", function() { 
 	// openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm, logoutDiv);
 	openMenus('select', login, loginDiv, join, joinDiv, credsContainer, credsForm, logoutDiv);
-	scrollInView();
+	if (window.innerWidth < 512) {
+				scrollInView();
+			}
 	mobileMenuCheck();	
 	classCheck(cart, 'open', logout, 'select');	
 });
@@ -1630,3 +1638,19 @@ Object.values(opEvents).map((num, idx) => {
 			switchOptions(opEvents[idx]);
 		});
 }); 
+
+// *************************debug testing*********************************
+// Fixing Body Overflow (can be run in the console)
+// Source: https://css-tricks.com/findingfixing-unintended-body-overflow/
+
+// Note: can replace "width" with "height" to test y-axis
+// var docWidth = document.documentElement.offsetWidth;
+
+// [].forEach.call(
+//   document.querySelectorAll('*'),
+//   function(el) {
+//     if (el.offsetWidth > docWidth) {
+//       console.log(el);
+//     }
+//   }
+// );
