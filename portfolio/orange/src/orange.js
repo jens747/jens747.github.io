@@ -1412,6 +1412,22 @@ const mobileMenuCheck = () => {
 	}
 }
 
+// source: https://www.creativebloq.com/html5/12-html5-tricks-mobile-81412803
+window.addEventListener("load", function() { window.scrollTo(0, 0); });
+document.addEventListener("touchmove", function(e) { e.preventDefault() });
+
+var body = document.documentElement;
+if (body.requestFullscreen) {
+  body.requestFullscreen();
+} else if (body.webkitrequestFullscreen) {
+  body.webkitrequestFullscreen();
+} else if (body.mozrequestFullscreen) {
+  body.mozrequestFullscreen();
+} else if (body.msrequestFullscreen) {
+  body.msrequestFullscreen();
+}
+// ************************************************************************
+
 join.addEventListener("click", function() { 
 	classCheck(cart, 'open', join, 'select');	
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
