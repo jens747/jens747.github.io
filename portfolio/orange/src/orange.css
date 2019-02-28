@@ -160,6 +160,7 @@ a {
 	background-image: url(../images/bg-sm-account-stephanie-studer-unsplash.jpg);
 	/* Photo by Brooke Lark on Unsplash */
 	/*background-image: url(https://images.unsplash.com/photo-1481671703460-040cb8a2d909?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=25d3d8d29de77e77a940174620c5b290);*/
+	overscroll-behavior: contain;
 }
 
 #about-panel {
@@ -204,8 +205,6 @@ a {
 	width: 98vw;
 	margin-left: 6vw;
 	padding-right: 12vw;
-
-	overscroll-behavior: contain;
 }
 
 .panels:after {
