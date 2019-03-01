@@ -14,7 +14,8 @@ body {
 	/*margin-top: 0vh;*/
 
 	/* Source: https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior; */
-	overscroll-behavior: none;
+	/*overscroll-behavior: none;*/
+	overscroll-behavior: contain;
 }
 
 #image-container { margin-top: 100vh; }
@@ -2353,7 +2354,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 	#creds-container.hide { 
 		height: 4rem;
-		top: calc(100% - 10.4rem);
+		/*top: calc(100% - 10.4rem);*/
+		top: calc(100% - 166px);
 	}
 
 	/*#credsDiv { margin-top: 47px; }
