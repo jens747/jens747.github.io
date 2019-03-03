@@ -1633,7 +1633,10 @@ input[type=number]::-webkit-outer-spin-button {
 /********************************************/
 /* menu selector arrows */
 /********************************************/
-#arrow-container { width: 100vw; }
+#arrow-container { 
+	width: 100vw; 
+	position: fixed;
+}
 
 .arrow-div {
 	height: 8rem;
@@ -2332,6 +2335,7 @@ input[type=number]::-webkit-outer-spin-button {
 #mobile-menu-div { 
 	height: 0px; 
 	overflow: hidden;
+	/*position: fixed;*/
 }
 /********************************************/
 /* Mobile screen formatting */
@@ -2377,6 +2381,7 @@ input[type=number]::-webkit-outer-spin-button {
 		/*margin-top: 0vh;*/
 		height: 8rem; 
 		margin-top: -8rem;
+		z-index: 130;
 
 		-webkit-transition: height 1s, margin-top 1s;
 		-moz-transition: height 1s, margin-top 1s;
@@ -2390,6 +2395,7 @@ input[type=number]::-webkit-outer-spin-button {
 		height: 8rem;
 		/*margin-top: -23vh;*/
 		margin-top: -8rem;
+		position: absolute;
 	}
 
 	#arrow-container.reset { height: 0rem; }
@@ -2453,6 +2459,7 @@ input[type=number]::-webkit-outer-spin-button {
 		color: rgba(255,191,0,1);
 		box-shadow: 4px -4px 8px darkorange;
 		text-shadow: 2px -2px 4px rgba(245,150,0,1);
+		position: fixed;
 	}
 
 	#op-container { 
