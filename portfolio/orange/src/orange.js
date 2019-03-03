@@ -1698,10 +1698,34 @@ window.addEventListener('resize', function() {
 // });
 
 Object.values(opEvents).map((num, idx) => { 
-	num.addEventListener("mouseover", () => {
+	// num.addEventListener("mouseover", () => {
+		num.addEventListener("click", () => {
 			switchOptions(opEvents[idx]);
 		});
 }); 
+
+// onload 
+imageContainer.addEventListener('mousedown', lock, false);
+imageContainer.addEventListener('touchstart', lock, false);
+
+imageContainer.addEventListener('mouseup', move, false);
+imageContainer.addEventListener('touchend', move, false);
+
+function unify(e) { return e.changedTouches ? e.changedTouches[0] : e };
+// const unify = (elm) => e.changedTouches ? e.changedTouches[0] : e;
+
+let touchX = null;
+function lock(e) { touchX = unify(e).clientX };
+
+function move(e) {
+  if(touchX || touchX === 0) {
+    let dx = unify(e).clientX - touchX
+    // let s = Math.sign(dx);
+  	console.log(dx);
+    if (dx < -25) { rightArrow.click(); }
+    if (dx > 25)  { leftArrow.click(); }
+  }
+};
 
 // *************************debug testing*********************************
 // Fixing Body Overflow (can be run in the console)
