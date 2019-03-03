@@ -451,12 +451,8 @@ a { text-decoration: none; }
 #load-products-panel,
 #load-orders-panel { 
 	/*height: 90%;*/
-	height: 86%;
+	height: 95%;
 	width: 100%;
-	/*margin-bottom: 8%;*/
-	margin-bottom: 28px;
-	margin-bottom: 150px;
-	/*margin-bottom: 160%;*/
 	display: none; 
 }
 
@@ -2335,8 +2331,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 #mobile-menu-div { 
 	height: 0px; 
-	overflow: hidden; 
-	position: fixed;
+	overflow: hidden;
 }
 /********************************************/
 /* Mobile screen formatting */
@@ -2382,7 +2377,6 @@ input[type=number]::-webkit-outer-spin-button {
 		/*margin-top: 0vh;*/
 		height: 8rem; 
 		margin-top: -8rem;
-		position: fixed;
 
 		-webkit-transition: height 1s, margin-top 1s;
 		-moz-transition: height 1s, margin-top 1s;
