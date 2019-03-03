@@ -128,7 +128,7 @@ const joinUser = (email = joinEmail.value, pw = joinPass.value, pw2 = joinConfir
 		response.json()
 		.then(data => {
 			userData.user_id = data;
-			cartUserCheck();
+			cartLoginCheck();
 			userData.email = email;
 			// userData.cc_no = 'add payment info';
 			userData.joined = new Date();
@@ -191,7 +191,7 @@ const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 			// 	console.log(`E: ${email}, P: ${pass}`);
 			console.log(data);
 			userData = data; 
-			cartUserCheck();
+			cartLoginCheck();
 			console.log(userData);
 			userIsLoggedIn(login, loginDiv);
 			if (home.classList.contains('homeLoad')
@@ -207,6 +207,43 @@ const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 		})
 	})
 	.catch(error => { console.log("Request denied"); });
+}
+
+const logoutUser = () => { 
+	if (credsContainer.classList.contains('select')) {
+		sendMessage(
+			"color: limegreen;",
+			"Click the logout button to completely log out of your account."
+		); 
+	}
+
+	if (shoppingList.length > 0) {
+		const inTrash = document.querySelectorAll(".trash-img");
+
+		console.log(inTrash);
+		// inTrash[0].click();
+		const empty = Object.values(inTrash).map(item => { 
+			item.click(); 
+		}); 
+	}
+// 	// reload page instead of clearing data
+// 	joinUser(email = joinEmail.value, pw = joinPass.value, 
+// 	 pw2 = joinConfirmPass.value);
+//   userData { user_id, email, joined }
+//   emailB.innerText;
+//   bidB.innerText;
+//   boxB.innerText;
+
+// 	loginUser(email = loginEmail.value, pass = loginPass.value);
+//   userData { card_co, cc_no, city, email, exp_mo, exp_yr, first_name, joined,
+// 						 last_name, phone, sec_no, state_code, street, ui_statefk,
+// 						 user_hash, user_id, zip }
+//   nameB.innerText; (C)
+//   emailB.innerText; (C)
+//   passB.innerText; (C)
+//   addrB.innerText; (C, E)
+//   payB.innerText; (C, E, F, G)
+//   phoneB.innerText; (C)
 }
 
 const userIsLoggedIn = (menu, menuDiv) => {
@@ -701,14 +738,14 @@ const addProduct = (event) => {
 		amount.value++;
 }
 
-const saveProduct = (event) => {
-	console.log(`Saved: ${event.target.id}`);
+// const saveProduct = (event) => {
+// 	console.log(`Saved: ${event.target.id}`);
 	// button changes to remove or saved?
-}
+// }
 
 let alertMsg = true;
 
-const cartUserCheck = () => {
+const cartLoginCheck = () => {
 	if (Object.entries(userData).length === 0 && userData.constructor === Object) {
 		if (alertMsg) {
 			alertMsg = false; 
@@ -850,6 +887,12 @@ const cartSum = (sum, elm) => {
 	ticker(elm[0], Number(iSum), 0.2); 
 	ticker(elm[2], Number(iTax), 3.6); 
 	ticker(elm[3], Number(iTot), 0.2); 
+
+	if (loDiv.classList.contains('select') && credsContainer.classList.contains('select')) {
+		setupClassList(shoppingBag, 'abs-pos');
+		setupClassList(review, 'abs-pos', 'open');
+		setupClassList(cart, 'abs-pos', 'show');
+	}
 }
 
 const chkInventory = (id, itemAmount, imgSrc) => {
@@ -935,24 +978,29 @@ const addToCart = (event) => {
 		itemAmount.value = 0;
 	}
 	console.log(shoppingList);
+	
+		// mobileMenuCheck();
+		if (credsContainer.classList.contains('hide') !== true) { mobileMenuDiv.click(); }
 }
 
 const deleteFromCart = (event, list) => {
 	const itemSum = document.getElementsByClassName("item-sum"); 
-
-	const listItem = [
-		{
-			cost: event.target.parentElement.previousSibling.previousSibling.children[1].innerText,
-			amt: event.target.parentElement.previousSibling.previousSibling.children[2].firstChild.value,
-			inventory: event.target.parentElement.previousSibling.previousSibling.children[3].firstChild.value,
-			prod_id: event.target.value,
-			product: event.target.parentNode.parentNode,
-			element: event.target.parentNode.parentNode.parentNode,
-		},
-	];
-	console.log(listItem);
-
-	if (!list) { list = listItem; } 
+	// console.log(list);
+	if (!Array.isArray(list) || !list.length) { 
+		const listItem = [
+			{
+				// cost: event.target.parentElement.previousSibling.previousSibling.children[1].innerText,
+				amt: event.target.parentElement.previousSibling.previousSibling.children[2].firstChild.value,
+				// inventory: event.target.parentElement.previousSibling.previousSibling.children[3].firstChild.value,
+				prod_id: event.target.value,
+				product: event.target.parentNode.parentNode,
+				element: event.target.parentNode.parentNode.parentNode,
+			},
+		];
+		// console.log(listItem);
+		list = listItem;
+	}
+	// console.log(list);
 	list.map(item => { 
 		// console.log(item); 
 		fetch('http://localhost:3000/deletecart', {
@@ -1413,6 +1461,41 @@ const mobileMenuCheck = () => {
 	}
 }
 
+const cartMenuCheck = () => {
+	if (totSpan.innerText === "0.00") { 
+		if (cart.classList.contains('show') 
+				&& credsContainer.classList.contains('select')
+				&& loDiv.classList.contains('select')
+			) {
+				setupClassList(credsContainer, "abs-pos", "hide");
+		}
+		classCheck(join, 'select', cart, 'empty'); 
+		classCheck(login, 'select', cart, 'empty');	
+		// classCheck(logout, 'select', cart, 'empty'); 
+		
+		if (cart.classList.contains('open')) {
+			rmClasses('open', cart, shoppingBag);
+			rmClasses('empty', cart, shoppingBag, review);
+		} else {
+			addClasses('open', cart, shoppingBag, review);
+			addClasses('empty', cart, shoppingBag, review);
+		}
+		if (cart.classList.contains('show') 
+				&& credsContainer.classList.contains('select')
+				&& loDiv.classList.contains('select')
+			) {
+				setupClassList(credsContainer, "abs-pos", "hide");
+		}
+	} else { 
+		classCheck(join, 'select', cart, 'open'); 
+		classCheck(login, 'select', cart, 'open'); 
+		// classCheck(logout, 'select', cart, 'open'); 
+		openMenus('open', cart, shoppingBag, 0, 0, review); 
+		rmClasses('empty', cart, shoppingBag, review);
+	} 
+	
+}
+
 // source: https://www.creativebloq.com/html5/12-html5-tricks-mobile-81412803
 window.addEventListener("load", function() { window.scrollTo(0, 0); });
 document.addEventListener("touchmove", function(e) { e.preventDefault() });
@@ -1445,9 +1528,7 @@ join.addEventListener("click", function() {
 	classCheck(cart, 'open', join, 'select');	
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
 	openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
-	if (window.innerWidth < 512) {
-				scrollInView();
-			}	
+	if (window.innerWidth < 512) { scrollInView(); }	
 	addCursor(joinEmail);
 	mobileMenuCheck();
  });
@@ -1455,45 +1536,25 @@ login.addEventListener("click", function() {
 	classCheck(cart, 'open', login, 'select');	
 	// openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
 	openMenus('select', this, loginDiv, join, joinDiv, credsContainer, credsForm);
-	if (window.innerWidth < 512) {
-				scrollInView();
-			}
+	if (window.innerWidth < 512) { scrollInView(); }
 	addCursor(loginEmail);
 	mobileMenuCheck();
  });
 logout.addEventListener("click", function() { 
+	classCheck(cart, 'open', logout, 'select');
 	// openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm, logoutDiv);
 	openMenus('select', login, loginDiv, join, joinDiv, credsContainer, credsForm, logoutDiv);
-	if (window.innerWidth < 512) {
-				scrollInView();
-			}
-	mobileMenuCheck();	
-	classCheck(cart, 'open', logout, 'select');	
+	if (window.innerWidth < 512) { scrollInView(); }
+	mobileMenuCheck(); 
+	logoutUser();
 });
 
 joinBtn.addEventListener("click", function() { joinUser(); });
 loginBtn.addEventListener("click", function() { loginUser(); });
-logoutBtn.addEventListener("click", function() { loginUser(); });
+// logoutBtn.addEventListener("click", function() { logoutUser(); });
 cart.addEventListener("click", function() { 
-	if (totSpan.innerText === "0.00") { 
-		classCheck(join, 'select', cart, 'empty');	
-		classCheck(login, 'select', cart, 'empty');	
-		classCheck(logout, 'select', cart, 'empty');	
-		if (cart.classList.contains('open')) {
-			rmClasses('open', cart, shoppingBag);
-			rmClasses('empty', cart, shoppingBag, review);
-		} else {
-			addClasses('open', cart, shoppingBag, review);
-			addClasses('empty', cart, shoppingBag, review);
-		}
-	} else { 
-		classCheck(join, 'select', cart, 'open');
-		classCheck(login, 'select', cart, 'open');
-		classCheck(logout, 'select', cart, 'open');
-		openMenus('open', this, shoppingBag, 0, 0, review); 
-		rmClasses('empty', cart, shoppingBag, review);
-	} 
-	cartUserCheck(); 
+	cartMenuCheck();
+	cartLoginCheck(); 
 });
 scrollAccount.addEventListener("scroll", function() { scrollText(this, addrB, 99); });
 
@@ -1503,6 +1564,7 @@ reviewJoin.addEventListener("click", function() {
 	// openMenus('select', join, joinDiv, login, loginDiv, credsDiv, credsForm); 
 	openMenus('select', join, joinDiv, login, loginDiv, credsContainer, credsForm); 
 	addCursor(joinEmail); 
+	mobileMenuCheck();
 });
 reviewLogin.addEventListener("click", function() {
 	// openMenus('open', cart, shoppingBag, 0, 0, review);
@@ -1510,6 +1572,7 @@ reviewLogin.addEventListener("click", function() {
 	// openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm); 
 	openMenus('select', login, loginDiv, join, joinDiv, credsContainer, credsForm);
 	addCursor(loginEmail);
+	mobileMenuCheck();
 });
 reviewCheckout.addEventListener("click", function() {
 	placeOrder();
@@ -1571,7 +1634,7 @@ const resetAfterResize = (elm, min) => {
 			&& !(mobileMenuIcon.classList.contains('hide'))
 			&& (join.classList.contains('select') 
 			|| login.classList.contains('select')
-			|| logout.classList.contains('select')
+			|| loDiv.classList.contains('select')
 		)) {
 		elm.click();
 		// bug: credsDiv still keeps 'hide' w/logout, may be due to shared func w/login
@@ -1595,6 +1658,7 @@ window.addEventListener('resize', function() {
 			resetAfterResize(join, 512);
 			resetAfterResize(login, 512);
 			resetAfterResize(logout, 512);
+			resetAfterResize(loDiv, 512);
 			isThrottled = false;
 		}, delay);
 	}
