@@ -1615,7 +1615,7 @@ rightArrow.addEventListener("click", cycleRight);
 
 mobileMenuDiv.addEventListener("click", function() {
 	// tglClasses('hide', credsDiv, arrowContainer, mobileMenuIcon, opContainer);
-	tglClasses('hide', credsContainer, leftArrow, rightArrow, mobileMenuIcon, opContainer);
+	tglClasses('hide', credsContainer, leftArrow, rightArrow, mobileMenuIcon, opContainer, mobileMenuDiv, arrowContainer);
 	// tglClasses('hide', credsContainer, arrowContainer, mobileMenuIcon, opContainer);
 	if (itemsInCart.value > 0) { addClasses('show', cart); }
 	if (!mobileMenuIcon.classList.contains('hide')) {

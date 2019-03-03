@@ -1633,10 +1633,7 @@ input[type=number]::-webkit-outer-spin-button {
 /********************************************/
 /* menu selector arrows */
 /********************************************/
-#arrow-container { 
-	width: 100vw; 
-	position: fixed;
-}
+#arrow-container { width: 100vw; }
 
 .arrow-div {
 	height: 8rem;
@@ -2394,8 +2391,8 @@ input[type=number]::-webkit-outer-spin-button {
 		/*height: 24vh;*/
 		height: 8rem;
 		/*margin-top: -23vh;*/
-		margin-top: -8rem;
-		position: absolute;
+		margin-top: -8rem; 
+		position: fixed;
 	}
 
 	#arrow-container.reset { height: 0rem; }
@@ -2419,7 +2416,7 @@ input[type=number]::-webkit-outer-spin-button {
 		background: orange;
 		text-shadow: 2px 2px 4px rgba(245,150,0,1);
 		box-shadow: 2px 0px 8px darkorange, -2px 0px 8px darkorange;
-		margin: 1.4rem 1rem;
+		margin: 1.4rem 1rem; 
 	}
 
 	.scroll-shopping { margin-left: 0px; }
@@ -2433,6 +2430,8 @@ input[type=number]::-webkit-outer-spin-button {
 		text-align: center;
 		z-index: 150;
 	}
+
+	#mobile-menu-div.hide { position: fixed }
 
 	#mobile-menu-icon {
 		font-size: 1.4rem;
@@ -2459,7 +2458,6 @@ input[type=number]::-webkit-outer-spin-button {
 		color: rgba(255,191,0,1);
 		box-shadow: 4px -4px 8px darkorange;
 		text-shadow: 2px -2px 4px rgba(245,150,0,1);
-		position: fixed;
 	}
 
 	#op-container { 
