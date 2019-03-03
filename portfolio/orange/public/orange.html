@@ -63,17 +63,17 @@
 
 			<div class="ctr-flx" id="creds-header">
 				<div class="creds">
-					<button class="abs-pos credsBtn" id="join">
+					<button class="abs-pos credsBtn" id="join" type="button">
 						Join
 					</button>
 				</div>
 				<div class="creds">
-					<button class="abs-pos credsBtn" id="login">
+					<button class="abs-pos credsBtn" id="login" type="button">
 						Log in
 					</button>
 				</div>
 				<div class="abs-pos creds" id="loDiv">
-					<button class="abs-pos credsBtn" id="logout">
+					<button class="abs-pos credsBtn" id="logout" type="button">
 						Log Out
 					</button>
 				</div>
@@ -115,7 +115,7 @@
 							</h3>
 							<div class="form-input">
 								<!-- <input class="formBtn" id="joinBtn" type="button" value="Join" name="Join"> -->
-								<button class="formBtn" id="joinBtn">Join</button>
+								<button class="formBtn" id="joinBtn" type="button">Join</button>
 							</div>
 						</form>
 					</div>
@@ -135,7 +135,7 @@
 							</h3>
 							<div class="form-input">
 								<!-- <input class="formBtn" id="loginBtn" type="button" value="Log in" name="Log in"> -->
-								<button class="formBtn" id="loginBtn">Log in</button>
+								<button class="formBtn" id="loginBtn" type="button">Log in</button>
 										<!-- windowSzScrollText(nameB),
 											windowSzScrollText(addrB) -->
 							</div>
@@ -150,13 +150,9 @@
 						<form class="form-div" id="logoutForm">
 							<h3 class="form-input">You are logged in!</h3>
 							<div class="form-input">
-								<input 
-										class="formBtn" 
-										id="logoutBtn" 
-										type="button" 
-										value="Log out" 
-										name="Log out"
-									>
+								<!-- <input class="formBtn" id="logoutBtn" type="button" value="Log out" name="Log out"> -->
+								<button class="formBtn" id="logoutBtn" type="submit">Log out</button>
+								<!-- <button class="formBtn" id="logoutBtn" type="button">Log out</button> -->
 							</div>
 						</form>
 					</div>
@@ -359,12 +355,12 @@
 								placeholder="change name" 
 							>
 						<div class="abs-pos btn-container editClick nameZ" id="nameD1">
-							<button class="abs-pos sm-btn editor">
+							<button class="abs-pos sm-btn editor" type="button">
 								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
 						<div class="abs-pos btn-container saveClick nameX" id="nameD2">
-							<button class="abs-pos sm-btn saver">
+							<button class="abs-pos sm-btn saver" type="button">
 								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
 						</div>
@@ -393,12 +389,12 @@
 								placeholder="update email"  
 							>
 						<div class="abs-pos btn-container editClick emailZ" id="emailD1">
-							<button class="abs-pos sm-btn editor">
+							<button class="abs-pos sm-btn editor" type="button">
 								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
 						<div class="abs-pos btn-container saveClick emailX" id="emailD2">
-							<button class="abs-pos sm-btn saver">
+							<button class="abs-pos sm-btn saver" type="button">
 								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
 						</div>
@@ -425,12 +421,12 @@
 								placeholder="reset password" 
 							>
 						<div class="abs-pos btn-container editClick passZ" id="passD1">
-							<button class="abs-pos sm-btn editor">
+							<button class="abs-pos sm-btn editor" type="button">
 								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
 						<div class="abs-pos btn-container saveClick passX" id="passD2">
-							<button class="abs-pos sm-btn saver">
+							<button class="abs-pos sm-btn saver" type="button">
 								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
 						</div>
@@ -464,18 +460,18 @@
 								placeholder="enter street address" 
 							>
 						<div class="abs-pos btn-container editClick addrZ" id="addrD1">
-							<button class="abs-pos sm-btn editor">
+							<button class="abs-pos sm-btn editor" type="button">
 								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
 						<div class="abs-pos btn-container fwdClick addrX" id="addrD3">
-							<button class="abs-pos sm-btn fwder">
+							<button class="abs-pos sm-btn fwder" type="button">
 								<!-- https://fontawesome.com/icons/angle-right?style=solid -->
 								<i class="fas fa-angle-right"></i>
 							</button>
 						</div>
 						<div class="abs-pos btn-container saveClick addrY" id="addrD2">
-							<button class="abs-pos sm-btn saver">
+							<button class="abs-pos sm-btn saver" type="button">
 								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
 						</div>
@@ -535,17 +531,17 @@
 							<input class="nextPay payX payY" id="payG" type="text" name="sec_no" placeholder="CVV" maxlength="3">
 						</div>
 						<div class="abs-pos btn-container editClick payZ" id="payD1">
-							<button class="abs-pos sm-btn editor">
+							<button class="abs-pos sm-btn editor" type="button">
 								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
 						<div class="abs-pos btn-container fwdClick payX" id="payD3">
-							<button class="abs-pos sm-btn fwder">
+							<button class="abs-pos sm-btn fwder" type="button">
 								<i class="fas fa-angle-right"></i>
 							</button>
 						</div>
 						<div class="abs-pos btn-container saveClick payY" id="payD2">
-							<button class="abs-pos sm-btn saver">
+							<button class="abs-pos sm-btn saver" type="button">
 								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
 						</div>
@@ -574,12 +570,12 @@
 								placeholder="update phone number"
 							>
 						<div class="abs-pos btn-container editClick phoneZ" id="phoneD1">
-							<button class="abs-pos sm-btn editor">
+							<button class="abs-pos sm-btn editor" type="button">
 								<img class="sm-btn-img" src="../images/edit-1-moc-iconsdb.png" alt="edit item">
 							</button>
 						</div>
 						<div class="abs-pos btn-container saveClick phoneX" id="phoneD2">
-							<button class="abs-pos sm-btn saver">
+							<button class="abs-pos sm-btn saver" type="button">
 								<img class="sm-btn-img" src="../images/save-moc-32-iconsdb.png" alt="save item">
 							</button>
 						</div>
