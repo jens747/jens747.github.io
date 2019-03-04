@@ -1516,7 +1516,9 @@ const scrollInView = () => {
 	// Source: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
 	const wBox = coMain.getBoundingClientRect();
 	
-	window.scrollTo(0, wBox.top);
+	// window.scrollTo(0, wBox.top);
+	window.scrollTo(0, 0);
+	document.body.scrollTop = 0;
 	// temp. resolution for empty margin space screen bottom after scrollTo()
 	// addClasses('reset', imageContainer);
 	// setTimeout(function() { rmClasses('reset', imageContainer) }, 0);

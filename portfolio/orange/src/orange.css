@@ -18,7 +18,7 @@ body {
 	/*overscroll-behavior: contain;*/
 }
 
-/*.overscroll-container { overscroll-behavior: none; }*/
+.overscroll-container { overscroll-behavior: none; }
 
 #image-container { 
 	margin-top: 100vh; }
