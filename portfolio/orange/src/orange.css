@@ -209,6 +209,14 @@ a { text-decoration: none; }
 	padding-right: 12vw;
 }
 
+#scroll-about { 
+	width: auto; 
+	/*width: min-content*/
+	margin-left: 23.5vw;
+	padding-right: 44vw;
+	align-content: center;
+}
+
 .panels:after {
   content:'';
   width:100%;
@@ -1040,6 +1048,12 @@ input[type=number]::-webkit-outer-spin-button {
 	content: attr(about-donate);
 }*/
 
+.about-container {
+	/*background: mintcream;*/
+	width: 16.4rem;
+	max-width: 282px;
+}
+
 .about-media {
 	font-size: 2rem;
 	/*padding: 0.4rem;*/
@@ -1113,13 +1127,15 @@ input[type=number]::-webkit-outer-spin-button {
 
 #about-donate {
 	width: 84%;
-	max-width: 280px;
+	/*max-width: 280px;*/
+	max-width: 262px;
 	text-align: center;
 	/*margin: auto;*/ 
 	margin: 2rem auto;
 	/*align-self: flex-end;*/
-	bottom: 1.4rem;
+	/*bottom: 1.4rem;*/
 	/*margin-bottom: 1rem;*/
+	margin-bottom: 10rem;
   font-weight: 300;
   font-size: 0.6rem; 
 }
