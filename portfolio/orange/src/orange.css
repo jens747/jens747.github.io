@@ -205,7 +205,8 @@ a { text-decoration: none; }
 
 #scroll-account {
 	width: 98vw;
-	margin-left: 6vw;
+	margin-left: 8vw;
+	/*margin-left: 6vw;*/
 	padding-right: 12vw;
 }
 
@@ -822,7 +823,9 @@ a { text-decoration: none; }
 .xs-panels {
 	/*background: burlywood;*/
 	height: 38px;
-	width: 296px;
+	width: 78%;
+	max-width: 296px;
+	/*width: 296px;*/
 	margin-top: 86px;
 	margin-left: -5px;
 	opacity: 1;
