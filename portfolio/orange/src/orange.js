@@ -213,7 +213,7 @@ const logoutUser = () => {
 	if (credsContainer.classList.contains('select')) {
 		sendMessage(
 			"color: limegreen;",
-			"Click the logout button to completely log out of your account."
+			"Click the logout button to completely log out."
 		); 
 	}
 
