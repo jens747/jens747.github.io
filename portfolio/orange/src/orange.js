@@ -1530,7 +1530,8 @@ join.addEventListener("click", function() {
 	classCheck(cart, 'open', join, 'select');	
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
 	openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
-	if (window.innerWidth < 512) { scrollInView(); }	
+	// if (window.innerWidth < 512) { scrollInView(); }
+	scrollInView();
 	addCursor(joinEmail);
 	mobileMenuCheck();
  });
@@ -1538,7 +1539,8 @@ login.addEventListener("click", function() {
 	classCheck(cart, 'open', login, 'select');	
 	// openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
 	openMenus('select', this, loginDiv, join, joinDiv, credsContainer, credsForm);
-	if (window.innerWidth < 512) { scrollInView(); }
+	// if (window.innerWidth < 512) { scrollInView(); }
+	scrollInView();
 	addCursor(loginEmail);
 	mobileMenuCheck();
  });
@@ -1546,7 +1548,8 @@ logout.addEventListener("click", function() {
 	classCheck(cart, 'open', logout, 'select');
 	// openMenus('select', login, loginDiv, join, joinDiv, credsDiv, credsForm, logoutDiv);
 	openMenus('select', login, loginDiv, join, joinDiv, credsContainer, credsForm, logoutDiv);
-	if (window.innerWidth < 512) { scrollInView(); }
+	// if (window.innerWidth < 512) { scrollInView(); }
+	scrollInView();
 	mobileMenuCheck(); 
 	logoutUser();
 });
