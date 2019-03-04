@@ -214,7 +214,7 @@ a { text-decoration: none; }
 	/*width: min-content*/
 	margin-left: 23.5vw;
 	padding-right: 44vw;
-	align-content: center;
+	align-content: flex-start;
 }
 
 .panels:after {
@@ -1135,10 +1135,13 @@ input[type=number]::-webkit-outer-spin-button {
 	/*align-self: flex-end;*/
 	/*bottom: 1.4rem;*/
 	/*margin-bottom: 1rem;*/
-	margin-bottom: 10rem;
+	/*margin-bottom: 10rem;*/
   font-weight: 300;
   font-size: 0.6rem; 
 }
+
+#about-head { margin-top: 6rem; }
+#about-foot { margin-bottom: 6rem; }
 
 .about-app-container { 
 	margin: auto;
