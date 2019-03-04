@@ -1704,7 +1704,9 @@ Object.values(opEvents).map((num, idx) => {
 		});
 }); 
 
-// onload 
+// Sources:
+// https://css-tricks.com/simple-swipe-with-vanilla-javascript/
+// https://developer.mozilla.org/en-US/docs/Web/API/Touch/clientY
 imageContainer.addEventListener('mousedown', lock, false);
 imageContainer.addEventListener('touchstart', lock, false);
 
@@ -1722,8 +1724,8 @@ function move(e) {
     let dx = unify(e).clientX - touchX
     // let s = Math.sign(dx);
   	console.log(dx);
-    if (dx < -25) { rightArrow.click(); }
-    if (dx > 25)  { leftArrow.click(); }
+    if (dx < -120) { rightArrow.click(); }
+    if (dx > 120)  { leftArrow.click(); }
   }
 };
 
