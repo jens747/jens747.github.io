@@ -1531,8 +1531,8 @@ join.addEventListener("click", function() {
 	// openMenus('select', this, joinDiv, login, loginDiv, credsDiv, credsForm);
 	openMenus('select', this, joinDiv, login, loginDiv, credsContainer, credsForm);
 	// if (window.innerWidth < 512) { scrollInView(); }
-	scrollInView();
 	addCursor(joinEmail);
+	scrollInView();
 	mobileMenuCheck();
  });
 login.addEventListener("click", function() { 
@@ -1540,8 +1540,8 @@ login.addEventListener("click", function() {
 	// openMenus('select', this, loginDiv, join, joinDiv, credsDiv, credsForm);
 	openMenus('select', this, loginDiv, join, joinDiv, credsContainer, credsForm);
 	// if (window.innerWidth < 512) { scrollInView(); }
-	scrollInView();
 	addCursor(loginEmail);
+	scrollInView();
 	mobileMenuCheck();
  });
 logout.addEventListener("click", function() { 
