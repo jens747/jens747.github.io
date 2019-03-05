@@ -2466,10 +2466,12 @@ input[type=number]::-webkit-outer-spin-button {
 		/*height: 6vh; */
 		height: 33px;
 		/*top: 91vh;*/
-		top: calc(100vh - 33px);
+		/*top: calc(100vh - 33px);*/
 		text-align: center;
 		z-index: 150;
-		position: fixed;
+		/*position: fixed;*/
+		position: absolute;
+		top: calc(0vh - 33px);
 	}
 
 	/*#mobile-menu-div.hide { position: fixed }*/
