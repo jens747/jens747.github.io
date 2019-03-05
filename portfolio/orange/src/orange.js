@@ -1497,8 +1497,8 @@ const cartMenuCheck = () => {
 }
 
 // source: https://www.creativebloq.com/html5/12-html5-tricks-mobile-81412803
-window.addEventListener("load", function() { window.scrollTo(0, 0); });
-document.addEventListener("touchmove", function(e) { e.preventDefault() });
+// window.addEventListener("load", function() { window.scrollTo(0, 0); });
+// document.addEventListener("touchmove", function(e) { e.preventDefault() });
 
 // var body = document.documentElement;
 // if (body.requestFullscreen) {
