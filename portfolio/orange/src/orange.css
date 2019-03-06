@@ -2308,11 +2308,11 @@ input[type=number]::-webkit-outer-spin-button {
 	align-items: center;
 	position: fixed;
 
-	-webkit-transition: height 800ms, margin-top 800ms;
-	-ms-transition: height 800ms, margin-top 800ms;
-	-moz-transition: height 800ms, margin-top 800ms;
-	-o-transition: height 800ms, margin-top 800ms;
-	transition: height 800ms, margin-top 800ms;
+	-webkit-transition: height 800ms, top 800ms;
+	-ms-transition: height 800ms, top 800ms;
+	-moz-transition: height 800ms, top 800ms;
+	-o-transition: height 800ms, top 800ms;
+	transition: height 800ms, top 800ms;
 } 
 
 #op-overflow {
@@ -2421,22 +2421,25 @@ input[type=number]::-webkit-outer-spin-button {
 		/*height: 0vh;*/
 		/*margin-top: 0vh;*/
 		height: 8rem; 
-		margin-top: -8rem;
+		/*margin-top: -8rem;*/
+		top: calc(100% - 8rem);
+		position: fixed;
 		z-index: 130;
 
-		-webkit-transition: height 1s, margin-top 1s;
-		-moz-transition: height 1s, margin-top 1s;
-		-ms-transition: height 1s, margin-top 1s;
-		-o-transition: height 1s, margin-top 1s;
-		transition: height 1s, margin-top 1s;
+		-webkit-transition: height 1s, top 1s;
+		-moz-transition: height 1s, top 1s;
+		-ms-transition: height 1s, top 1s;
+		-o-transition: height 1s, top 1s;
+		transition: height 1s, top 1s;
 	}
 
 	#arrow-container.hide {
 		/*height: 24vh;*/
 		height: 8rem;
 		/*margin-top: -23vh;*/
-		margin-top: -8rem; 
-		position: fixed;
+		/*margin-top: -8rem; */
+		top: calc(100% - 8rem);
+		/*position: fixed;*/
 	}
 
 	#arrow-container.reset { height: 0rem; }
@@ -2470,7 +2473,8 @@ input[type=number]::-webkit-outer-spin-button {
 		/*height: 6vh; */
 		height: 33px;
 		/*top: 91vh;*/
-		top: calc(100vh - 33px);
+		/*top: calc(100vh - 33px);*/
+		top: calc(100% - 2.093rem);
 		text-align: center;
 		z-index: 150;
 		position: fixed;
@@ -2507,7 +2511,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 	#op-container { 
 		height: 0rem;
-		margin-top: 0rem;
+		/*margin-top: 0rem;*/
+		top: 100%;
 		z-index: 120;
 	}
 
