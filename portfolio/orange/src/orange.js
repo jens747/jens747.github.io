@@ -1708,15 +1708,15 @@ Object.values(opEvents).map((num, idx) => {
 			switchOptions(opEvents[idx]);
 		});
 }); 
-
+const swipeC = document.querySelector("#swipe-container")
 // Sources:
 // https://css-tricks.com/simple-swipe-with-vanilla-javascript/
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch/clientY
-imageContainer.addEventListener('mousedown', lock, false);
-imageContainer.addEventListener('touchstart', lock, false);
+swipeC.addEventListener('mousedown', lock, false);
+swipeC.addEventListener('touchstart', lock, false);
 
-imageContainer.addEventListener('mouseup', move, false);
-imageContainer.addEventListener('touchend', move, false);
+swipeC.addEventListener('mouseup', move, false);
+swipeC.addEventListener('touchend', move, false);
 
 function unify(e) { return e.changedTouches ? e.changedTouches[0] : e };
 // const unify = (elm) => e.changedTouches ? e.changedTouches[0] : e;

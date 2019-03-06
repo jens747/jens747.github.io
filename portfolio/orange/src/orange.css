@@ -39,8 +39,8 @@ a { text-decoration: none; }
 }
 .max-con { max-width: 1092px; }
 .abs-pos { position: absolute; }
-.fix-pos { 
-	position: fixed; 
+.fix-pos { position: fixed; }
+#swipe-container {
 	height: 100%;
 	width: 100%;
 }
