@@ -150,6 +150,7 @@ const joinUser = (email = joinEmail.value, pw = joinPass.value, pw2 = joinConfir
 			// userAccount(data); 
 			setInMotion([nameB, emailB, addrB]);
 		})
+		.catch(err => console.log(err));
 	})
 	.catch(err => console.log("Bad password"));
 }
@@ -205,6 +206,7 @@ const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 			userAccount(data);
 			setInMotion([nameB, emailB, addrB]);
 		})
+		.catch(err => console.log(err));
 	})
 	.catch(error => { console.log("Request denied"); });
 }
@@ -438,7 +440,7 @@ const nameUser = new Account(
 		new RegExp(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s/), 
 		nameB, 
 		"http://localhost:3000/name", 
-		nameC, 
+		nameC, //alpha - f_name l_name
 	);
 //RegEx source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 const emailUser = new Account(
@@ -447,7 +449,7 @@ const emailUser = new Account(
 		new RegExp(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/), 
 		emailB, 
 		'http://localhost:3000/email', 
-		emailC, 
+		emailC, //alpha - email
 	);
 // RegEx source: https://www.w3resource.com/javascript/form/password-validation.php
 const passUser = new Pass(
@@ -456,7 +458,7 @@ const passUser = new Pass(
 		new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/), 
 		passB, 
 		'http://localhost:3000/pass', 
-		passC, 
+		passC, //alpha - pass
 	);
 // RegEx source: https://www.regextester.com/93592
 const addrUser = new Address(
@@ -487,7 +489,7 @@ const phoneUser = new Account(
 		new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/), 
 		phoneB, 
 		"http://localhost:3000/phone", 
-		phoneC, 
+		phoneC, //alpha - phone
 	);
 
 const editInput = (user = userAddr) => {
@@ -512,18 +514,20 @@ const editInput = (user = userAddr) => {
 			user.clear();
 			return sendMessage(
 					"color: orangered;",
-					"There is a conflict with your information. Please try again."
+					"There is a conflict with your information. Please log out and try again."
 				);
 		}
 		response.json()
 		.then(data => { 
 			sendMessage("color: limegreen;", "Your info has been saved!");
+			if (typeof(data) !== 'string') { Object.assign(userData, data); }
 			user.add();
 			user.clear(); 
 			if (user.scroll.innerText.length > 24) 
 				setTimeout(() => user.scroll.classList.add('scroll'), 2000); 
 			return;
 		})
+		.catch(err => console.log(err));
 	})
 	.catch(err => console.log(user.errMsg));
 }
@@ -895,6 +899,23 @@ const cartSum = (sum, elm) => {
 	}
 }
 
+const restock = (id, amt = 100) => {
+	fetch('http://localhost:3000/deletecart', {
+		method: 'put',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ id, amt })
+	})
+	.then(response => {
+		if (response.status !== 200) {
+			return console.log("Unable to restock");
+		}
+		response.json()
+		.then(data => console.log(data))
+		.catch(err => console.log("Error: restocking"));
+	})
+	.catch(err => console.log(err));
+}
+
 const chkInventory = (id, itemAmount, imgSrc) => {
 	const items = itemAmount.value;/******/ 
 	itemIdx = 0;
@@ -933,7 +954,9 @@ const chkInventory = (id, itemAmount, imgSrc) => {
 				itemSum[itemIdx].innerText = (data.price * data.amt).toFixed(2);
 			}
 			cartSum(itemSum, reviewSpan);
+			if (data.inventory < 400) { restock(data.prod_id); }
 		})
+		.catch(err => console.log(err));
 	})
 	.catch(err => console.log("Out of Stock"));
 } 
@@ -1035,6 +1058,7 @@ const deleteFromCart = (event, list) => {
 				}
 				cartSum(itemSum, reviewSpan); 
 			})
+			.catch(err => console.log(err));
 		})
 		.catch(err => console.log("Removal error.")); 
 	});
@@ -1048,6 +1072,19 @@ const placeOrder = () =>  {
 			);
 		switchOptions(products);
 		cart.click();
+	} else if (!userData.hasOwnProperty('last_name')
+			|| !userData.hasOwnProperty('exp_mo')
+			|| !userData.hasOwnProperty('ui_statefk')
+			|| userData.last_name === "name" 
+			|| userData.exp_mo === 0
+			|| userData.ui_statefk === 0
+		) {
+			sendMessage(
+					"color: orangered;", 
+					"Please update your name, address, and credit card info."
+				);
+			switchOptions(account);
+			cart.click();
 	} else {
 		sendMessage(
 					"color: limegreen;", 
@@ -1088,7 +1125,8 @@ const placeOrder = () =>  {
 				userData.order_id = order;
 			})
 			.catch(err => console.log("Order failed. Check order details."))
-		});
+		})
+		.catch(err => console.log(err));
 	}
 }
 
@@ -1127,7 +1165,8 @@ const storeOrder = (order_id) => {
 			console.log(shoppingList);
 		})
 		.catch(err => console.log("Failed to store order details."))
-	});
+	})
+	.catch(err => console.log(err));
 }
 
 let showOrdersPanel = false;
@@ -1165,6 +1204,7 @@ const loadOrders = () => {
 			userData.orders = orders;
 			console.log(orders);
 		})
+		.catch(err => console.log(err));
 	})
 	console.log(userData);
 } 
@@ -1173,9 +1213,9 @@ let ordersLoaded = false;
 let spicy = [];
 
 fetch("http://localhost:3000/spicy") 
-		.then(response => response.json())
-		.then(resolve => spicy = resolve)
-		.catch(err => console.log("Failed to access images."));
+	.then(response => response.json())
+	.then(resolve => spicy = resolve)
+	.catch(err => console.log("Failed to access images."));
 
 const displayOrders = (ordersList) => {
 	if (!ordersLoaded) {
@@ -1552,11 +1592,11 @@ logout.addEventListener("click", function() {
 	scrollInView();
 	mobileMenuCheck(); 
 	logoutUser();
-});
+}); 
 
 joinBtn.addEventListener("click", function() { joinUser(); });
 loginBtn.addEventListener("click", function() { loginUser(); });
-// logoutBtn.addEventListener("click", function() { logoutUser(); });
+logoutBtn.addEventListener("click", function() { location.reload(); });
 cart.addEventListener("click", function() { 
 	cartMenuCheck();
 	cartLoginCheck(); 
@@ -1708,29 +1748,37 @@ Object.values(opEvents).map((num, idx) => {
 			switchOptions(opEvents[idx]);
 		});
 }); 
-const swipeC = document.querySelector("#swipe-container")
+
+const dropdown = document.getElementsByTagName("select");
+let dropdownClicked = false;
+Object.values(dropdown).map(num => num.addEventListener("click", () => dropdownClicked = true));
+
+const swipeC = document.querySelector("#swipe-container");
 // Sources:
 // https://css-tricks.com/simple-swipe-with-vanilla-javascript/
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch/clientY
-swipeC.addEventListener('mousedown', lock, false);
-swipeC.addEventListener('touchstart', lock, false);
+swipeC.addEventListener('mousedown', swipeStart, false);
+swipeC.addEventListener('touchstart', swipeStart, false);
 
-swipeC.addEventListener('mouseup', move, false);
-swipeC.addEventListener('touchend', move, false);
+swipeC.addEventListener('mouseup', swipeStop, false);
+swipeC.addEventListener('touchend', swipeStop, false);
 
-function unify(e) { return e.changedTouches ? e.changedTouches[0] : e };
+function unify(elm) { return elm.changedTouches ? elm.changedTouches[0] : elm };
 // const unify = (elm) => e.changedTouches ? e.changedTouches[0] : e;
 
 let touchX = null;
-function lock(e) { touchX = unify(e).clientX };
+function swipeStart(elm) { touchX = unify(elm).clientX };
 
-function move(e) {
-  if(touchX || touchX === 0) {
-    let dx = unify(e).clientX - touchX
-    // let s = Math.sign(dx);
-  	console.log(dx);
-    if (dx < -120) { rightArrow.click(); }
-    if (dx > 120)  { leftArrow.click(); }
+let displaceX = 0;
+function swipeStop(elm) {
+  if((touchX || touchX === 0) && !dropdownClicked) {
+    displaceX = unify(elm).clientX - touchX
+    // let s = Math.sign(displaceX);
+  	console.log(displaceX);
+    if (displaceX < -120) { rightArrow.click(); }
+    if (displaceX > 120)  { leftArrow.click(); }
+  } else {
+  	dropdownClicked = false;
   }
 };
 
