@@ -111,6 +111,7 @@ const joinConfirmPass = document.getElementById("joinConfirmPass");
 
 const joinUser = (email = joinEmail.value, pw = joinPass.value, pw2 = joinConfirmPass.value) => {
 	fetch('http://localhost:3000/join', {
+	// fetch('https://calm-shore-91943.herokuapp.com/join', {
 		method: 'post',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
@@ -165,6 +166,7 @@ console.log(userData);
 const loginUser = (email = loginEmail.value, pass = loginPass.value) => {
 	// sending post of input to server
 	fetch('http://localhost:3000/login', {
+	// fetch('https://calm-shore-91943.herokuapp.com/login', {
 		method: 'post',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
@@ -440,6 +442,7 @@ const nameUser = new Account(
 		new RegExp(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s/), 
 		nameB, 
 		"http://localhost:3000/name", 
+		// 'https://calm-shore-91943.herokuapp.com/name',
 		nameC, //alpha - f_name l_name
 	);
 //RegEx source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
@@ -449,6 +452,7 @@ const emailUser = new Account(
 		new RegExp(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/), 
 		emailB, 
 		'http://localhost:3000/email', 
+		// 'https://calm-shore-91943.herokuapp.com/email',
 		emailC, //alpha - email
 	);
 // RegEx source: https://www.w3resource.com/javascript/form/password-validation.php
@@ -458,6 +462,7 @@ const passUser = new Pass(
 		new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/), 
 		passB, 
 		'http://localhost:3000/pass', 
+		// 'https://calm-shore-91943.herokuapp.com/pass',
 		passC, //alpha - pass
 	);
 // RegEx source: https://www.regextester.com/93592
@@ -468,6 +473,7 @@ const addrUser = new Address(
 		new RegExp(/^\d+\s[A-z]+\s[A-z]|\d+\s[A-z]+|\s[A-z]+/),
 		addrB,
 		'http://localhost:3000/address',
+		// 'https://calm-shore-91943.herokuapp.com/address',
 		addrC,	//alpha	- cities
 		addrE,	//beta - street
 	);
@@ -477,6 +483,7 @@ const payUser = new Pay (
 		new RegExp(/<(|\/|[^\/>][^>]+|\/[^>][^>]+)>/), 
 		payB, //score - card
 		"http://localhost:3000/pay", 
+		// 'https://calm-shore-91943.herokuapp.com/pay',
 		payC, //alpha - num
 		payE, //beta - mo
 		payF, //chi - yr
@@ -489,6 +496,7 @@ const phoneUser = new Account(
 		new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/), 
 		phoneB, 
 		"http://localhost:3000/phone", 
+		// 'https://calm-shore-91943.herokuapp.com/phone',
 		phoneC, //alpha - phone
 	);
 
@@ -556,7 +564,8 @@ const getProds = () => {
 	// 	printProds(spicy);
 	// 	boolProds = true;
 	// } else {
-	// 	fetch("http://localhost:3000/spicy")
+		// fetch("http://localhost:3000/spicy")
+		// fetch('https://calm-shore-91943.herokuapp.com/spicy')
 	// // ********productsLoader needs work*********
 	// 	.then(productsLoader())
 	// 	.then(response => response.json())
@@ -901,6 +910,7 @@ const cartSum = (sum, elm) => {
 
 const restock = (id, amt = 100) => {
 	fetch('http://localhost:3000/deletecart', {
+	// fetch('https://calm-shore-91943.herokuapp.com/deletecart', {
 		method: 'put',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({ id, amt })
@@ -924,6 +934,7 @@ const chkInventory = (id, itemAmount, imgSrc) => {
 	const itemSum = document.getElementsByClassName("item-sum"); 
 
 	fetch('http://localhost:3000/addcart', {
+	// fetch('https://calm-shore-91943.herokuapp.com/addcart', {
 		method: 'put',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({ id, itemAmount: itemAmount.value })
@@ -1027,6 +1038,7 @@ const deleteFromCart = (event, list) => {
 	list.map(item => { 
 		// console.log(item); 
 		fetch('http://localhost:3000/deletecart', {
+		// fetch('https://calm-shore-91943.herokuapp.com/deletecart', {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({ id: item.prod_id, amt: item.amt })
@@ -1104,6 +1116,7 @@ const placeOrder = () =>  {
 		orderTotals.shipping = orderTotals.getShipping();
 
 		fetch('http://localhost:3000/placeorder', {
+		// fetch('https://calm-shore-91943.herokuapp.com/placeorder', {
 			method: 'post', 
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({ 
@@ -1135,6 +1148,7 @@ const storeOrder = (order_id) => {
 	const reviewSpan = document.querySelectorAll(".review-span");
 
 	fetch('http://localhost:3000/storeorder', {
+	// fetch('https://calm-shore-91943.herokuapp.com/storeorder', {
 		method: 'post',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
@@ -1188,6 +1202,7 @@ const loadOrders = () => {
 	}
 
 	fetch('http://localhost:3000/loadorders', {
+	// fetch('https://calm-shore-91943.herokuapp.com/loadorders', {
 		method: 'put',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
@@ -1213,6 +1228,7 @@ let ordersLoaded = false;
 let spicy = [];
 
 fetch("http://localhost:3000/spicy") 
+// fetch('https://calm-shore-91943.herokuapp.com/spicy')
 	.then(response => response.json())
 	.then(resolve => spicy = resolve)
 	.catch(err => console.log("Failed to access images."));
